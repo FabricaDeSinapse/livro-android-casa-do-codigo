@@ -1,0 +1,2 @@
+rootProject.name = "Livro_Android_Kotlin_PauloSalvatore"
+include ':app'
