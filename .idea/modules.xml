@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Livro_Android_Kotlin_PauloSalvatore.iml" filepath="$PROJECT_DIR$/.idea/modules/Livro_Android_Kotlin_PauloSalvatore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Livro_Android_Kotlin_PauloSalvatore.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Livro_Android_Kotlin_PauloSalvatore.app.iml" />
     </modules>
   </component>
 </project>
