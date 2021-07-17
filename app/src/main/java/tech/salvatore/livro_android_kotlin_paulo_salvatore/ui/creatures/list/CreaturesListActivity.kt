@@ -1,14 +1,14 @@
-package tech.salvatore.livro_android_kotlin_paulo_salvatore.ui.creatures
+package tech.salvatore.livro_android_kotlin_paulo_salvatore.ui.creatures.list
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
 
-class CreatureListActivity : AppCompatActivity() {
+class CreaturesListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.creature_list_activity)
+        setContentView(R.layout.creatures_list_activity)
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()

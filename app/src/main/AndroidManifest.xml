@@ -9,7 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Livro_Android_Kotlin_PauloSalvatore">
-        <activity android:name=".ui.creatures.CreatureListActivity">
+        <activity android:name=".ui.creatures.added.CreaturesAddedActivity"></activity>
+        <activity android:name=".ui.creatures.choose.CreaturesChooseActivity" />
+        <activity android:name=".ui.creatures.evolving.CreaturesEvolvingActivity" />
+        <activity android:name=".ui.creatures.view.CreaturesViewActivity" />
+        <activity android:name=".ui.splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.creatures.list.CreaturesListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
