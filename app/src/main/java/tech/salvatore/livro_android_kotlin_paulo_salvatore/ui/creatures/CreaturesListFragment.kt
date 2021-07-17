@@ -1,4 +1,4 @@
-package tech.salvatore.livro_android_kotlin_paulo_salvatore.ui.main
+package tech.salvatore.livro_android_kotlin_paulo_salvatore.ui.creatures
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
 
-class MainFragment : Fragment() {
+class CreaturesListFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = CreaturesListFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: CreaturesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +25,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(CreaturesViewModel::class.java)
         // TODO: Use the ViewModel
     }
 }
