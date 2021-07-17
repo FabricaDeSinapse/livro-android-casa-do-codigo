@@ -1,8 +1,8 @@
-package tech.salvatore.livro_android_kotlin_paulo_salvatore
+package tech.salvatore.livro_android_kotlin_paulo_salvatore.ui.creatures
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.ui.creatures.CreaturesListFragment
+import androidx.appcompat.app.AppCompatActivity
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
 
 class CreatureListActivity : AppCompatActivity() {
 
