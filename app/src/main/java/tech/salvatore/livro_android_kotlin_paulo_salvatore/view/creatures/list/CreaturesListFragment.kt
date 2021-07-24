@@ -54,13 +54,17 @@ class CreaturesListFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
 
-        val items = listOf(Creature(1, 1, "Name", "https://image.jpg", 1, 1, 1))
+        val items = listOf(
+            Creature(1, 1, "Creature 01", "https://image.jpg", 1, 2, 3),
+            Creature(2, 2, "Creature 02", "https://image.jpg", 3, 2, 1),
+        )
 
         recyclerView.adapter =
             CreaturesListAdapter(items) {
                 Toast.makeText(context, "Clicked item: ${it.name}", Toast.LENGTH_LONG).show()
             }
 
-        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        recyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
 }
