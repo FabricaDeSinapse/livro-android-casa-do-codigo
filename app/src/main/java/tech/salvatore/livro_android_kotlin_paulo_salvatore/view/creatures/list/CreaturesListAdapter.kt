@@ -1,29 +1,33 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.list
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding.CreaturesListItemBinding
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
+
 
 class CreaturesListAdapter(
     private val items: List<Creature>,
     private val listener: (Creature) -> Unit
 ) : RecyclerView.Adapter<CreaturesListAdapter.ViewHolder>() {
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(private val binding: CreaturesListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindView(
             item: Creature,
             listener: (Creature) -> Unit
         ) = with(itemView) {
+            binding.model = item
+
             setOnClickListener { listener(item) }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.creatures_list_item, parent, false)
-        return ViewHolder(view)
+        val layoutInflater = LayoutInflater.from(parent.context)
+
+        val binding = CreaturesListItemBinding.inflate(layoutInflater, parent, false)
+
+        return ViewHolder(binding)
     }
 
     override fun getItemCount() = items.size
