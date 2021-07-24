@@ -18,7 +18,9 @@ class CreaturesAddedFragment : Fragment() {
     private var _binding: CreaturesAddedFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: CreaturesViewModel
+    private val viewModel: CreaturesViewModel by lazy {
+        ViewModelProvider(this).get(CreaturesViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +44,7 @@ class CreaturesAddedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CreaturesViewModel::class.java)
+
+        binding.viewModel = viewModel
     }
 }
