@@ -12,40 +12,13 @@
 
         <!-- Activities -->
 
-        <activity android:name=".view.splash.SplashActivity">
-
+        <activity android:name=".view.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".view.creatures.choose.CreaturesChooseActivity" />
-
-        <activity android:name=".view.creatures.added.CreaturesAddedActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".view.creatures.list.CreaturesListActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".view.creatures.view.CreaturesViewActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".view.creatures.evolving.CreaturesEvolvingActivity" />
     </application>
 
 </manifest>
