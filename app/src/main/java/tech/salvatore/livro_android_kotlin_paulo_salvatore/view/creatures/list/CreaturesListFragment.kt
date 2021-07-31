@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
@@ -59,9 +60,18 @@ class CreaturesListFragment : Fragment() {
             Creature(2, 2, "Creature 02", "https://image.jpg", 3, 2, 1),
         )
 
+        val options = navOptions {
+            anim {
+                enter = R.anim.slide_in_right
+                exit = R.anim.slide_out_left
+                popEnter = R.anim.slide_in_left
+                popExit = R.anim.slide_out_right
+            }
+        }
+
         recyclerView.adapter =
             CreaturesListAdapter(items) {
-                findNavController().navigate(R.id.creatures_view_dest, null)
+                findNavController().navigate(R.id.creatures_view_dest, null, options)
             }
 
         recyclerView.layoutManager =
