@@ -13,7 +13,8 @@
             app:destination="@id/creatures_choose_dest" />
         <action
             android:id="@+id/action_creatures_list_dest_to_creaturesViewFragment"
-            app:destination="@id/creatures_view_dest" />
+            app:destination="@id/creatures_view_dest"
+            app:popUpTo="@id/creatures_view_dest" />
     </fragment>
     <fragment
         android:id="@+id/creatures_choose_dest"
