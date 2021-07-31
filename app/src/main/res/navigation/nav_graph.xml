@@ -7,35 +7,45 @@
     <fragment
         android:id="@+id/creatures_list_dest"
         android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.list.CreaturesListFragment"
-        android:label="CreaturesListFragment" >
+        android:label="CreaturesListFragment">
         <action
-            android:id="@+id/action_creatures_list_dest_to_creaturesChooseFragment"
-            app:destination="@id/creatures_choose_dest" />
-        <action
-            android:id="@+id/action_creatures_list_dest_to_creaturesViewFragment"
+            android:id="@+id/creatures_view_action"
             app:destination="@id/creatures_view_dest"
             app:popUpTo="@id/creatures_view_dest" />
+
+        <action
+            android:id="@+id/creatures_choose_action"
+            app:destination="@id/creatures_choose_dest" />
     </fragment>
+
     <fragment
         android:id="@+id/creatures_choose_dest"
         android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.choose.CreaturesChooseFragment"
-        android:label="CreaturesChooseFragment" >
+        android:label="CreaturesChooseFragment">
         <action
             android:id="@+id/action_creaturesChooseFragment_to_creaturesAddedFragment"
             app:destination="@id/creatures_added_dest" />
     </fragment>
+
     <fragment
         android:id="@+id/creatures_view_dest"
         android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.view.CreaturesViewFragment"
-        android:label="CreaturesViewFragment" >
+        android:label="CreaturesViewFragment">
+        <argument
+            android:name="creatureId"
+            android:defaultValue="0"
+            app:argType="integer" />
+
         <action
             android:id="@+id/action_creaturesViewFragment_to_creaturesEvolvingFragment"
             app:destination="@id/creatures_evolving_dest" />
     </fragment>
+
     <fragment
         android:id="@+id/creatures_added_dest"
         android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.added.CreaturesAddedFragment"
         android:label="CreaturesAddedFragment" />
+
     <fragment
         android:id="@+id/creatures_evolving_dest"
         android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.evolving.CreaturesEvolvingFragment"

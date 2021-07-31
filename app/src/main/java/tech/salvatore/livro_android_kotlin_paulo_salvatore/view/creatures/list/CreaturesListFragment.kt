@@ -71,7 +71,8 @@ class CreaturesListFragment : Fragment() {
 
         recyclerView.adapter =
             CreaturesListAdapter(items) {
-                findNavController().navigate(R.id.creatures_view_dest, null, options)
+                val action = CreaturesListFragmentDirections.creaturesViewAction(it.id)
+                findNavController().navigate(action)
             }
 
         recyclerView.layoutManager =
