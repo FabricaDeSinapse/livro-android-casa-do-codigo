@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding.CreaturesListFragmentBinding
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreaturesViewModel
 
 class CreaturesListFragment : Fragment() {
@@ -54,14 +54,19 @@ class CreaturesListFragment : Fragment() {
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
 
-        val items = listOf(
-            Creature(1, 1, "Creature 01", "https://image.jpg", 1, 2, 3),
-            Creature(2, 2, "Creature 02", "https://image.jpg", 3, 2, 1),
-        )
+        val options = navOptions {
+            anim {
+                enter = R.anim.slide_in_right
+                exit = R.anim.slide_out_left
+                popEnter = R.anim.slide_in_left
+                popExit = R.anim.slide_out_right
+            }
+        }
 
         recyclerView.adapter =
-            CreaturesListAdapter(items) {
-                Toast.makeText(context, "Clicked item: ${it.name}", Toast.LENGTH_LONG).show()
+            CreaturesListAdapter(viewModel.items) {
+                val action = CreaturesListFragmentDirections.creaturesViewAction(it.id)
+                findNavController().navigate(action, options)
             }
 
         recyclerView.layoutManager =

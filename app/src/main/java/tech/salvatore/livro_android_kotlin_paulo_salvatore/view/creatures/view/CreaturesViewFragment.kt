@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding.CreaturesViewFragmentBinding
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreaturesViewModel
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreatureViewModel
 
 class CreaturesViewFragment : Fragment() {
 
@@ -18,8 +19,8 @@ class CreaturesViewFragment : Fragment() {
     private var _binding: CreaturesViewFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: CreaturesViewModel by lazy {
-        ViewModelProvider(this).get(CreaturesViewModel::class.java)
+    private val viewModel: CreatureViewModel by lazy {
+        ViewModelProvider(this).get(CreatureViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -44,6 +45,11 @@ class CreaturesViewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val safeArgs: CreaturesViewFragmentArgs by navArgs()
+        val creatureId = safeArgs.creatureId
+
+        viewModel.id.value = creatureId
 
         binding.viewModel = viewModel
     }

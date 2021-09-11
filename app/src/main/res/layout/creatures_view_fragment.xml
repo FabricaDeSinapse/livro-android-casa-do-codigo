@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreaturesViewModel" />
+            type="tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreatureViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,8 +19,8 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.text}"
-            tools:text="Text Placeholder"
+            android:text="@{String.valueOf(viewModel.id)}"
+            tools:text="Creature ID"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
