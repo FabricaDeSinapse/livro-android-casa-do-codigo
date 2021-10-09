@@ -14,7 +14,10 @@ class CreaturesViewModel(application: Application) : AndroidViewModel(applicatio
 
     val creatures = MutableLiveData<List<Creature>>()
 
+    // TODO: make only LiveData available outside ViewModel
+
     init {
+        // TODO: remove subscription
         repository.creatures.subscribe {
             creatures.postValue(it)
         }

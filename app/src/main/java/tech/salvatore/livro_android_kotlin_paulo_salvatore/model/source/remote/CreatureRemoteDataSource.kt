@@ -23,13 +23,12 @@ object CreatureRemoteDataSource {
         service = retrofit.create(CreatureService::class.java)
     }
 
-    val creatures: Observable<List<Creature>> by lazy {
-        service.findAll(false).map { creatureApiResponseList ->
+    val creatures: Observable<List<Creature>> =
+        service.findAll().map { creatureApiResponseList ->
             creatureApiResponseList.map { creatureApiResponse ->
                 creatureApiResponse.toDomain()
             }
         }
-    }
 
     private fun CreatureApiResponse.toDomain(): Creature {
         return Creature(
