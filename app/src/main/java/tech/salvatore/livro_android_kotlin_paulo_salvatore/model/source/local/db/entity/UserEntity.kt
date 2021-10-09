@@ -3,7 +3,7 @@ package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.d
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "user")
 data class UserEntity(
     @PrimaryKey
     val id: Int,

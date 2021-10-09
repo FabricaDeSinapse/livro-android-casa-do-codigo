@@ -1,10 +1,9 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.entity
 
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "creature")
 data class CreatureEntity(
     @PrimaryKey
     val id: Int,
@@ -21,7 +20,7 @@ data class CreatureEntity(
 
     val humor: Int,
 
-    @Embedded val evolveTo: CreatureEntity?,
+    val evolveTo: Int?,
 
     var lastFeed: Int,
 

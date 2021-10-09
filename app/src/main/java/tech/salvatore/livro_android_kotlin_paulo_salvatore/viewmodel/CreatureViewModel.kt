@@ -1,10 +1,16 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.CreatureRepository
 
-class CreatureViewModel : ViewModel() {
+class CreatureViewModel(application: Application) : AndroidViewModel(application) {
     val id = MutableLiveData<Int>()
     val item = MutableLiveData<Creature>()
+
+    private val repository = CreatureRepository(application)
+
+    val creatures = repository.creatures
 }
