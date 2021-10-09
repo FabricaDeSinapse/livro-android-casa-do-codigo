@@ -20,7 +20,7 @@ abstract class AppDatabase : RoomDatabase() {
 
         fun getDb(context: Context): AppDatabase {
             if (instance == null) {
-                Room.databaseBuilder(
+                instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java, "app-database"
                 ).build()
