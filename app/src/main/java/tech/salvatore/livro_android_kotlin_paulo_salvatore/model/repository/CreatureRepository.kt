@@ -38,64 +38,6 @@ class CreatureRepository(application: Application) {
         }
     }
 
-    /*
-    val creatures2: Flowable<List<Creature>>? by lazy {
-        val a = localDataSource.countCreatures.flatMap { count ->
-            val c = Observable.just(emptyList<Creature>()).toFlowable(BackpressureStrategy.LATEST)
-
-            if (count > 0) {
-                // Return creatures from DB
-                // Ask API for loading creatures (if new creatures are available)
-            } else {
-                // Ask API for loading creatures
-            }
-
-            c
-//            if (count > 0) {
-//                localDataSource.creatures.flatMap { creaturesEntities ->
-//                    creaturesEntities.map {
-//                        Creature()
-//                    }
-//                }
-//            } else {
-//                emptyList<Creature>()
-//            }
-        }
-
-        val b = Observable.just(emptyList<Creature>()).toFlowable(BackpressureStrategy.LATEST)
-
-        b
-    }
-    */
-
-//    private val creatureDao: CreatureDao
-
-//    val creatures: List<Creature>
-
-    /*
-    Se a lista de criaturas não tiver disponível, precisamos buscar de algum dataSource
-    Se o LocalDataSource responder que não tem nada, ele precisa precisar no RemoteDataSource
-    Iniciamos a chamada do RemoteDataSource e aguardamos
-    Quem está precisando lá na frente precisa exibir uma mensagem de carregamento (talvez uma Skeleton Screen)
-    Assim que a API retornar, inserimos os datos no LocalDataSource e passamos a obter as informações dele
-    */
-
-    init {
-//        val db = AppDatabase.getDb(application)
-//
-//        creatureDao = db.creatureDao()
-//
-//        val count = runBlocking { creatureDao.count() }
-//
-//        if (count > 0) {
-//            // Get from DB
-//        } else {
-//            // Get from API
-//        }
-//
-//        val creaturesFromDb = runBlocking { creatureDao.findAll() }
-    }
-
     fun insert(creature: CreatureEntity) {
     }
 }
