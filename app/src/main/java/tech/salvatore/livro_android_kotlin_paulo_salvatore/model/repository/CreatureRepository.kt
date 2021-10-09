@@ -5,7 +5,6 @@ import android.util.Log
 import io.reactivex.rxjava3.subjects.ReplaySubject
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.CreatureLocalDataSource
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.entity.CreatureEntity
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.remote.CreatureRemoteDataSource
 
 // TODO: Maybe should be singleton
@@ -29,13 +28,10 @@ class CreatureRepository(application: Application) {
         // Load Creatures From Local Remote Source
         remoteDataSource.creatures.doOnNext {
             Log.d("CREATURE", "Finish loading remote data source: ${it.count()}")
-        }.map {
+        }.flatMapCompletable {
             localDataSource.insert(it)
         }.subscribe {
             Log.d("CREATURE", "Creatures were added.")
         }
-    }
-
-    fun insert(creature: CreatureEntity) {
     }
 }

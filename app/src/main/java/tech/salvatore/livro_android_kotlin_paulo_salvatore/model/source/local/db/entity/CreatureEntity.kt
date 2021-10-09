@@ -17,7 +17,7 @@ data class CreatureEntity(
 
     val name: String,
 
-    val imageUrl: String?,
+    val imageUrl: String,
 
     val hungry: Int,
 
