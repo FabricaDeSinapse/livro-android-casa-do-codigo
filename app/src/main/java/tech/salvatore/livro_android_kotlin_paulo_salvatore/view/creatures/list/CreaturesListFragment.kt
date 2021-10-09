@@ -69,7 +69,7 @@ class CreaturesListFragment : Fragment() {
         viewModel.creatures.observe(this, {
             if (recyclerView.adapter == null) {
                 recyclerView.adapter = CreaturesListAdapter(it) { creature ->
-                    val action = CreaturesListFragmentDirections.creaturesViewAction(creature.id)
+                    val action = CreaturesListFragmentDirections.creaturesViewAction(creature.number)
                     findNavController().navigate(action, options)
                 }
 
