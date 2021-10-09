@@ -17,7 +17,7 @@ data class CreatureEntity(
 
     val name: String,
 
-    val imageUrl: String,
+    val imageUrl: String?,
 
     val hungry: Int,
 
@@ -27,9 +27,9 @@ data class CreatureEntity(
 
     val evolveToNumber: Int?,
 
-    var lastFeed: Int,
+    var lastFeed: Int = 0,
 
-    var lastTrain: Int,
+    var lastTrain: Int = 0,
 
-    var lastPlay: Int,
+    var lastPlay: Int = 0,
 )
