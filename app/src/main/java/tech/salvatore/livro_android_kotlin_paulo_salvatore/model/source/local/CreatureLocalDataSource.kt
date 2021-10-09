@@ -35,9 +35,6 @@ class CreatureLocalDataSource(application: Application) {
             number = number,
             name = name,
             imageUrl = imageUrl,
-            hungry = hungry,
-            strength = strength,
-            humor = humor,
             evolveToNumber = evolveTo?.number
         )
     }
@@ -47,9 +44,6 @@ class CreatureLocalDataSource(application: Application) {
             number = number,
             name = name,
             imageUrl = imageUrl,
-            hungry = hungry,
-            strength = strength,
-            humor = humor,
             // TODO: EvolveTo
         )
     }

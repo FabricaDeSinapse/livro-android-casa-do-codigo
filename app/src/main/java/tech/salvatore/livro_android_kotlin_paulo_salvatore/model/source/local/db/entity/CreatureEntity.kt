@@ -19,17 +19,5 @@ data class CreatureEntity(
 
     val imageUrl: String,
 
-    val hungry: Int,
-
-    val strength: Int,
-
-    val humor: Int,
-
     val evolveToNumber: Int?,
-
-    var lastFeed: Int = 0,
-
-    var lastTrain: Int = 0,
-
-    var lastPlay: Int = 0,
 )
