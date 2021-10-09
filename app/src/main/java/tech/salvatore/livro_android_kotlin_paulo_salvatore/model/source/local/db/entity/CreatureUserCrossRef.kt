@@ -4,6 +4,6 @@ import androidx.room.Entity
 
 @Entity(primaryKeys = ["creatureId", "userId"])
 data class CreatureUserCrossRef(
-    val creatureId: Long,
-    val userId: Long
+    val creatureId: Int,
+    val userId: Int
 )

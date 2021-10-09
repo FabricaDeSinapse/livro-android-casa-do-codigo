@@ -12,5 +12,5 @@ data class UserWithCreature(
         entityColumn = "creatureId",
         associateBy = Junction(CreatureUserCrossRef::class)
     )
-    val songs: List<CreatureEntity>
+    val creatures: List<CreatureEntity>
 )
