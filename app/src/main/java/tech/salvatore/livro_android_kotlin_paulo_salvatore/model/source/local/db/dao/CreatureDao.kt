@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.core.Single
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.entity.CreatureEntity
 
 @Dao
@@ -28,5 +29,5 @@ interface CreatureDao {
     fun insertAll(vararg creatures: CreatureEntity): Completable
 
     @Delete
-    fun delete(creature: CreatureEntity): Flowable<Int>
+    fun delete(creature: CreatureEntity): Single<Int>
 }
