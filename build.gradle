@@ -2,7 +2,8 @@
 buildscript {
     ext {
         kotlinVersion = "1.5.31"
-        navigationVersion = "2.4.0-alpha10"
+        navigationVersion = "2.3.5"
+        roomVersion = "2.3.0"
     }
 
     repositories {
@@ -12,7 +13,7 @@ buildscript {
 
     dependencies {
         // Android/Kotlin
-        classpath 'com.android.tools.build:gradle:7.0.2'
+        classpath "com.android.tools.build:gradle:7.0.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
 
         // Navigation
