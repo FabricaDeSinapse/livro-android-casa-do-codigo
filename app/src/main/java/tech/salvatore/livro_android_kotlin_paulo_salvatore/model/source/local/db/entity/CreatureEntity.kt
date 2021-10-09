@@ -7,13 +7,12 @@ import androidx.room.PrimaryKey
 @Entity(
     tableName = "creature", indices = [
         Index(value = ["number"], unique = true),
-        Index(value = ["name"], unique = true)
+        Index(value = ["name"], unique = true),
+        Index(value = ["evolveToNumber"], unique = true)
     ]
 )
 data class CreatureEntity(
     @PrimaryKey
-    val id: Int,
-
     val number: Int,
 
     val name: String,
@@ -26,7 +25,7 @@ data class CreatureEntity(
 
     val humor: Int,
 
-    val evolveTo: Int?,
+    val evolveToNumber: Int?,
 
     var lastFeed: Int,
 

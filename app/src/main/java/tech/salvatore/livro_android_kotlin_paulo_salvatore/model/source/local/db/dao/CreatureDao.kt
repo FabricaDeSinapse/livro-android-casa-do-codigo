@@ -3,6 +3,7 @@ package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.d
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
@@ -11,13 +12,13 @@ import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db
 
 @Dao
 interface CreatureDao {
-    @Query("SELECT COUNT(id) FROM creature")
+    @Query("SELECT COUNT(number) FROM creature")
     fun count(): Flowable<Int>
 
     @Query("SELECT * FROM creature")
     fun findAll(): Flowable<List<CreatureEntity>>
 
-    @Query("SELECT * FROM creature WHERE id IN (:creatureIds)")
+    @Query("SELECT * FROM creature WHERE number IN (:creatureIds)")
     fun findAllByIds(creatureIds: IntArray): Flowable<List<CreatureEntity>>
 
     @Query(
@@ -25,7 +26,7 @@ interface CreatureDao {
     )
     fun findByNumber(number: Int): Flowable<CreatureEntity>
 
-    @Insert
+    @Insert(onConflict = REPLACE)
     fun insertAll(vararg creatures: CreatureEntity): Completable
 
     @Delete
