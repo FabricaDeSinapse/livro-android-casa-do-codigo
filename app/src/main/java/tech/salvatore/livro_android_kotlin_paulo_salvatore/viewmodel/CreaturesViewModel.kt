@@ -1,14 +1,22 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.CreatureRepository
 
-class CreaturesViewModel : ViewModel() {
+class CreaturesViewModel(application: Application) : AndroidViewModel(application) {
     // TODO: Remove
     val text = "Text"
 
-    val items = listOf(
-        Creature(1, 1, "Creature 01", "https://image.jpg", 1, 2, 3),
-        Creature(2, 2, "Creature 02", "https://image.jpg", 3, 2, 1),
-    )
+    private val repository = CreatureRepository(application)
+
+    val creatures = MutableLiveData<List<Creature>>()
+
+    init {
+        repository.creatures.subscribe {
+            creatures.postValue(it)
+        }
+    }
 }
