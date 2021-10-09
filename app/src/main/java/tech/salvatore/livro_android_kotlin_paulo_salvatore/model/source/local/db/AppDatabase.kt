@@ -9,7 +9,7 @@ import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.entity.CreatureEntity
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.entity.UserEntity
 
-@Database(entities = [CreatureEntity::class, UserEntity::class], version = 1)
+@Database(entities = [CreatureEntity::class, UserEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun creatureDao(): CreatureDao
 
