@@ -8,6 +8,7 @@ import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.dao.CreatureDao
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.entity.CreatureEntity
 
+// TODO: Replace with Singleton
 class CreatureLocalDataSource(application: Application) {
     private val db: AppDatabase = AppDatabase.getDb(application)
 
