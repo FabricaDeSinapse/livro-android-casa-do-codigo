@@ -13,33 +13,26 @@ class CreatureRepository(application: Application) {
     // TODO: Maybe should be singleton
     private val localDataSource = CreatureLocalDataSource(application)
 
-    // TODO: Maybe should be singleton
     private val remoteDataSource = CreatureRemoteDataSource
 
     val creatures: ReplaySubject<List<Creature>> = ReplaySubject.create(1)
 
     init {
         // Load Creatures From Local Data Source
-        localDataSource.creatures.map {
-            // Convert CreatureEntity to Creature
-            emptyList<Creature>()
+        localDataSource.creatures.doOnNext {
+            Log.d("CREATURE", "Finish loading local data source: ${it.count()}")
         }.subscribe {
-            Log.d("CREATURE", "Finish loading local data source.")
-
             // Update creatures' ReplaySubject
             creatures.onNext(it)
         }
 
         // Load Creatures From Local Remote Source
-        remoteDataSource.creatures.map {
-            // Convert CreatureApiResponse to CreatureEntity
-            emptyList<Creature>()
-            // TODO: Insert creatures on database (by number)
+        remoteDataSource.creatures.doOnNext {
+            Log.d("CREATURE", "Finish loading remote data source: ${it.count()}")
+        }.map {
+            localDataSource.insert(it)
         }.subscribe {
-            Log.d("CREATURE", "Finish loading remote data source.")
-
-            // Update creatures' ReplaySubject
-            creatures.onNext(it)
+            Log.d("CREATURE", "Creatures were added.")
         }
     }
 
