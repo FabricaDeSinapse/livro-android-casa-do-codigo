@@ -4,6 +4,7 @@ buildscript {
         kotlinVersion = "1.5.31"
         navigationVersion = "2.4.0-alpha10"
         roomVersion = "2.3.0"
+        retrofitVersion = "2.9.0"
     }
 
     repositories {

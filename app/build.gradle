@@ -65,6 +65,9 @@ dependencies {
     // Room
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-rxjava3:$roomVersion")
-
     kapt("androidx.room:room-compiler:$roomVersion")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
 }
