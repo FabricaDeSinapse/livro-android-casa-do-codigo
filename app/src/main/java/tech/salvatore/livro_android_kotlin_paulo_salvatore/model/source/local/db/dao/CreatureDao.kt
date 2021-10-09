@@ -4,24 +4,29 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Flowable
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.entity.CreatureEntity
 
 @Dao
 interface CreatureDao {
+    @Query("SELECT COUNT(id) FROM creature")
+    fun count(): Flowable<Int>
+
     @Query("SELECT * FROM creature")
-    suspend fun findAll(): List<CreatureEntity>
+    fun findAll(): Flowable<List<CreatureEntity>>
 
     @Query("SELECT * FROM creature WHERE id IN (:creatureIds)")
-    suspend fun findAllByIds(creatureIds: IntArray): List<CreatureEntity>
+    fun findAllByIds(creatureIds: IntArray): Flowable<List<CreatureEntity>>
 
     @Query(
         "SELECT * FROM creature WHERE number LIKE :number LIMIT 1"
     )
-    suspend fun findByNumber(number: Int): CreatureEntity
+    fun findByNumber(number: Int): Flowable<CreatureEntity>
 
     @Insert
-    suspend fun insertAll(vararg creatures: CreatureEntity)
+    fun insertAll(vararg creatures: CreatureEntity): Completable
 
     @Delete
-    suspend fun delete(creature: CreatureEntity)
+    fun delete(creature: CreatureEntity): Flowable<Int>
 }

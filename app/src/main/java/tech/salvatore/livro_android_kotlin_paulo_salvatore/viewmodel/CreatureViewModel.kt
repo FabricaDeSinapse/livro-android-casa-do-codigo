@@ -12,5 +12,6 @@ class CreatureViewModel(application: Application) : AndroidViewModel(application
 
     private val repository = CreatureRepository(application)
 
-    val creatures = repository.creatures
+    // TODO: Add data
+    val creatures = listOf<Creature>()
 }
