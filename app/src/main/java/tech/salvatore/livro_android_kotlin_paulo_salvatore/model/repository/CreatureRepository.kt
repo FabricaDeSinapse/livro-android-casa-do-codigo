@@ -16,7 +16,7 @@ class CreatureRepository(application: Application) {
     // TODO: Maybe should be singleton
     private val remoteDataSource = CreatureRemoteDataSource
 
-    val creatures = ReplaySubject.create<List<Creature>>(1)
+    val creatures: ReplaySubject<List<Creature>> = ReplaySubject.create(1)
 
     init {
         // Load Creatures From Local Data Source
