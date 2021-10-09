@@ -17,6 +17,7 @@ class CreaturesListAdapter(
     @SuppressLint("NotifyDataSetChanged")
     fun setItems(items: List<Creature>) {
         this.items = items
+
         notifyDataSetChanged()
     }
 
