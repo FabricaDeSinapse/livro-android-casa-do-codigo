@@ -63,13 +63,29 @@ class CreaturesListFragment : Fragment() {
             }
         }
 
-        recyclerView.adapter =
-            CreaturesListAdapter(viewModel.items) {
-                val action = CreaturesListFragmentDirections.creaturesViewAction(it.id)
-                findNavController().navigate(action, options)
-            }
-
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        viewModel.creatures.observe(this, {
+            if (recyclerView.adapter == null) {
+                recyclerView.adapter = CreaturesListAdapter(it) { creature ->
+                    val action = CreaturesListFragmentDirections.creaturesViewAction(creature.id)
+                    findNavController().navigate(action, options)
+                }
+
+                return@observe
+            }
+
+            val adapter = recyclerView.adapter as CreaturesListAdapter
+
+            // TODO: replace with notifyItemInserted
+            adapter.setItems(it)
+        })
+
+//        recyclerView.adapter =
+//            CreaturesListAdapter(viewModel.creatures) {
+//                val action = CreaturesListFragmentDirections.creaturesViewAction(it.id)
+//                findNavController().navigate(action, options)
+//            }
     }
 }

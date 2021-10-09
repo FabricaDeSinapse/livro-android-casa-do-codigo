@@ -1,5 +1,6 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.list
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,9 +9,17 @@ import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 
 
 class CreaturesListAdapter(
-    private val items: List<Creature>,
+    private var items: List<Creature>,
     private val listener: (Creature) -> Unit
 ) : RecyclerView.Adapter<CreaturesListAdapter.ViewHolder>() {
+
+    // TODO: replace with notifyItemInserted
+    @SuppressLint("NotifyDataSetChanged")
+    fun setItems(items: List<Creature>) {
+        this.items = items
+        notifyDataSetChanged()
+    }
+
     inner class ViewHolder(private val binding: CreaturesListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindView(
             item: Creature,
