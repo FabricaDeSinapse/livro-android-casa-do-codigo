@@ -18,10 +18,6 @@ class CreatureRepository(application: Application) {
     val creatures = ReplaySubject.create<List<Creature>>()
 
     init {
-//        val a = localDataSource.countCreatures.filter { it == 0 }.flatMap {
-//            localDataSource.creatures
-//        }
-
         // Load Creatures From Local Data Source
         localDataSource.creatures.map {
             // Convert CreatureEntity to Creature
@@ -32,7 +28,14 @@ class CreatureRepository(application: Application) {
         }
 
         // Load Creatures From Local Remote Source
-        remoteDataSource
+        remoteDataSource.creatures.map {
+            // Convert CreatureApiResponse to Creature
+            emptyList<Creature>()
+            // TODO: Insert creatures on database (by number)
+        }.subscribe {
+            // Update creatures' ReplaySubject
+            creatures.onNext(it)
+        }
     }
 
     /*
