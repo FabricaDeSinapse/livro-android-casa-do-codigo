@@ -19,11 +19,7 @@ class CreatureLocalDataSource(application: Application) {
     val creatures: Flowable<List<Creature>> =
         creatureDao
             .findAll()
-            .map { creatureEntityList ->
-                creatureEntityList.map { creatureEntity ->
-                    creatureEntity.toDomain()
-                }
-            }
+            .map { list -> list.map { it.toDomain() } }
 
     fun insert(creature: List<Creature>): Completable {
         val creatureEntities = creature.map { it.fromDomain() }

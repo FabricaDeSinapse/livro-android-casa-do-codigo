@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.remote.api.domain.CreatureApiResponse
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.remote.api.entity.CreatureApiResponse
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.remote.api.services.CreatureService
 
 object CreatureRemoteDataSource {
@@ -24,11 +24,7 @@ object CreatureRemoteDataSource {
     }
 
     val creatures: Observable<List<Creature>> =
-        service.findAll().map { creatureApiResponseList ->
-            creatureApiResponseList.map { creatureApiResponse ->
-                creatureApiResponse.toDomain()
-            }
-        }
+        service.findAll().map { list -> list.map { it.toDomain() } }
 
     private fun CreatureApiResponse.toDomain(): Creature {
         return Creature(
