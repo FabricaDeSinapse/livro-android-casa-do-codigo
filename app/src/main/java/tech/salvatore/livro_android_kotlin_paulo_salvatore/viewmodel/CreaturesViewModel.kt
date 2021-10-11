@@ -7,9 +7,6 @@ import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.CreatureRepository
 
 class CreaturesViewModel(application: Application) : AndroidViewModel(application) {
-    // TODO: Remove
-    val text = "Text"
-
     private val repository = CreatureRepository(application)
 
     val creatures = MutableLiveData<List<Creature>>()
