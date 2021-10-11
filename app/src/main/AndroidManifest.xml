@@ -17,7 +17,7 @@
         <!-- Activities -->
 
         <activity
-            android:name=".view.main.MainActivity"
+            android:name=".view.navigation.NavigationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

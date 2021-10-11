@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.main.MainActivity">
+    tools:context=".view.navigation.NavigationActivity">
 
     <!--<androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -15,14 +14,22 @@
         android:background="@color/purple_500"
         android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar" />-->
 
-    <fragment
+    <!--<fragment
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_graph" />
+        app:navGraph="@navigation/nav_graph" />-->
+
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:defaultNavHost="true" />
 
     <!--<com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav_view"
