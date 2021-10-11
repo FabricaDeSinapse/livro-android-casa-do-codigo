@@ -25,7 +25,7 @@ class CreaturesListFragment : Fragment() {
     private var _binding: CreaturesListFragmentBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: CreaturesViewModel by lazy {
+    private val creaturesViewModel: CreaturesViewModel by lazy {
         ViewModelProvider(this).get(CreaturesViewModel::class.java)
     }
 
@@ -52,7 +52,7 @@ class CreaturesListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.viewModel = viewModel
+        binding.viewModel = creaturesViewModel
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
 
@@ -68,7 +68,7 @@ class CreaturesListFragment : Fragment() {
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-        viewModel.creatures.observe(this, {
+        creaturesViewModel.creatures.observe(this, {
             if (recyclerView.adapter == null) {
                 recyclerView.adapter = CreaturesListAdapter(it) { creature ->
                     val action =
