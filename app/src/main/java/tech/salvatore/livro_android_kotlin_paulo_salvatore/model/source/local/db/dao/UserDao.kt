@@ -17,8 +17,8 @@ interface UserDao {
     fun findAll(): Flowable<List<UserEntity>>
 
     @Transaction
-    @Query("SELECT * FROM user")
-    fun findUsersWithCreatures(): Flowable<List<UserEntityWithUserCreatureEntity>>
+    @Query("SELECT * FROM user LIMIT 1")
+    fun findActiveUser(): Flowable<UserEntityWithUserCreatureEntity>
 
     @Insert(onConflict = REPLACE)
     fun insert(user: UserEntity): Completable

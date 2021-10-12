@@ -6,10 +6,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreaturesViewModel
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.UserViewModel
 
 class NavigationActivity : AppCompatActivity() {
     private val creaturesViewModel: CreaturesViewModel by lazy {
         ViewModelProvider(this).get(CreaturesViewModel::class.java)
+    }
+
+    private val userViewModel: UserViewModel by lazy {
+        ViewModelProvider(this).get(UserViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

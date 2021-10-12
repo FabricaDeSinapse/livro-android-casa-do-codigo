@@ -8,17 +8,20 @@ import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.Us
 
 // TODO: Maybe should be singleton
 class UserRepository(application: Application) {
+    private val creaturesRepository = CreatureRepository(application)
+
     // TODO: Maybe should be singleton
     private val localDataSource = UserLocalDataSource(application)
 
-    val users: ReplaySubject<List<User>> = ReplaySubject.create(1)
-
-    val usersWithCreatures: ReplaySubject<List<User>> = ReplaySubject.create(1)
+    val user: ReplaySubject<User> = ReplaySubject.create(1)
 
     init {
+        creaturesRepository.creatures.subscribe {
+        }
+
         // Load Users From Local Data Source
-        localDataSource.usersWithCreatures.doOnNext {
-            Log.d("USER", "Finish loading local data source: ${it.count()}")
+        localDataSource.user.doOnNext {
+            Log.d("USER", "Finish loading local data source: $it")
         }.subscribe {
             // Update users' ReplaySubject
 //            users.onNext(it)

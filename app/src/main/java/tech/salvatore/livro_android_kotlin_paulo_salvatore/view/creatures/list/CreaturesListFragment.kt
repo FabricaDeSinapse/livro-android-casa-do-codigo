@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding.CreaturesListFragmentBinding
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreaturesViewModel
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.UsersViewModel
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.UserViewModel
 
 class CreaturesListFragment : Fragment() {
 
@@ -92,10 +92,10 @@ class CreaturesListFragment : Fragment() {
 //            }
 
         // TODO: Only for tests
-        val usersViewModel = ViewModelProvider(this).get(UsersViewModel::class.java)
+        val usersViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
-        usersViewModel.users.observe(this, {
-            Log.d("USER", it.count().toString())
+        usersViewModel.user.observe(this, {
+            Log.d("USER", it.toString())
         })
     }
 }
