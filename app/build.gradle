@@ -1,8 +1,14 @@
 plugins {
+    // Kotlin/Android
     id "com.android.application"
     id "kotlin-android"
     id "kotlin-kapt"
+
+    // Navigation
     id "androidx.navigation.safeargs.kotlin"
+
+    // Hilt
+    id "dagger.hilt.android.plugin"
 }
 
 android {
@@ -80,4 +86,8 @@ dependencies {
     // DataStore
     implementation("androidx.datastore:datastore-preferences:$dataStoreVersion")
     implementation("androidx.datastore:datastore-preferences-rxjava3:$dataStoreVersion")
+
+    // Hilt
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 }
