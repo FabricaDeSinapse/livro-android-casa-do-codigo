@@ -1,7 +1,6 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.list
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding.CreaturesListFragmentBinding
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreaturesViewModel
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.UserViewModel
 
 class CreaturesListFragment : Fragment() {
 
@@ -90,12 +88,5 @@ class CreaturesListFragment : Fragment() {
 //                val action = CreaturesListFragmentDirections.creaturesViewAction(it.id)
 //                findNavController().navigate(action, options)
 //            }
-
-        // TODO: Only for tests
-        val usersViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
-
-        usersViewModel.user.observe(this, {
-            Log.d("USER", it.toString())
-        })
     }
 }
