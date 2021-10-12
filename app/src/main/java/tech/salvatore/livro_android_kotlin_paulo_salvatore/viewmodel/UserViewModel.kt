@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.extensions.rx.CompositeDisposableExtensions.plusAssign
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.User
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.UserRepository
 
@@ -16,12 +18,15 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     val user: LiveData<User>
         get() = _user
 
-    // TODO: make only LiveData available outside ViewModel
+    private val composite = CompositeDisposable()
 
     init {
-        // TODO: remove subscription
-        repository.user.subscribe {
+        composite += repository.user.subscribe {
             _user.postValue(it)
         }
+    }
+
+    override fun onCleared() {
+        composite.dispose()
     }
 }
