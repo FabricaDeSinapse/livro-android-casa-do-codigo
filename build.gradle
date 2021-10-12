@@ -5,6 +5,7 @@ buildscript {
         navigationVersion = "2.4.0-alpha10"
         roomVersion = "2.3.0"
         retrofitVersion = "2.9.0"
+        dataStoreVersion = "1.0.0"
     }
 
     repositories {
