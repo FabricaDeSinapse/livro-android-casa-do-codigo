@@ -13,11 +13,11 @@ import androidx.room.PrimaryKey
 )
 data class CreatureEntity(
     @PrimaryKey
-    val number: Int,
+    val number: Long,
 
     val name: String,
 
     val imageUrl: String,
 
-    val evolveToNumber: Int?,
+    val evolveToNumber: Long?,
 )

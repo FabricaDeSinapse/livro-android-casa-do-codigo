@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey
 )
 data class UserEntity(
     @PrimaryKey
-    val id: Int,
+    val id: Long? = null,
 
     val name: String,
 )

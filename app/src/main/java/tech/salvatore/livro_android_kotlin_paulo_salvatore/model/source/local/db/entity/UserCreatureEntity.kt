@@ -6,10 +6,10 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "user_creature")
 data class UserCreatureEntity(
     @PrimaryKey
-    val id: Int,
+    val id: Long,
 
-    val userId: Int,
-    val creatureNumber: Int,
+    val userId: Long,
+    val creatureNumber: Long,
 
     val hungry: Int,
     val strength: Int,
