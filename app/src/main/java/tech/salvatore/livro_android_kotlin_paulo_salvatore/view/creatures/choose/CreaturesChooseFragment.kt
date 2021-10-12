@@ -10,7 +10,6 @@ import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding.Creatures
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreaturesViewModel
 
 class CreaturesChooseFragment : Fragment() {
-
     companion object {
         fun newInstance() = CreaturesChooseFragment()
     }
@@ -23,7 +22,8 @@ class CreaturesChooseFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding =
