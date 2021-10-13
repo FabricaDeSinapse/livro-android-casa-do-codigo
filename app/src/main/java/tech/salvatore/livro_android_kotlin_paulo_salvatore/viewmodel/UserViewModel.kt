@@ -16,11 +16,7 @@ class UserViewModel @Inject constructor(
     application: Application,
     repository: UserRepository
 ) : AndroidViewModel(application) {
-    // TODO: Extract to dependency injection
-//    private val repository = UserRepository(application)
-
     private val _user = MutableLiveData<User>()
-
     val user: LiveData<User>
         get() = _user
 
