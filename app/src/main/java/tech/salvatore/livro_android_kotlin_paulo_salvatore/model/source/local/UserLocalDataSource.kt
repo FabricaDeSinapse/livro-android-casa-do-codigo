@@ -25,6 +25,7 @@ class UserLocalDataSource @Inject constructor(
                 null -> {
                     create()
                 }
+
                 else -> {
                     findById(it.activeUser)
                 }
