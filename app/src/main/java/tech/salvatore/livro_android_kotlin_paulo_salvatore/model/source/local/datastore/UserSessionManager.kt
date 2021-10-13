@@ -22,7 +22,7 @@ class UserSessionManager @Inject constructor(
     }
 
     var userSession: Flowable<UserSession> = sessionDataStore.data().map { preferences ->
-        val activeUser = preferences[SessionKeys.ACTIVE_USER] ?: 0L
+        val activeUser = preferences[SessionKeys.ACTIVE_USER]
 
         UserSession(activeUser)
     }

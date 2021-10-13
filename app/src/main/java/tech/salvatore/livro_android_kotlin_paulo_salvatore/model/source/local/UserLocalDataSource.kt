@@ -21,10 +21,13 @@ class UserLocalDataSource @Inject constructor(
 
     val activeUser: Flowable<User> =
         userSessionManager.userSession.flatMap {
-            if (it.activeUser == 0L) {
-                create()
-            } else {
-                findById(it.activeUser)
+            when (it.activeUser) {
+                null -> {
+                    create()
+                }
+                else -> {
+                    findById(it.activeUser)
+                }
             }
         }
 
