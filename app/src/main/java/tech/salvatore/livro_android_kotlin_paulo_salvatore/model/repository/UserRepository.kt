@@ -1,15 +1,17 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository
 
-import android.app.Application
 import android.util.Log
 import io.reactivex.rxjava3.subjects.ReplaySubject
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.User
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.UserLocalDataSource
+import javax.inject.Inject
 
 // TODO: Maybe should be singleton
-class UserRepository(application: Application) {
+class UserRepository @Inject constructor(
+    localDataSource: UserLocalDataSource
+) {
     // TODO: Maybe should be singleton
-    private val localDataSource = UserLocalDataSource(application)
+//    private val localDataSource = UserLocalDataSource(application)
 
     val user: ReplaySubject<User> = ReplaySubject.create(1)
 

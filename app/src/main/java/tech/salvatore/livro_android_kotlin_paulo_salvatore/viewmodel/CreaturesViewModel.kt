@@ -4,13 +4,19 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.extensions.rx.CompositeDisposableExtensions.plusAssign
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.CreatureRepository
+import javax.inject.Inject
 
-class CreaturesViewModel(application: Application) : AndroidViewModel(application) {
-    private val repository = CreatureRepository(application)
+@HiltViewModel
+class CreaturesViewModel @Inject constructor(
+    application: Application,
+    repository: CreatureRepository
+) : AndroidViewModel(application) {
+//    private val repository = CreatureRepository(application)
 
     private val _creatures = MutableLiveData<List<Creature>>()
 

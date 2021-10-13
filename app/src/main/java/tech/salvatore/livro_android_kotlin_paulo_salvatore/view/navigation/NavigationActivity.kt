@@ -1,24 +1,21 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.view.navigation
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
+import dagger.hilt.android.AndroidEntryPoint
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreaturesViewModel
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.UserViewModel
 
+@AndroidEntryPoint
 class NavigationActivity : AppCompatActivity() {
-    private val creaturesViewModel: CreaturesViewModel by lazy {
-        ViewModelProvider(this).get(CreaturesViewModel::class.java)
-    }
+    private val creaturesViewModel: CreaturesViewModel by viewModels()
 
-    private val userViewModel: UserViewModel by lazy {
-        ViewModelProvider(this).get(UserViewModel::class.java)
-    }
+    private val userViewModel: UserViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-//        setTheme(R.style.Theme_AppCompat_NoActionBar)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.navigation_activity)
 

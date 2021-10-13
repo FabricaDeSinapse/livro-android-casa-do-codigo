@@ -5,29 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import dagger.hilt.android.AndroidEntryPoint
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding.CreaturesViewFragmentBinding
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreatureViewModel
 
+@AndroidEntryPoint
 class CreaturesViewFragment : Fragment() {
+    private lateinit var binding: CreaturesViewFragmentBinding
 
-    companion object {
-        fun newInstance() = CreaturesViewFragment()
-    }
-
-    private var _binding: CreaturesViewFragmentBinding? = null
-    private val binding get() = _binding!!
-
-    private val viewModel: CreatureViewModel by lazy {
-        ViewModelProvider(this).get(CreatureViewModel::class.java)
-    }
+    private val viewModel: CreatureViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding =
+        binding =
             CreaturesViewFragmentBinding.inflate(
                 layoutInflater,
                 container,
@@ -35,12 +29,6 @@ class CreaturesViewFragment : Fragment() {
             )
 
         return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-
-        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

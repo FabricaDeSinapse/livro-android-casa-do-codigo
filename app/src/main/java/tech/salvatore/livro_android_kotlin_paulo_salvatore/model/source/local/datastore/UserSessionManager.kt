@@ -5,9 +5,15 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.rxjava3.RxPreferenceDataStoreBuilder
 import androidx.datastore.rxjava3.RxDataStore
+import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.rxjava3.core.Flowable
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class UserSessionManager(context: Context) {
+@Singleton
+class UserSessionManager @Inject constructor(
+    @ApplicationContext context: Context
+) {
     private var sessionDataStore: RxDataStore<Preferences> =
         RxPreferenceDataStoreBuilder(context, "SESSION_DATA").build()
 

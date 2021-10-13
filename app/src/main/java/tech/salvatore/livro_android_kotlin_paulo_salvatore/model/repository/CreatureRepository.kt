@@ -1,16 +1,18 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository
 
-import android.app.Application
 import android.util.Log
 import io.reactivex.rxjava3.subjects.ReplaySubject
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.CreatureLocalDataSource
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.remote.CreatureRemoteDataSource
+import javax.inject.Inject
 
 // TODO: Maybe should be singleton
-class CreatureRepository(application: Application) {
+class CreatureRepository @Inject constructor(
+    localDataSource: CreatureLocalDataSource
+) {
     // TODO: Maybe should be singleton
-    private val localDataSource = CreatureLocalDataSource(application)
+//    private val localDataSource = CreatureLocalDataSource(application)
 
     private val remoteDataSource = CreatureRemoteDataSource
 

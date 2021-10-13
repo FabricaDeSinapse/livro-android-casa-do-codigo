@@ -1,6 +1,5 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local
 
-import android.app.Application
 import io.reactivex.rxjava3.core.Flowable
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.User
@@ -10,18 +9,15 @@ import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.entity.UserCreatureEntity
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.entity.UserEntity
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.entity.UserEntityWithUserCreatureEntity
+import javax.inject.Inject
+import javax.inject.Singleton
 
-// TODO: Replace with Singleton
-class UserLocalDataSource(application: Application) {
-    // Database
-
-    private val db: AppDatabase = AppDatabase.getDb(application)
-
+@Singleton
+class UserLocalDataSource @Inject constructor(
+    db: AppDatabase,
+    userSessionManager: UserSessionManager
+) {
     private val userDao: UserDao = db.userDao()
-
-    // UserSession
-
-    private val userSessionManager = UserSessionManager(application)
 
     val activeUser: Flowable<User> =
         userSessionManager.userSession.flatMap {
@@ -30,8 +26,6 @@ class UserLocalDataSource(application: Application) {
             } else {
                 findById(it.activeUser)
             }
-        }.doOnNext {
-
         }
 
     private fun create(): Flowable<User> {

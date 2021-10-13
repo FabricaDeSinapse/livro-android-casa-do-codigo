@@ -5,33 +5,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding.CreaturesListFragmentBinding
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreaturesViewModel
 
+@AndroidEntryPoint
 class CreaturesListFragment : Fragment() {
+    private lateinit var binding: CreaturesListFragmentBinding
 
-    companion object {
-        fun newInstance() = CreaturesListFragment()
-    }
-
-    private var _binding: CreaturesListFragmentBinding? = null
-    private val binding get() = _binding!!
-
-    private val creaturesViewModel: CreaturesViewModel by lazy {
-        ViewModelProvider(this).get(CreaturesViewModel::class.java)
-    }
+    private val creaturesViewModel: CreaturesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding =
+        binding =
             CreaturesListFragmentBinding.inflate(
                 layoutInflater,
                 container,
@@ -39,12 +33,6 @@ class CreaturesListFragment : Fragment() {
             )
 
         return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-
-        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
