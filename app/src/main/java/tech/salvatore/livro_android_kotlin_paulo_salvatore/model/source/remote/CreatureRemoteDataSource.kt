@@ -7,15 +7,21 @@ import retrofit2.converter.gson.GsonConverterFactory
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.remote.api.entity.CreatureApiResponse
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.remote.api.services.CreatureService
+import javax.inject.Inject
+import javax.inject.Singleton
 
-object CreatureRemoteDataSource {
-    private const val baseUrl = "http://192.168.15.8:3000/"
+@Singleton
+class CreatureRemoteDataSource @Inject constructor() {
+    companion object {
+        // TODO: Extract to external object
+        private const val BASE_URL = "http://192.168.15.8:3000/"
+    }
 
     private val service: CreatureService
 
     init {
         val retrofit = Retrofit.Builder()
-            .baseUrl(baseUrl)
+            .baseUrl(BASE_URL)
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
