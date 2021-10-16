@@ -14,4 +14,6 @@ data class UserEntity(
     val id: Long? = null,
 
     val name: String,
+
+    val newCreaturesAvailable: Int,
 )

@@ -33,7 +33,7 @@ class UserLocalDataSource @Inject constructor(
         }
 
     private fun create(): Flowable<User> {
-        val userEntity = UserEntity(name = "Username")
+        val userEntity = UserEntity(name = "Username", newCreaturesAvailable = 1)
 
         return userDao.insert(userEntity).flatMapPublisher { newUserId ->
             userDao.findById(newUserId).map { it.toDomain() }
@@ -52,7 +52,8 @@ class UserLocalDataSource @Inject constructor(
         return User(
             id = id!!,
             name = name,
-            creatures = emptyList()
+            creatures = emptyList(),
+            newCreaturesAvailable = newCreaturesAvailable
         )
     }
 
@@ -60,7 +61,8 @@ class UserLocalDataSource @Inject constructor(
         return User(
             id = this.user.id!!,
             name = this.user.name,
-            creatures = this.userCreatures.map { it.toDomain() }
+            creatures = this.userCreatures.map { it.toDomain() },
+            newCreaturesAvailable = this.user.newCreaturesAvailable
         )
     }
 
