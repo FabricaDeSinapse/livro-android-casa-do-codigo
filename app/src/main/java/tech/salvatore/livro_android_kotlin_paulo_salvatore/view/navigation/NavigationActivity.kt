@@ -25,7 +25,9 @@ class NavigationActivity : AppCompatActivity() {
         navController.graph = navGraph
 
         userViewModel.user.observe(this, {
-            if (it.newCreaturesAvailable > 0) {
+            if (it.newCreaturesAvailable > 0
+                && navController.currentDestination?.id != R.id.creatures_choose_dest
+            ) {
                 val action = CreaturesListFragmentDirections.creaturesChooseAction()
                 navController.navigate(action)
             }
