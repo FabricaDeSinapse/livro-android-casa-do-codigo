@@ -70,11 +70,5 @@ class CreaturesListFragment : Fragment() {
             // TODO: replace with notifyItemInserted
             adapter.setItems(it)
         })
-
-//        recyclerView.adapter =
-//            CreaturesListAdapter(viewModel.creatures) {
-//                val action = CreaturesListFragmentDirections.creaturesViewAction(it.id)
-//                findNavController().navigate(action, options)
-//            }
     }
 }

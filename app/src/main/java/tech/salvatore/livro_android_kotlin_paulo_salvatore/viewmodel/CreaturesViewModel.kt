@@ -16,8 +16,6 @@ class CreaturesViewModel @Inject constructor(
     application: Application,
     repository: CreatureRepository
 ) : AndroidViewModel(application) {
-//    private val repository = CreatureRepository(application)
-
     private val _creatures = MutableLiveData<List<Creature>>()
 
     val creatures: LiveData<List<Creature>>
