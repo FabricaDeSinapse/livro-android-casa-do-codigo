@@ -14,7 +14,7 @@ import javax.inject.Singleton
 class CreatureRemoteDataSource @Inject constructor() {
     companion object {
         // TODO: Extract to external object
-        private const val BASE_URL = "http://192.168.15.8:3000/"
+        private const val BASE_URL = "https://backend-livro-android-casa-cod.herokuapp.com/"
     }
 
     private val service: CreatureService
