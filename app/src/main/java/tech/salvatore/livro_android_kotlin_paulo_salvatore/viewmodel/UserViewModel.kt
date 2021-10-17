@@ -14,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class UserViewModel @Inject constructor(
     application: Application,
-    repository: UserRepository
+    private val repository: UserRepository
 ) : AndroidViewModel(application) {
     private val _user = MutableLiveData<User>()
     val user: LiveData<User>
@@ -30,5 +30,9 @@ class UserViewModel @Inject constructor(
 
     override fun onCleared() {
         composite.dispose()
+    }
+
+    fun chooseCreature() {
+        repository.chooseCreature()
     }
 }

@@ -9,7 +9,8 @@ import javax.inject.Singleton
 
 @Singleton
 class UserRepository @Inject constructor(
-    localDataSource: UserLocalDataSource
+    localDataSource: UserLocalDataSource,
+    private val creatureRepository: CreatureRepository
 ) {
     val user: ReplaySubject<User> = ReplaySubject.create(1)
 
@@ -20,6 +21,14 @@ class UserRepository @Inject constructor(
         }.subscribe {
             // Update user's ReplaySubject
             user.onNext(it)
+        }
+    }
+
+    fun chooseCreature() {
+        val newCreaturesAvailable = user.value?.newCreaturesAvailable ?: 0
+
+        if (newCreaturesAvailable > 0) {
+
         }
     }
 }

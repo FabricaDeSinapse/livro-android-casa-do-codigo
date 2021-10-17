@@ -14,6 +14,7 @@ data class Creature(
     val lastTrain: Int = 0,
     val lastPlay: Int = 0,
 
+    val evolveFrom: Creature? = null,
     val evolveTo: Creature? = null,
     val users: List<User> = emptyList()
 )

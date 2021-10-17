@@ -13,18 +13,23 @@ import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db
 @Dao
 interface CreatureDao {
     @Query("SELECT COUNT(number) FROM creature")
-    fun count(): Flowable<Int>
+    fun count(): Flowable<Long>
 
     @Query("SELECT * FROM creature")
     fun findAll(): Flowable<List<CreatureEntity>>
 
     @Query("SELECT * FROM creature WHERE number IN (:creatureIds)")
-    fun findAllByIds(creatureIds: IntArray): Flowable<List<CreatureEntity>>
+    fun findAllByIds(creatureIds: LongArray): Flowable<List<CreatureEntity>>
+
+    @Query(
+        "SELECT * FROM creature WHERE evolveToNumber LIKE :number LIMIT 1"
+    )
+    fun findByEvolveToNumber(number: Long): Flowable<CreatureEntity>
 
     @Query(
         "SELECT * FROM creature WHERE number LIKE :number LIMIT 1"
     )
-    fun findByNumber(number: Int): Flowable<CreatureEntity>
+    fun findByNumber(number: Long): Flowable<CreatureEntity>
 
     @Insert(onConflict = REPLACE)
     fun insertAll(vararg creatures: CreatureEntity): Completable

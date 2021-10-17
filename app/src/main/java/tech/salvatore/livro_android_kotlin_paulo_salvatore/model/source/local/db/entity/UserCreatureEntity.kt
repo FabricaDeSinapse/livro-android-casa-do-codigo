@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "user_creature")
 data class UserCreatureEntity(
     @PrimaryKey
-    val id: Long,
+    val id: Long? = null,
 
     val userId: Long,
     val creatureNumber: Long,
