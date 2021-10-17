@@ -10,7 +10,7 @@ import javax.inject.Singleton
 @Singleton
 class UserRepository @Inject constructor(
     localDataSource: UserLocalDataSource,
-    private val creatureRepository: CreatureRepository
+    private val userCreatureRepository: UserCreatureRepository
 ) {
     val user: ReplaySubject<User> = ReplaySubject.create(1)
 
@@ -28,7 +28,7 @@ class UserRepository @Inject constructor(
         val newCreaturesAvailable = user.value?.newCreaturesAvailable ?: 0
 
         if (newCreaturesAvailable > 0) {
-
+            userCreatureRepository.addRandomCreature()
         }
     }
 }

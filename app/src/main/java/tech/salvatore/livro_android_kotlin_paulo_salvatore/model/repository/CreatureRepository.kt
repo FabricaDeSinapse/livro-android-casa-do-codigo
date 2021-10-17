@@ -15,9 +15,9 @@ class CreatureRepository @Inject constructor(
 ) {
     val creatures: ReplaySubject<List<Creature>> = ReplaySubject.create(1)
 
-    val creaturesLevel1 = creatures.map {
-        it.filter {
-            it.evolveTo != null
+    val creaturesLevel1 = creatures.map { list ->
+        list.filter {
+            it.evolveFrom != null
         }
     }
 
@@ -38,9 +38,5 @@ class CreatureRepository @Inject constructor(
         }.subscribe {
             Log.d("CREATURE", "Creatures were added.")
         }
-    }
-
-    fun insertUserCreature() {
-
     }
 }
