@@ -16,9 +16,13 @@ class CreatureRepository @Inject constructor(
     val creatures: ReplaySubject<List<Creature>> = ReplaySubject.create(1)
 
     val creaturesLevel1 = creatures.map { list ->
-//        list.filter {
-//            it.evolveFrom != null
-//        }
+        list.mapNotNull { creature ->
+            val doesntEvolve = list.find {
+                it.evolveTo?.number == creature.number
+            }
+
+            if (doesntEvolve == null) creature else null
+        }
     }
 
     init {

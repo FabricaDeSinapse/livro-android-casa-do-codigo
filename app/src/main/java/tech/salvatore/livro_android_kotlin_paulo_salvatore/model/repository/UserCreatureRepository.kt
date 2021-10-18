@@ -12,7 +12,8 @@ class UserCreatureRepository @Inject constructor(
     fun addRandomCreature() {
         val randomCreature = 1L
 
-//        val test = creaturesRepository.creaturesLevel1.subscribe {
+        // TODO: get random creature
+//        val creaturesLevel1 = creaturesRepository.creaturesLevel1.subscribe {
 //            it
 //        }
 
