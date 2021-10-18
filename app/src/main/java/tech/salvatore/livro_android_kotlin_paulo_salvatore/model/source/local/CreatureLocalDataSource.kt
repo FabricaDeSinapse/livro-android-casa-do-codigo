@@ -6,6 +6,7 @@ import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.AppDatabase
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.dao.CreatureDao
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.entity.CreatureEntity
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.utils.Optional
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -21,10 +22,13 @@ class CreatureLocalDataSource @Inject constructor(
 
     val creatures: Flowable<List<Creature>> =
         creaturesEntities
-            .flatMap { Flowable.fromIterable(it) }
-            .flatMap { it.toDomain() }
-            .toList()
-            .toFlowable()
+            .flatMap { list ->
+                Flowable
+                    .fromIterable(list)
+                    .flatMap { it.toDomain() }
+                    .toList()
+                    .toFlowable()
+            }
 
     fun insert(creature: List<Creature>): Completable {
         val creatureEntities = creature.map { it.fromDomain() }
@@ -35,12 +39,7 @@ class CreatureLocalDataSource @Inject constructor(
     private fun findByNumber(number: Long): Flowable<Creature> {
         return creatureDao
             .findByNumber(number)
-            .flatMap { it.toDomain() }
-    }
-
-    private fun findByEvolveToNumber(number: Long): Flowable<Creature> {
-        return creatureDao
-            .findByEvolveToNumber(number)
+            .toFlowable()
             .flatMap { it.toDomain() }
     }
 
@@ -56,30 +55,21 @@ class CreatureLocalDataSource @Inject constructor(
     }
 
     private fun CreatureEntity.toDomain(): Flowable<Creature> {
-        val evolveFromFlowable =
-            if (this.evolveToNumber != null)
-                findByEvolveToNumber(this.number)
-            else
-                Flowable.never()
-
-        val evolveToFlowable =
-            if (this.evolveToNumber != null)
+        val evolveToNumber: Flowable<Optional<Creature>> =
+            if (this.evolveToNumber != null) {
                 findByNumber(this.evolveToNumber)
-            else
-                Flowable.never()
-
-        return Flowable.combineLatest(
-            evolveFromFlowable,
-            evolveToFlowable,
-            { evolveFrom, evolveTo ->
-                Creature(
-                    number = number,
-                    name = name,
-                    imageUrl = imageUrl,
-                    evolveFrom = evolveFrom,
-                    evolveTo = evolveTo
-                )
+                    .map { Optional(it) }
+            } else {
+                Flowable.just(Optional(null))
             }
-        )
+
+        return evolveToNumber.map { evolveTo ->
+            Creature(
+                number = number,
+                name = name,
+                imageUrl = imageUrl,
+                evolveTo = evolveTo.value
+            )
+        }
     }
 }

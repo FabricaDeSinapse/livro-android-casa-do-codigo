@@ -18,18 +18,10 @@ interface CreatureDao {
     @Query("SELECT * FROM creature")
     fun findAll(): Flowable<List<CreatureEntity>>
 
-    @Query("SELECT * FROM creature WHERE number IN (:creatureIds)")
-    fun findAllByIds(creatureIds: LongArray): Flowable<List<CreatureEntity>>
-
-    @Query(
-        "SELECT * FROM creature WHERE evolveToNumber LIKE :number LIMIT 1"
-    )
-    fun findByEvolveToNumber(number: Long): Flowable<CreatureEntity>
-
     @Query(
         "SELECT * FROM creature WHERE number LIKE :number LIMIT 1"
     )
-    fun findByNumber(number: Long): Flowable<CreatureEntity>
+    fun findByNumber(number: Long): Single<CreatureEntity>
 
     @Insert(onConflict = REPLACE)
     fun insertAll(vararg creatures: CreatureEntity): Completable
