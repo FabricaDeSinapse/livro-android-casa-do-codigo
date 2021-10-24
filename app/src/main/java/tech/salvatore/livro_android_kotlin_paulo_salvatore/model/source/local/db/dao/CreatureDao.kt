@@ -3,7 +3,7 @@ package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.d
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy.REPLACE
+import androidx.room.OnConflictStrategy.IGNORE
 import androidx.room.Query
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
@@ -23,7 +23,7 @@ interface CreatureDao {
     )
     fun findByNumber(number: Long): Single<CreatureEntity>
 
-    @Insert(onConflict = REPLACE)
+    @Insert(onConflict = IGNORE)
     fun insertAll(vararg creatures: CreatureEntity): Completable
 
     @Delete

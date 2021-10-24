@@ -1,8 +1,8 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local
 
 import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.core.Single
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.User
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.UserCreatureLocalDataSource.Companion.toDomain
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.datastore.UserSessionManager
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.AppDatabase
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.dao.UserDao
@@ -14,12 +14,13 @@ import javax.inject.Singleton
 @Singleton
 class UserLocalDataSource @Inject constructor(
     db: AppDatabase,
-    userSessionManager: UserSessionManager
+    userSessionManager: UserSessionManager,
+    private val userCreatureLocalDataSource: UserCreatureLocalDataSource
 ) {
     private val userDao: UserDao = db.userDao()
 
     val activeUser: Flowable<User> =
-        userSessionManager.userSession.flatMap {
+        userSessionManager.userSession.flatMapSingle {
             when (it.activeUser) {
                 null -> {
                     create()
@@ -31,39 +32,64 @@ class UserLocalDataSource @Inject constructor(
             }
         }
 
-    private fun create(): Flowable<User> {
-        val userEntity = UserEntity(name = "Username", newCreaturesAvailable = 1)
-
-        return userDao.insert(userEntity).flatMapPublisher { newUserId ->
-            userDao.findById(newUserId).map { it.toDomain() }
-        }
-    }
-
-    private fun findById(id: Long): Flowable<User> {
-        return userDao
+    private fun findById(id: Long): Single<User> =
+        userDao
             .findById(id)
-            .map { it.toDomain() }
+            .flatMap { it.toDomain() }
+
+    private fun create(): Single<User> =
+        Single
+            .just(UserEntity(name = "Username", newCreaturesAvailable = 1))
+            .flatMap { userEntity ->
+                userDao.insert(userEntity)
+                    .flatMap { newUserId ->
+                        findById(newUserId)
+                    }
+            }
+
+    fun update(user: User): Flowable<User> {
+        val userEntity = user.fromDomain()
+
+        return Flowable.just(userEntity)
+            .flatMapSingle {
+                userDao.update(it)
+            }
+            .flatMapSingle {
+                findById(user.id)
+            }
     }
 
     // Mapper methods
 
-    companion object {
-        private fun UserEntity.toDomain(): User {
-            return User(
-                id = id!!,
-                name = name,
-                creatures = emptyList(),
-                newCreaturesAvailable = newCreaturesAvailable
-            )
-        }
+    private fun User.fromDomain(): UserEntity {
+        return UserEntity(
+            id = id,
+            name = name,
+            newCreaturesAvailable = newCreaturesAvailable
+        )
+    }
 
-        private fun UserEntityWithUserCreatureEntity.toDomain(): User {
-            return User(
-                id = this.user.id!!,
-                name = this.user.name,
-                creatures = this.userCreatures.map { it.toDomain() },
-                newCreaturesAvailable = this.user.newCreaturesAvailable
-            )
-        }
+    private fun UserEntity.toDomain(): User {
+        return User(
+            id = id!!,
+            name = name,
+            // TODO: Fill user creatures
+            creatures = emptyList(),
+            newCreaturesAvailable = newCreaturesAvailable
+        )
+    }
+
+    private fun UserEntityWithUserCreatureEntity.toDomain(): Single<User> {
+        return Flowable.fromIterable(this.userCreatures)
+            .flatMapSingle { userCreatureLocalDataSource.toDomain(it) }
+            .toList()
+            .map { creatures ->
+                User(
+                    id = this.user.id!!,
+                    name = this.user.name,
+                    creatures = creatures,
+                    newCreaturesAvailable = this.user.newCreaturesAvailable
+                )
+            }
     }
 }

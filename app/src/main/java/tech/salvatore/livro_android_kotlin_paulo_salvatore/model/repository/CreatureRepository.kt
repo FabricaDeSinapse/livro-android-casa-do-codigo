@@ -1,6 +1,7 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository
 
 import android.util.Log
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.subjects.ReplaySubject
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.CreatureLocalDataSource
@@ -15,15 +16,17 @@ class CreatureRepository @Inject constructor(
 ) {
     val creatures: ReplaySubject<List<Creature>> = ReplaySubject.create(1)
 
-    val creaturesLevel1 = creatures.map { list ->
-        list.mapNotNull { creature ->
-            val doesntEvolve = list.find {
-                it.evolveTo?.number == creature.number
-            }
+    val creaturesLevel1: Observable<List<Creature>> =
+        creatures
+            .map { list ->
+                list.mapNotNull { creature ->
+                    val doesntEvolve = list.find {
+                        it.evolveTo?.number == creature.number
+                    }
 
-            if (doesntEvolve == null) creature else null
-        }
-    }
+                    if (doesntEvolve == null) creature else null
+                }
+            }
 
     init {
         // Load Creatures From Local Data Source

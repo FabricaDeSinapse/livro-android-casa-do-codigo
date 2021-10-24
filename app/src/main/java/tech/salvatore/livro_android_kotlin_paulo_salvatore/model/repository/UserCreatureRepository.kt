@@ -1,5 +1,8 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository
 
+import io.reactivex.rxjava3.core.BackpressureStrategy
+import io.reactivex.rxjava3.core.Flowable
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.UserCreatureLocalDataSource
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -9,14 +12,14 @@ class UserCreatureRepository @Inject constructor(
     private val localDataSource: UserCreatureLocalDataSource,
     private val creaturesRepository: CreatureRepository
 ) {
-    fun addRandomCreature() {
-        val randomCreature = 1L
+    fun addRandomCreature(userId: Long): Flowable<Creature> =
+        creaturesRepository
+            .creaturesLevel1
+            .toFlowable(BackpressureStrategy.LATEST)
+            .take(1)
+            .flatMapSingle {
+                val randomCreature = it.random()
 
-        // TODO: get random creature
-//        val creaturesLevel1 = creaturesRepository.creaturesLevel1.subscribe {
-//            it
-//        }
-
-        localDataSource.create(randomCreature)
-    }
+                localDataSource.create(userId, randomCreature.number)
+            }
 }

@@ -2,6 +2,7 @@ package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local
 
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.core.Single
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.AppDatabase
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.dao.CreatureDao
@@ -25,7 +26,7 @@ class CreatureLocalDataSource @Inject constructor(
             .flatMap { list ->
                 Flowable
                     .fromIterable(list)
-                    .flatMap { it.toDomain() }
+                    .flatMapSingle { it.toDomain() }
                     .toList()
                     .toFlowable()
             }
@@ -36,14 +37,13 @@ class CreatureLocalDataSource @Inject constructor(
         return creatureDao.insertAll(*creatureEntities.toTypedArray())
     }
 
-    private fun findByNumber(number: Long): Flowable<Creature> {
+    fun findByNumber(number: Long): Single<Creature> {
         return creatureDao
             .findByNumber(number)
-            .toFlowable()
             .flatMap { it.toDomain() }
     }
 
-    // Mappers
+    // Mappers methods
 
     private fun Creature.fromDomain(): CreatureEntity {
         return CreatureEntity(
@@ -54,13 +54,13 @@ class CreatureLocalDataSource @Inject constructor(
         )
     }
 
-    private fun CreatureEntity.toDomain(): Flowable<Creature> {
-        val evolveToNumber: Flowable<Optional<Creature>> =
+    private fun CreatureEntity.toDomain(): Single<Creature> {
+        val evolveToNumber: Single<Optional<Creature>> =
             if (this.evolveToNumber != null) {
                 findByNumber(this.evolveToNumber)
                     .map { Optional(it) }
             } else {
-                Flowable.just(Optional(null))
+                Single.just(Optional(null))
             }
 
         return evolveToNumber.map { evolveTo ->

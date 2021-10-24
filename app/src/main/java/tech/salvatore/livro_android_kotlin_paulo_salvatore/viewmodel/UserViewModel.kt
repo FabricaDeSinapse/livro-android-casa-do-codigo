@@ -1,6 +1,7 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -33,6 +34,8 @@ class UserViewModel @Inject constructor(
     }
 
     fun chooseCreature() {
-        repository.chooseCreature()
+        composite += repository.chooseCreature().subscribe {
+            Log.d("USER", "Creature ${it.name} added for current user.")
+        }
     }
 }
