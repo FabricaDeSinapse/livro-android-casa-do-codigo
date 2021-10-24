@@ -2,6 +2,7 @@ package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local
 
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.core.Single
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.User
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.datastore.UserSessionManager
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.db.AppDatabase
@@ -14,50 +15,64 @@ import javax.inject.Singleton
 @Singleton
 class UserLocalDataSource @Inject constructor(
     db: AppDatabase,
-    userSessionManager: UserSessionManager,
+    private val userSessionManager: UserSessionManager,
     private val userCreatureLocalDataSource: UserCreatureLocalDataSource
 ) {
     private val userDao: UserDao = db.userDao()
 
     val activeUser: Flowable<User> =
-        userSessionManager.userSession.flatMapSingle {
-            when (it.activeUser) {
-                null -> {
-                    create()
-                }
+        userSessionManager.userSession
+            .flatMapSingle {
+                when (it.activeUser) {
+                    null -> {
+                        create()
+                    }
 
-                else -> {
-                    findById(it.activeUser)
+                    else -> {
+                        findById(it.activeUser)
+                    }
                 }
             }
-        }
 
     private fun findById(id: Long): Single<User> =
         userDao
             .findById(id)
-            .flatMap { it.toDomain() }
+            .flatMap {
+                it.toDomain()
+            }
 
     private fun create(): Single<User> =
         Single
-            .just(UserEntity(name = "Username", newCreaturesAvailable = 1))
-            .flatMap { userEntity ->
-                userDao.insert(userEntity)
+            .just(
+                UserEntity(name = "Username", newCreaturesAvailable = 1)
+            )
+            .flatMap {
+                userDao.insert(it)
                     .flatMap { newUserId ->
                         findById(newUserId)
                     }
             }
+            .flatMap {
+                userSessionManager.register(it)
+            }
+            .map {
+                it.activeUser!!
+            }
+            .flatMap {
+                findById(it)
+            }
 
-    fun update(user: User): Flowable<User> {
-        val userEntity = user.fromDomain()
-
-        return Flowable.just(userEntity)
-            .flatMapSingle {
+    fun update(user: User): Single<User> =
+        Single.just(user)
+            .map {
+                it.fromDomain()
+            }
+            .flatMap {
                 userDao.update(it)
             }
-            .flatMapSingle {
+            .flatMap {
                 findById(user.id)
             }
-    }
 
     // Mapper methods
 
@@ -69,27 +84,23 @@ class UserLocalDataSource @Inject constructor(
         )
     }
 
-    private fun UserEntity.toDomain(): User {
+    private fun UserEntity.toDomain(creatures: List<Creature>): User {
         return User(
             id = id!!,
             name = name,
-            // TODO: Fill user creatures
-            creatures = emptyList(),
+            creatures = creatures,
             newCreaturesAvailable = newCreaturesAvailable
         )
     }
 
     private fun UserEntityWithUserCreatureEntity.toDomain(): Single<User> {
         return Flowable.fromIterable(this.userCreatures)
-            .flatMapSingle { userCreatureLocalDataSource.toDomain(it) }
+            .flatMapSingle {
+                userCreatureLocalDataSource.toDomain(it)
+            }
             .toList()
-            .map { creatures ->
-                User(
-                    id = this.user.id!!,
-                    name = this.user.name,
-                    creatures = creatures,
-                    newCreaturesAvailable = this.user.newCreaturesAvailable
-                )
+            .map {
+                this.user.toDomain(it)
             }
     }
 }

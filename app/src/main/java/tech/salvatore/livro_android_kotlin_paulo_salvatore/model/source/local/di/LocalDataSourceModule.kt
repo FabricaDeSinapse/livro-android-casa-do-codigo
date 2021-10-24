@@ -24,4 +24,10 @@ object LocalDataSourceModule {
             "app-database"
         ).build()
     }
+
+//    @Singleton
+//    @Provides
+//    fun provideRxDataStore(@ApplicationContext context: Context): RxDataStore<Preferences> {
+//        return RxPreferenceDataStoreBuilder(context, "SESSION_DATA").build()
+//    }
 }
