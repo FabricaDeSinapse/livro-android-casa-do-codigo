@@ -9,7 +9,6 @@ import androidx.datastore.rxjava3.RxDataStore
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.core.Single
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.User
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -24,23 +23,22 @@ class UserSessionManager @Inject constructor(
         val ACTIVE_USER = longPreferencesKey("ACTIVE_USER")
     }
 
-    var userSession: Flowable<UserSession> =
+    val userSession: Flowable<UserSession> =
         sessionDataStore.data()
             .map {
                 it.toSession()
             }
 
-    fun register(user: User): Single<UserSession> {
-        return sessionDataStore.updateDataAsync { preferences ->
+    fun register(userId: Long): Single<UserSession> =
+        sessionDataStore.updateDataAsync { preferences ->
             val mutablePreferences: MutablePreferences = preferences.toMutablePreferences()
 
-            mutablePreferences[SessionKeys.ACTIVE_USER] = user.id
+            mutablePreferences[SessionKeys.ACTIVE_USER] = userId
 
             Single.just(mutablePreferences)
         }.map {
             it.toSession()
         }
-    }
 
     private fun Preferences.toSession(): UserSession {
         val activeUser = this[SessionKeys.ACTIVE_USER]

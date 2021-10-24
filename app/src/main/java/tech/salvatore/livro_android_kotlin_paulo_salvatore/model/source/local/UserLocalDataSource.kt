@@ -34,23 +34,20 @@ class UserLocalDataSource @Inject constructor(
                 }
             }
 
-    private fun findById(id: Long): Single<User> =
+    private fun findById(id: Long) =
         userDao
             .findById(id)
             .flatMap {
                 it.toDomain()
             }
 
-    private fun create(): Single<User> =
+    private fun create(name: String = "Username") =
         Single
             .just(
-                UserEntity(name = "Username", newCreaturesAvailable = 1)
+                UserEntity(name = name, newCreaturesAvailable = 1)
             )
             .flatMap {
                 userDao.insert(it)
-                    .flatMap { newUserId ->
-                        findById(newUserId)
-                    }
             }
             .flatMap {
                 userSessionManager.register(it)
@@ -63,7 +60,8 @@ class UserLocalDataSource @Inject constructor(
             }
 
     fun update(user: User): Single<User> =
-        Single.just(user)
+        Single
+            .just(user)
             .map {
                 it.fromDomain()
             }
@@ -76,25 +74,24 @@ class UserLocalDataSource @Inject constructor(
 
     // Mapper methods
 
-    private fun User.fromDomain(): UserEntity {
-        return UserEntity(
+    private fun User.fromDomain() =
+        UserEntity(
             id = id,
             name = name,
             newCreaturesAvailable = newCreaturesAvailable
         )
-    }
 
-    private fun UserEntity.toDomain(creatures: List<Creature>): User {
-        return User(
+    private fun UserEntity.toDomain(creatures: List<Creature>) =
+        User(
             id = id!!,
             name = name,
             creatures = creatures,
             newCreaturesAvailable = newCreaturesAvailable
         )
-    }
 
-    private fun UserEntityWithUserCreatureEntity.toDomain(): Single<User> {
-        return Flowable.fromIterable(this.userCreatures)
+    private fun UserEntityWithUserCreatureEntity.toDomain() =
+        Flowable
+            .fromIterable(this.userCreatures)
             .flatMapSingle {
                 userCreatureLocalDataSource.toDomain(it)
             }
@@ -102,5 +99,4 @@ class UserLocalDataSource @Inject constructor(
             .map {
                 this.user.toDomain(it)
             }
-    }
 }
