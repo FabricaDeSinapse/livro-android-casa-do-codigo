@@ -7,5 +7,5 @@ data class User(
 
     val creatures: List<Creature>,
 
-    var newCreaturesAvailable: Int
+    val newCreaturesAvailable: Int
 )

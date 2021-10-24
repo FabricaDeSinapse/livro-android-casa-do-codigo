@@ -1,9 +1,7 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository
 
 import android.util.Log
-import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.subjects.ReplaySubject
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
@@ -31,23 +29,17 @@ class UserRepository @Inject constructor(
 
     fun chooseCreature(): Observable<Creature> =
         user
-            .flatMapMaybe { userValue ->
-                val newCreaturesAvailable = userValue.newCreaturesAvailable
-
-                if (newCreaturesAvailable > 0) {
-                    val userId = userValue.id
-
-                    Single.just(userValue)
-                        .flatMap {
-//                            it.newCreaturesAvailable--
-
-                            localDataSource.update(userValue)
-                        }.flatMap {
-                            userCreatureRepository.addRandomCreature(userId)
-                        }.toMaybe()
-                } else {
-                    Maybe.empty()
-                }
+            .filter {
+                it.newCreaturesAvailable > 0
+            }
+            .map {
+                it.copy(newCreaturesAvailable = it.newCreaturesAvailable - 1)
+            }
+            .flatMapSingle {
+                localDataSource.update(it)
+            }
+            .flatMap {
+                userCreatureRepository.addRandomCreature(it.id)
             }
             .subscribeOn(Schedulers.io())
 }

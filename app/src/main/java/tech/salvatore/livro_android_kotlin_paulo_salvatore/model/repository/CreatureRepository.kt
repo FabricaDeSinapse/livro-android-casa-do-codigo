@@ -18,9 +18,9 @@ class CreatureRepository @Inject constructor(
 
     val creaturesLevel1: Observable<List<Creature>> =
         creatures
-            .map { list ->
-                list.mapNotNull { creature ->
-                    val doesntEvolve = list.find {
+            .map { creatures ->
+                creatures.mapNotNull { creature ->
+                    val doesntEvolve = creatures.find {
                         it.evolveTo?.number == creature.number
                     }
 
