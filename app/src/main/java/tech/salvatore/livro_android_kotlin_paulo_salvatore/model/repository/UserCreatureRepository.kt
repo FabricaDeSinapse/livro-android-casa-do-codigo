@@ -13,6 +13,9 @@ class UserCreatureRepository @Inject constructor(
 ) {
     fun addRandomCreature(userId: Long): Observable<Creature> =
         creaturesRepository.creaturesLevel1
+            .skipWhile {
+                it.count() == 0
+            }
             .map {
                 it.random()
             }
