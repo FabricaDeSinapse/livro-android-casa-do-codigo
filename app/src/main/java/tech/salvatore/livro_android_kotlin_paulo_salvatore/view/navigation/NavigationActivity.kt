@@ -6,8 +6,10 @@ import android.view.ViewTreeObserver
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.navOptions
 import dagger.hilt.android.AndroidEntryPoint
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.choose.CreaturesChooseFragmentDirections
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.list.CreaturesListFragmentDirections
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.NavigationViewModel
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.UserViewModel
@@ -17,6 +19,14 @@ class NavigationActivity : AppCompatActivity() {
     private val navigationViewModel: NavigationViewModel by viewModels()
 
     private val userViewModel: UserViewModel by viewModels()
+
+    private val navHostFragment by lazy {
+        supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+    }
+
+    private val navController by lazy {
+        navHostFragment.navController
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,14 +49,16 @@ class NavigationActivity : AppCompatActivity() {
                 }
             }
         )
+
+        navigationViewModel.onChooseCreature.observe(this) {
+            if (navController.currentDestination?.id == R.id.creatures_choose_dest) {
+                val action = CreaturesChooseFragmentDirections.actionCreaturesChooseFragmentToCreaturesAddedFragment(it.number)
+                navController.navigate(action)
+            }
+        }
     }
 
     private fun initNavigation(): Boolean {
-        // Load NavController
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-
         // Add NavGraph
         val graphInflater = navHostFragment.navController.navInflater
         val navGraph = graphInflater.inflate(R.navigation.nav_graph)
@@ -59,8 +71,17 @@ class NavigationActivity : AppCompatActivity() {
         if (user.newCreaturesAvailable > 0
             && navController.currentDestination?.id != R.id.creatures_choose_dest
         ) {
+            val options = navOptions {
+                anim {
+                    enter = R.anim.slide_in_right
+                    exit = R.anim.slide_out_left
+                    popEnter = R.anim.slide_in_left
+                    popExit = R.anim.slide_out_right
+                }
+            }
+
             val action = CreaturesListFragmentDirections.creaturesChooseAction()
-            navController.navigate(action)
+            navController.navigate(action, options)
         }
 
         // Finish navigation init

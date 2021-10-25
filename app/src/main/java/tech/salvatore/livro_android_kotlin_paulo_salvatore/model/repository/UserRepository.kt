@@ -3,6 +3,7 @@ package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository
 import android.util.Log
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import io.reactivex.rxjava3.subjects.PublishSubject
 import io.reactivex.rxjava3.subjects.ReplaySubject
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.User
@@ -16,6 +17,8 @@ class UserRepository @Inject constructor(
     private val userCreatureRepository: UserCreatureRepository
 ) {
     val user: ReplaySubject<User> = ReplaySubject.create(1)
+
+    val onChooseCreature: PublishSubject<Creature> = PublishSubject.create()
 
     init {
         // Load User From Local Data Source
@@ -40,6 +43,9 @@ class UserRepository @Inject constructor(
             }
             .flatMap {
                 userCreatureRepository.addRandomCreature(it.id)
+            }
+            .doOnNext {
+                onChooseCreature.onNext(it)
             }
             .subscribeOn(Schedulers.io())
 }
