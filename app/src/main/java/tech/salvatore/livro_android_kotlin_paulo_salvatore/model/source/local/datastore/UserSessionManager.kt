@@ -24,8 +24,8 @@ class UserSessionManager @Inject constructor(
             }
 
     fun register(userId: Long): Single<UserSession> =
-        sessionDataStore.updateDataAsync { preferences ->
-            val mutablePreferences: MutablePreferences = preferences.toMutablePreferences()
+        sessionDataStore.updateDataAsync {
+            val mutablePreferences: MutablePreferences = it.toMutablePreferences()
 
             mutablePreferences[SessionKeys.ACTIVE_USER] = userId
 
