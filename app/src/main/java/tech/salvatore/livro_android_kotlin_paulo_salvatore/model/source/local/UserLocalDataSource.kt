@@ -93,7 +93,7 @@ class UserLocalDataSource @Inject constructor(
         Flowable
             .fromIterable(this.userCreatures)
             .flatMapSingle {
-                userCreatureLocalDataSource.toDomain(it)
+                userCreatureLocalDataSource.toCreatureDomain(it)
             }
             .toList()
             .map {

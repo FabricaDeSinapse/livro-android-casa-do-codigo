@@ -15,8 +15,29 @@ class UserCreatureLocalDataSource @Inject constructor(
 ) {
     private val userCreatureDao: UserCreatureDao = db.userCreatureDao()
 
-    fun create(userId: Long, creatureNumber: Long): Single<Creature> {
-        val userCreatureEntity = UserCreatureEntity(
+    fun create(userId: Long, creatureNumber: Long): Single<Creature> =
+        Single
+            .just(
+                getUserCreatureEntity(userId, creatureNumber)
+            )
+            .flatMap {
+                userCreatureDao.insert(it)
+            }
+            .flatMap {
+                findById(it)
+            }
+
+    private fun findById(userCreatureId: Long): Single<Creature> =
+        userCreatureDao
+            .findById(userCreatureId)
+            .flatMap {
+                toCreatureDomain(it)
+            }
+
+    // Mapper methods
+
+    private fun getUserCreatureEntity(userId: Long, creatureNumber: Long) =
+        UserCreatureEntity(
             userId = userId,
             creatureNumber = creatureNumber,
             hungry = 5,
@@ -24,34 +45,22 @@ class UserCreatureLocalDataSource @Inject constructor(
             humor = 0
         )
 
-        return userCreatureDao
-            .insert(userCreatureEntity)
-            .flatMap { newUserCreatureId ->
-                findById(newUserCreatureId)
-            }
-    }
-
-    private fun findById(userCreatureId: Long): Single<Creature> {
-        return userCreatureDao
-            .findById(userCreatureId)
-            .flatMap { toDomain(it) }
-    }
-
-    fun toDomain(userCreatureEntity: UserCreatureEntity): Single<Creature> = with(userCreatureEntity) {
-        return creatureLocalDataSource
-            .findByNumber(this.creatureNumber)
-            .map {
-                Creature(
-                    number = this.creatureNumber,
-                    name = it.name,
-                    imageUrl = it.imageUrl,
-                    hungry = this.hungry,
-                    strength = this.strength,
-                    humor = this.humor,
-                    lastFeed = this.lastFeed,
-                    lastTrain = this.lastTrain,
-                    lastPlay = this.lastPlay
-                )
-            }
-    }
+    fun toCreatureDomain(userCreatureEntity: UserCreatureEntity): Single<Creature> =
+        with(userCreatureEntity) {
+            return creatureLocalDataSource
+                .findByNumber(this.creatureNumber)
+                .map {
+                    Creature(
+                        number = this.creatureNumber,
+                        name = it.name,
+                        imageUrl = it.imageUrl,
+                        hungry = this.hungry,
+                        strength = this.strength,
+                        humor = this.humor,
+                        lastFeed = this.lastFeed,
+                        lastTrain = this.lastTrain,
+                        lastPlay = this.lastPlay
+                    )
+                }
+        }
 }
