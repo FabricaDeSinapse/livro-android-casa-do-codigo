@@ -25,8 +25,9 @@
         android:label="CreaturesChooseFragment">
 
         <action
-            android:id="@+id/action_creaturesChooseFragment_to_creaturesAddedFragment"
-            app:destination="@id/creatures_added_dest" />
+            android:id="@+id/creatures_choose_to_creatures_added_action"
+            app:destination="@id/creatures_added_dest"
+            app:popUpTo="@id/creatures_list_dest" />
     </fragment>
 
     <fragment
@@ -39,7 +40,7 @@
             app:argType="long" />
 
         <action
-            android:id="@+id/action_creaturesViewFragment_to_creaturesEvolvingFragment"
+            android:id="@+id/creatures_view_to_creatures_evolving_action"
             app:destination="@id/creatures_evolving_dest" />
     </fragment>
 

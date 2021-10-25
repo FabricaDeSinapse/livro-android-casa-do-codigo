@@ -37,6 +37,7 @@ class UserRepository @Inject constructor(
             }
             .map {
                 it.copy(newCreaturesAvailable = it.newCreaturesAvailable - 1)
+//                it.copy(newCreaturesAvailable = it.newCreaturesAvailable)
             }
             .flatMapSingle {
                 localDataSource.update(it)

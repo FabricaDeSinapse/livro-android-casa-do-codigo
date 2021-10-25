@@ -52,7 +52,7 @@ class NavigationActivity : AppCompatActivity() {
 
         navigationViewModel.onChooseCreature.observe(this) {
             if (navController.currentDestination?.id == R.id.creatures_choose_dest) {
-                val action = CreaturesChooseFragmentDirections.actionCreaturesChooseFragmentToCreaturesAddedFragment(it.number)
+                val action = CreaturesChooseFragmentDirections.creaturesChooseToCreaturesAddedAction(it.number)
                 navController.navigate(action)
             }
         }
