@@ -22,6 +22,9 @@ class UserLocalDataSource @Inject constructor(
 
     val activeUser: Flowable<User> =
         userSessionManager.userSession
+            .distinctUntilChanged { old, new ->
+                old.activeUser != null && old.activeUser == new.activeUser
+            }
             .flatMapSingle {
                 when (it.activeUser) {
                     null -> {
