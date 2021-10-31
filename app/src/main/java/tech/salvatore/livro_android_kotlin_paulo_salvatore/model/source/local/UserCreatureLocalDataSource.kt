@@ -53,6 +53,8 @@ class UserCreatureLocalDataSource @Inject constructor(
                         number = this.creatureNumber,
                         name = it.name,
                         imageUrl = it.imageUrl,
+                        level = it.level,
+                        experience = it.experience,
                         strength = this.strength,
                         humor = this.humor,
                         lastFeed = this.lastFeed,

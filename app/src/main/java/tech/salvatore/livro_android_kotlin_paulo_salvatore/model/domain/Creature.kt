@@ -10,9 +10,9 @@ data class Creature(
 
     val imageUrl: String,
 
-    val level: Long,
+    val level: Long = 1,
 
-    val experience: Long,
+    val experience: Long = 0,
 
     val type1: CreatureType? = null,
     val type2: CreatureType? = null,
