@@ -35,6 +35,7 @@
                 tools:ignore="ContentDescription" />
 
             <TextView
+                android:id="@+id/tvCreatureNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
@@ -77,12 +78,12 @@
                 app:name='@{"Humor"}'
                 app:value='@{viewModel.creature.humorPercentage}' />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline1"
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="39dp" />
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="tvCreatureNumber" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayoutTitleSection"
@@ -92,7 +93,7 @@
                 android:background="@drawable/background_creature_title_section"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/guideline1">
+                app:layout_constraintTop_toBottomOf="@id/barrier1">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -110,13 +111,20 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="constraintLayoutTitleSection" />
+
             <LinearLayout
                 android:id="@+id/linearLayoutHints"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/constraintLayoutTitleSection">
+                app:layout_constraintTop_toBottomOf="@id/barrier2">
 
                 <include
                     android:id="@+id/creatureFeedHint"
@@ -146,16 +154,31 @@
                     app:value='@{@string/creature_can_play(viewModel.creature.name)}' />
             </LinearLayout>
 
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="linearLayoutHints" />
+
             <ImageView
+                android:id="@+id/ivCreature"
                 android:layout_width="340dp"
                 android:layout_height="340dp"
                 android:layout_marginTop="20dp"
+                android:contentDescription="@string/creatures_image"
+                app:imageUrl="@{viewModel.creature.imageUrl}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linearLayoutHints"
-                tools:src="@drawable/icon_humor"
-                app:imageUrl="@{viewModel.creature.imageUrl}"
-                android:contentDescription="@string/creatures_image" />
+                tools:src="@drawable/icon_humor" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="ivCreature" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
