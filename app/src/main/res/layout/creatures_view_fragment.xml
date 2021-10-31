@@ -52,7 +52,7 @@
                 android:id="@+id/statusPreviewHungry"
                 style="@style/creatures_status_preview_component"
                 layout="@layout/creatures_status_preview_component"
-                app:icon='@{@drawable/icon_hungry}'
+                app:icon="@{@drawable/icon_hungry}"
                 app:layout_constraintEnd_toStartOf="@id/statusPreviewStrength"
                 app:layout_constraintTop_toTopOf="parent"
                 app:name='@{"Hungry"}'
@@ -62,21 +62,21 @@
                 android:id="@+id/statusPreviewStrength"
                 style="@style/creatures_status_preview_component"
                 layout="@layout/creatures_status_preview_component"
-                app:icon='@{@drawable/icon_strength}'
+                app:icon="@{@drawable/icon_strength}"
                 app:layout_constraintEnd_toStartOf="@id/statusPreviewHumor"
                 app:layout_constraintTop_toTopOf="parent"
                 app:name='@{"Strength"}'
-                app:value='@{viewModel.creature.strengthPercentage}' />
+                app:value="@{viewModel.creature.strengthPercentage}" />
 
             <include
                 android:id="@+id/statusPreviewHumor"
                 style="@style/creatures_status_preview_component"
                 layout="@layout/creatures_status_preview_component"
-                app:icon='@{@drawable/icon_humor}'
+                app:icon="@{@drawable/icon_humor}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:name='@{"Humor"}'
-                app:value='@{viewModel.creature.humorPercentage}' />
+                app:value="@{viewModel.creature.humorPercentage}" />
 
             <androidx.constraintlayout.widget.Barrier
                 android:id="@+id/barrier1"
@@ -130,27 +130,27 @@
                     style="@style/creatures_hint_component"
                     layout="@layout/creatures_hint_component"
                     android:visibility="@{viewModel.creature.canFeed ? View.VISIBLE : View.GONE}"
-                    app:icon='@{@drawable/icon_feed}'
+                    app:icon="@{@drawable/icon_feed}"
                     app:name='@{"Feed"}'
-                    app:value='@{@string/creature_can_feed(viewModel.creature.name)}' />
+                    app:value="@{@string/creature_can_feed(viewModel.creature.name)}" />
 
                 <include
                     android:id="@+id/creatureTrainHint"
                     style="@style/creatures_hint_component"
                     layout="@layout/creatures_hint_component"
                     android:visibility="@{viewModel.creature.canTrain ? View.VISIBLE : View.GONE}"
-                    app:icon='@{@drawable/icon_train}'
+                    app:icon="@{@drawable/icon_train}"
                     app:name='@{"Train"}'
-                    app:value='@{@string/creature_can_train}' />
+                    app:value="@{@string/creature_can_train}" />
 
                 <include
                     android:id="@+id/creatureTrainPlay"
                     style="@style/creatures_hint_component"
                     layout="@layout/creatures_hint_component"
                     android:visibility="@{viewModel.creature.canPlay &amp;&amp; (!viewModel.creature.canFeed || !viewModel.creature.canTrain) ? View.VISIBLE : View.GONE}"
-                    app:icon='@{@drawable/icon_play}'
+                    app:icon="@{@drawable/icon_play}"
                     app:name='@{"Play"}'
-                    app:value='@{@string/creature_can_play(viewModel.creature.name)}' />
+                    app:value="@{@string/creature_can_play(viewModel.creature.name)}" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.Barrier
@@ -283,87 +283,12 @@
                         android:textSize="18sp" />
                 </TableRow>
 
-                <TableRow android:layout_marginTop="2dp">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_height="76dp"
-                        android:layout_marginEnd="2dp"
-                        android:layout_marginRight="2dp"
-                        android:background="#4DFFFFFF">
-
-                        <ImageView
-                            android:id="@+id/ivNeedIcon"
-                            android:layout_width="42dp"
-                            android:layout_height="42dp"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginLeft="12dp"
-                            android:src="@drawable/icon_hungry"
-                            android:contentDescription="@{@string/creature_status_preview_name(viewModel.creature.name)"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:src="@drawable/icon_humor" />
-
-                        <TextView
-                            android:id="@+id/tvNeedTitle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginLeft="12dp"
-                            android:layout_marginTop="8dp"
-                            android:fontFamily="@font/saira_400"
-                            android:text="@string/hungry"
-                            android:textColor="#5D414F"
-                            android:textSize="18sp"
-                            app:layout_constraintStart_toEndOf="@+id/ivNeedIcon"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ProgressBar
-                            android:id="@+id/pbNeed"
-                            style="@android:style/Widget.ProgressBar.Horizontal"
-                            android:layout_width="0dp"
-                            android:layout_height="24dp"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginLeft="12dp"
-                            android:layout_marginEnd="15dp"
-                            android:layout_marginRight="15dp"
-                            android:progress="@{viewModel.creature.foodPercentage}"
-                            android:progressDrawable="@drawable/progress_bar_level"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/ivNeedIcon"
-                            app:layout_constraintTop_toBottomOf="@+id/tvNeedTitle"
-                            tools:progress="70" />
-
-                        <TextView
-                            android:id="@+id/tvNeedPercentage"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="13dp"
-                            android:layout_marginEnd="20dp"
-                            android:layout_marginRight="20dp"
-                            android:fontFamily="@font/saira_400"
-                            android:text="@{@string/percentage(viewModel.creature.foodPercentage)}"
-                            android:textColor="#5D414F"
-                            android:textSize="11sp"
-                            tools:text="70%"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#4DFFFFFF"
-                        android:gravity="center">
-
-                        <include
-                            layout="@layout/creatures_action_icon_component"
-                            app:icon='@{@drawable/icon_feed}'
-                            app:name="@{viewModel.creature.name}" />
-                    </LinearLayout>
-
-                </TableRow>
+                <include
+                    layout="@layout/creatures_needs_actions_component"
+                    app:actionIcon="@{@drawable/icon_feed}"
+                    app:name="@{viewModel.creature.name}"
+                    app:needIcon="@{@drawable/icon_hungry}"
+                    app:percentage="@{viewModel.creature.foodPercentage}" />
 
             </TableLayout>
 
