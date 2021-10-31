@@ -40,5 +40,7 @@ class CreaturesViewFragment : Fragment() {
         viewModel.loadCreature(creatureId)
 
         binding.viewModel = viewModel
+
+        binding.lifecycleOwner = this
     }
 }

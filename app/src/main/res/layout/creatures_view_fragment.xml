@@ -39,8 +39,8 @@
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/saira_400"
-                android:textColor="#5D414F"
                 android:text="@{@string/creature_number(viewModel.creature.number)}"
+                android:textColor="#5D414F"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="# 001" />
@@ -74,6 +74,38 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:name='@{"Humor"}'
                 app:value='@{viewModel.creature.humor}' />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="39dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="37dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_creature_title_section"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/guideline1">
+
+                <TextView
+                    android:fontFamily="@font/saira_400"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="27dp"
+                    android:layout_marginLeft="27dp"
+                    android:text="@{viewModel.creature.name}"
+                    android:textColor="#5D414F"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Lagartorbas" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
