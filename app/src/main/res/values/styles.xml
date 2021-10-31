@@ -12,6 +12,13 @@
         <item name="android:layout_marginRight">8dp</item>
     </style>
 
+    <style name="creatures_background_title_section">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">37dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:background">@drawable/background_creature_title_section</item>
+    </style>
+
     <style name="creatures_hint_component">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">61dp</item>

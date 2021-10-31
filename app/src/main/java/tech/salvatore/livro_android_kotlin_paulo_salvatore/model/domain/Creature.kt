@@ -35,6 +35,9 @@ data class Creature(
     val experienceToNextLevel: Long
         get() = LevelFormula.getExperience(level + 1)
 
+    val experienceToNextLevelPercentage: Int
+        get() = (experience * 100 / experienceToNextLevel).toInt()
+
     // Status
 
     private val hungry: Int

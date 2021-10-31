@@ -87,15 +87,13 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayoutTitleSection"
-                android:layout_width="0dp"
-                android:layout_height="37dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/background_creature_title_section"
+                style="@style/creatures_background_title_section"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/barrier1">
 
                 <TextView
+                    android:id="@+id/tvCreatureName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="27dp"
@@ -179,6 +177,64 @@
                 android:layout_height="wrap_content"
                 app:barrierDirection="bottom"
                 app:constraint_referenced_ids="ivCreature" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayoutLevel"
+                style="@style/creatures_background_title_section"
+                android:layout_height="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrier4">
+
+                <TextView
+                    android:id="@+id/tvCreatureLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="27dp"
+                    android:layout_marginLeft="27dp"
+                    android:fontFamily="@font/saira_400"
+                    android:text="@{@string/creature_level(viewModel.creature.level)}"
+                    android:textColor="#5D414F"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Level 1" />
+
+                <TextView
+                    android:id="@+id/tvCreatureExperience"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="22dp"
+                    android:layout_marginRight="22dp"
+                    android:fontFamily="@font/saira_400"
+                    android:text="@{@string/creature_experience(viewModel.creature.experience, viewModel.creature.experienceToNextLevel)}"
+                    android:textColor="#5D414F"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toTopOf="@id/pbCreatureExperience"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="150/270xp" />
+
+                <ProgressBar
+                    android:id="@+id/pbCreatureExperience"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="9dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:progress="@{viewModel.creature.experienceToNextLevelPercentage}"
+                    android:progressDrawable="@drawable/progress_bar_level"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tvCreatureLevel"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:progress="70" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

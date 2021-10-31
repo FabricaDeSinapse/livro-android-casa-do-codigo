@@ -1,18 +1,21 @@
 <resources>
     <string name="app_name">Livro_Android_Kotlin_PauloSalvatore</string>
 
+    <string name="percentage">%1$d%%</string>
+
     <string name="creature_number"># %1$03d</string>
-    <string name="creature_level">Level %1$d</string>
+
     <string name="creature_status_preview_name">Status for %1$s</string>
-    <string name="needs">Needs</string>
-    <string name="actions">Actions</string>
 
     <string name="creature_can_feed">%1$s is hungry!</string>
     <string name="creature_can_train">Train to evolve</string>
     <string name="creature_can_play">Play with %1$s!</string>
 
-    <string name="creature_experience">%1$d/%2$dxp</string>
-    <string name="percentage">%1$d%%</string>
-
     <string name="creatures_image">%1$s\'s Image</string>
+
+    <string name="creature_level">Level %1$d</string>
+    <string name="creature_experience">%1$d/%2$dxp</string>
+
+    <string name="needs">Needs</string>
+    <string name="actions">Actions</string>
 </resources>
