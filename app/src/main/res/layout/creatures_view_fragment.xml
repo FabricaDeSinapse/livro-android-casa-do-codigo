@@ -83,6 +83,7 @@
                 app:layout_constraintGuide_begin="39dp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayoutTitleSection"
                 android:layout_width="0dp"
                 android:layout_height="37dp"
                 android:layout_marginTop="8dp"
@@ -106,6 +107,31 @@
                     tools:text="Lagartorbas" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/constraintLayoutTitleSection"
+                android:layout_width="0dp"
+                android:weightSum="2"
+                android:layout_height="wrap_content">
+
+                <include
+                    android:id="@+id/creatureFeedHint"
+                    style="@style/creatures_hint_component"
+                    layout="@layout/creatures_hint_component"
+                    app:icon='@{@drawable/icon_feed}'
+                    app:name='@{"Feed"}'
+                    app:value='@{@string/creature_can_feed(viewModel.creature.name)}' />
+
+                <include
+                    android:id="@+id/creatureTrainHint"
+                    style="@style/creatures_hint_component"
+                    layout="@layout/creatures_hint_component"
+                    app:icon='@{@drawable/icon_train}'
+                    app:name='@{"Train"}'
+                    app:value='@{@string/creature_can_train}' />
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

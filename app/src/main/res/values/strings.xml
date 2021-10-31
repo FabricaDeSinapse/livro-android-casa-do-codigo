@@ -6,8 +6,11 @@
     <string name="creature_status_preview_name">Status for %1$s</string>
     <string name="needs">Needs</string>
     <string name="actions">Actions</string>
-    <string name="creature_is_hungry">Samambata está com fome!</string>
+
+    <string name="creature_can_feed">%1$s está com fome!</string>
     <string name="creature_can_train">Treine para evoluir</string>
+    <string name="creature_can_play">Brinque com %1$s!</string>
+
     <string name="creature_experience">%1$d/%2$dxp</string>
     <string name="percentage">%1$d%%</string>
 </resources>
