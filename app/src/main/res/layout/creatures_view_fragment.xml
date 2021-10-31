@@ -32,6 +32,19 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ContentDescription" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/saira_400"
+                android:textColor="#5D414F"
+                android:text="@{@string/creature_number(viewModel.creature.number)}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="# 001" />
+
             <include
                 android:id="@+id/statusPreviewHungry"
                 style="@style/creatures_status_preview_component"

@@ -2,6 +2,7 @@ package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository
 
 import android.util.Log
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import io.reactivex.rxjava3.subjects.ReplaySubject
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.CreatureLocalDataSource
@@ -11,7 +12,7 @@ import javax.inject.Singleton
 
 @Singleton
 class CreatureRepository @Inject constructor(
-    localDataSource: CreatureLocalDataSource,
+    private val localDataSource: CreatureLocalDataSource,
     remoteDataSource: CreatureRemoteDataSource
 ) {
     val creatures: ReplaySubject<List<Creature>> = ReplaySubject.create(1)
@@ -46,4 +47,9 @@ class CreatureRepository @Inject constructor(
             Log.d("CREATURE", "Creatures were added.")
         }
     }
+
+    fun findByNumber(number: Long): Observable<Creature> =
+        localDataSource.findByNumber(number)
+            .toObservable()
+            .subscribeOn(Schedulers.io())
 }

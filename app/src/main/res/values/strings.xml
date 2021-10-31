@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Livro_Android_Kotlin_PauloSalvatore</string>
 
-    <string name="creature_number"># %1$d</string>
+    <string name="creature_number"># %1$03d</string>
     <string name="creature_level">Level %1$d</string>
     <string name="creature_status_preview_name">Status for %1$s</string>
     <string name="needs">Needs</string>
