@@ -1,16 +1,6 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain
 
-import java.text.DateFormat
-import java.util.*
-
-// Hungry consts
-const val maxHungry = 5
-const val hungryPercentagePerPoint = 100 / maxHungry
-
-fun currentTimestamp(): String =
-    DateFormat.getTimeInstance().apply {
-        timeZone = TimeZone.getTimeZone("gmt")
-    }.format(Date())
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.config.Config
 
 data class Creature(
     val number: Long,
@@ -45,7 +35,7 @@ data class Creature(
     // TODO: Improve
     val hungryPercent: Int
         get() = if (hungry > 0) {
-            hungry * hungryPercentagePerPoint
+            hungry * Config.hungryPercentagePerPoint
         } else {
             0
         }
