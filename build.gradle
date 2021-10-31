@@ -5,6 +5,7 @@ buildscript {
         kotlinVersion = "1.5.31"
         navigationVersion = "2.4.0-alpha10"
         hiltVersion = "2.39.1"
+        hiltVMVersion = "1.0.0-alpha03"
         roomVersion = "2.3.0"
         retrofitVersion = "2.9.0"
         dataStoreVersion = "1.0.0"
