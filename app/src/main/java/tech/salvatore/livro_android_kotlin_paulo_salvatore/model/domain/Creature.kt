@@ -28,7 +28,7 @@ data class Creature(
     val evolveTo: Creature? = null,
     val users: List<User> = emptyList()
 ) {
-    val canFeed: Boolean get() = hungry > 0
+    val canFeed: Boolean get() = hungry == 4 || hungry == 5
     val canTrain: Boolean get() = strength < 5
     val canPlay: Boolean get() = humor < 5
 
