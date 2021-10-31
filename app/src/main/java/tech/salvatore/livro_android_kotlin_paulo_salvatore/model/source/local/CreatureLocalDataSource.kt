@@ -23,10 +23,12 @@ class CreatureLocalDataSource @Inject constructor(
 
     val creatures: Flowable<List<Creature>> =
         creaturesEntities
-            .flatMap { list ->
+            .flatMap {
                 Flowable
-                    .fromIterable(list)
-                    .flatMapSingle { it.toDomain() }
+                    .fromIterable(it)
+                    .flatMapSingle {
+                        it.toDomain()
+                    }
                     .toList()
                     .toFlowable()
             }
