@@ -71,7 +71,7 @@
             app:layout_constraintEnd_toEndOf="@id/linearLayoutTextBox"
             app:layout_constraintStart_toEndOf="@+id/linearLayoutIcon"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Lagartobias está com fome!" />
+            tools:text="Play with Creature!" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
