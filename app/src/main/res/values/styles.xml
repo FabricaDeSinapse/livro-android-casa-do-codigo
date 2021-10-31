@@ -5,7 +5,7 @@
     </style>-->
 
     <style name="creatures_status_preview_component">
-        <item name="android:layout_width">63dp</item>
+        <item name="android:layout_width">70dp</item>
         <item name="android:layout_height">31dp</item>
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:layout_marginEnd">8dp</item>

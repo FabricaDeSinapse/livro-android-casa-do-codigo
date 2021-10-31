@@ -19,26 +19,27 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="63dp"
+        android:layout_width="70dp"
         android:layout_height="31dp"
         android:background="@drawable/background_status_preview"
         android:orientation="horizontal">
 
         <ImageView
-            android:src="@{icon}"
-            tools:src="@drawable/icon_humor"
             android:id="@+id/imageView"
             android:layout_width="33dp"
             android:layout_height="33dp"
             android:contentDescription="@{@string/creature_status_preview_name(name)"
+            android:src="@{icon}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/icon_humor" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/saira_400"
+            android:gravity="center"
             android:text="@{@string/percentage(value)}"
             android:textColor="#5C4952"
             android:textSize="11sp"

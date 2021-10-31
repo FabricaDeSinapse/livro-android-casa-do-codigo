@@ -288,7 +288,24 @@
                     app:actionIcon="@{@drawable/icon_feed}"
                     app:name="@{viewModel.creature.name}"
                     app:needIcon="@{@drawable/icon_hungry}"
+                    app:needTitle="@{@string/hungry}"
                     app:percentage="@{viewModel.creature.foodPercentage}" />
+
+                <include
+                    layout="@layout/creatures_needs_actions_component"
+                    app:actionIcon="@{@drawable/icon_train}"
+                    app:name="@{viewModel.creature.name}"
+                    app:needIcon="@{@drawable/icon_strength}"
+                    app:needTitle="@{@string/strength}"
+                    app:percentage="@{viewModel.creature.strengthPercentage}" />
+
+                <include
+                    layout="@layout/creatures_needs_actions_component"
+                    app:actionIcon="@{@drawable/icon_play}"
+                    app:name="@{viewModel.creature.name}"
+                    app:needIcon="@{@drawable/icon_humor}"
+                    app:needTitle="@{@string/humor}"
+                    app:percentage="@{viewModel.creature.humorPercentage}" />
 
             </TableLayout>
 

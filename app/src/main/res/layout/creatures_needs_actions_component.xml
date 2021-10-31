@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -18,14 +18,19 @@
             type="android.graphics.drawable.Drawable" />
 
         <variable
+            name="needTitle"
+            type="java.lang.String" />
+
+        <variable
             name="actionIcon"
             type="android.graphics.drawable.Drawable" />
     </data>
 
-    <TableRow android:layout_marginTop="2dp">
+    <TableRow>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_height="76dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
             android:layout_marginRight="2dp"
             android:background="#4DFFFFFF">
@@ -36,8 +41,8 @@
                 android:layout_height="42dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginLeft="12dp"
-                android:src="@{needIcon}"
                 android:contentDescription="@{@string/creature_status_preview_name(name)"
+                android:src="@{needIcon}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -51,7 +56,7 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/saira_400"
-                android:text="@string/hungry"
+                android:text="@{needTitle}"
                 android:textColor="#5D414F"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@+id/ivNeedIcon"
@@ -84,15 +89,16 @@
                 android:text="@{@string/percentage(percentage)}"
                 android:textColor="#5D414F"
                 android:textSize="11sp"
-                tools:text="70%"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="70%" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
             android:background="#4DFFFFFF"
             android:gravity="center">
 
