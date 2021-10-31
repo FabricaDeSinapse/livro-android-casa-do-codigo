@@ -14,7 +14,6 @@
 
     <style name="creatures_background_title_section">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">37dp</item>
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:background">@drawable/background_creature_title_section</item>
     </style>
