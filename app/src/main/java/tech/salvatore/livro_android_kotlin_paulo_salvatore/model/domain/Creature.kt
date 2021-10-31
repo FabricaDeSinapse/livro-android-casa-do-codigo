@@ -6,6 +6,9 @@ data class Creature(
 
     val imageUrl: String,
 
+    val type1: CreatureType? = null,
+    val type2: CreatureType? = null,
+
     val hungry: Int = 0,
     val strength: Int = 0,
     val humor: Int = 0,
