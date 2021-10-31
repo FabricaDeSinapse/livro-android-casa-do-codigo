@@ -19,8 +19,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        style="@style/creatures_hint_component"
-        android:orientation="horizontal">
+        style="@style/creatures_hint_component">
 
         <LinearLayout
             android:id="@+id/linearLayoutTextBox"

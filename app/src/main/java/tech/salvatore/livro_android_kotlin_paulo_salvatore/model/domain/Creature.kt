@@ -9,7 +9,7 @@ data class Creature(
     val type1: CreatureType? = null,
     val type2: CreatureType? = null,
 
-    val hungry: Int = 0,
+    val hungry: Int = 1,
     val strength: Int = 0,
     val humor: Int = 0,
 
@@ -19,4 +19,8 @@ data class Creature(
 
     val evolveTo: Creature? = null,
     val users: List<User> = emptyList()
-)
+) {
+    val canFeed = hungry > 0
+    val canTrain = strength < 5
+    val canPlay = humor < 5
+}
