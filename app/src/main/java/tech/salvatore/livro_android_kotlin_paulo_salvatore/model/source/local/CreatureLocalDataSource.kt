@@ -52,6 +52,8 @@ class CreatureLocalDataSource @Inject constructor(
             number = number,
             name = name,
             imageUrl = imageUrl,
+            level = level,
+            experience = experience,
             evolveToNumber = evolveTo?.number
         )
     }
@@ -70,6 +72,8 @@ class CreatureLocalDataSource @Inject constructor(
                 number = number,
                 name = name,
                 imageUrl = imageUrl,
+                level = level,
+                experience = experience,
                 evolveTo = evolveTo.value
             )
         }

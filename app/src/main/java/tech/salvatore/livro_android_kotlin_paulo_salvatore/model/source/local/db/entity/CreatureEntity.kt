@@ -19,5 +19,9 @@ data class CreatureEntity(
 
     val imageUrl: String,
 
+    val level: Long = 1,
+
+    val experience: Long = 0,
+
     val evolveToNumber: Long?,
 )
