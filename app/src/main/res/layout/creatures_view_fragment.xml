@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreatureViewModel" />
@@ -30,6 +31,36 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ContentDescription" />
+
+            <include
+                android:id="@+id/statusPreviewHungry"
+                style="@style/creatures_status_preview_component"
+                layout="@layout/creatures_status_preview_component"
+                app:icon='@{@drawable/icon_hungry}'
+                app:layout_constraintEnd_toStartOf="@id/statusPreviewStrength"
+                app:layout_constraintTop_toTopOf="parent"
+                app:name='@{"Hungry"}'
+                app:value='@{viewModel.creature.hungry}' />
+
+            <include
+                android:id="@+id/statusPreviewStrength"
+                style="@style/creatures_status_preview_component"
+                layout="@layout/creatures_status_preview_component"
+                app:icon='@{@drawable/icon_strength}'
+                app:layout_constraintEnd_toStartOf="@id/statusPreviewHumor"
+                app:layout_constraintTop_toTopOf="parent"
+                app:name='@{"Strength"}'
+                app:value='@{viewModel.creature.strength}' />
+
+            <include
+                android:id="@+id/statusPreviewHumor"
+                style="@style/creatures_status_preview_component"
+                layout="@layout/creatures_status_preview_component"
+                app:icon='@{@drawable/icon_humor}'
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:name='@{"Humor"}'
+                app:value='@{viewModel.creature.humor}' />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

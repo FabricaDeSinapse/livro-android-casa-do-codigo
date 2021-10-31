@@ -3,6 +3,7 @@
 
     <string name="creature_number"># %1$d</string>
     <string name="creature_level">Level %1$d</string>
+    <string name="creature_status_preview_name">Status for %1$s</string>
     <string name="needs">Needs</string>
     <string name="actions">Actions</string>
     <string name="creature_is_hungry">Samambata está com fome!</string>
