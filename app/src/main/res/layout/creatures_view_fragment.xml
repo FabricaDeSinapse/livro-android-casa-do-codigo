@@ -55,7 +55,7 @@
                 app:layout_constraintEnd_toStartOf="@id/statusPreviewStrength"
                 app:layout_constraintTop_toTopOf="parent"
                 app:name='@{"Hungry"}'
-                app:value='@{viewModel.creature.hungry}' />
+                app:value="@{viewModel.creature.foodPercentage}" />
 
             <include
                 android:id="@+id/statusPreviewStrength"
@@ -65,7 +65,7 @@
                 app:layout_constraintEnd_toStartOf="@id/statusPreviewHumor"
                 app:layout_constraintTop_toTopOf="parent"
                 app:name='@{"Strength"}'
-                app:value='@{viewModel.creature.strength}' />
+                app:value='@{viewModel.creature.strengthPercentage}' />
 
             <include
                 android:id="@+id/statusPreviewHumor"
@@ -75,7 +75,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:name='@{"Humor"}'
-                app:value='@{viewModel.creature.humor}' />
+                app:value='@{viewModel.creature.humorPercentage}' />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline1"

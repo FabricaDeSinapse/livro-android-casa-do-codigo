@@ -11,11 +11,10 @@ data class UserCreatureEntity(
     val userId: Long,
     val creatureNumber: Long,
 
-    val hungry: Int,
     val strength: Int,
     val humor: Int,
 
-    var lastFeed: Int = 0,
-    var lastTrain: Int = 0,
-    var lastPlay: Int = 0,
+    var lastFeed: Long = 0,
+    var lastTrain: Long = 0,
+    var lastPlay: Long = 0,
 )

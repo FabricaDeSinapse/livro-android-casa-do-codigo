@@ -40,7 +40,6 @@ class UserCreatureLocalDataSource @Inject constructor(
         UserCreatureEntity(
             userId = userId,
             creatureNumber = creatureNumber,
-            hungry = 5,
             strength = 0,
             humor = 0
         )
@@ -54,7 +53,6 @@ class UserCreatureLocalDataSource @Inject constructor(
                         number = this.creatureNumber,
                         name = it.name,
                         imageUrl = it.imageUrl,
-                        hungry = this.hungry,
                         strength = this.strength,
                         humor = this.humor,
                         lastFeed = this.lastFeed,
