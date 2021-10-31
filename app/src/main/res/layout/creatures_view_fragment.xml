@@ -258,7 +258,7 @@
                         android:id="@+id/tvNeedsTitle"
                         android:layout_marginEnd="2dp"
                         android:layout_marginRight="2dp"
-                        android:background="#4DFFFFFF"
+                        android:background="#80FFFFFF"
                         android:fontFamily="@font/saira_400"
                         android:paddingStart="18dp"
                         android:paddingLeft="18dp"
@@ -273,7 +273,7 @@
                     <TextView
                         android:id="@+id/tvActionsTitle"
                         android:layout_width="90dp"
-                        android:background="#4DFFFFFF"
+                        android:background="#80FFFFFF"
                         android:fontFamily="@font/saira_400"
                         android:gravity="center"
                         android:paddingTop="10dp"
@@ -281,6 +281,88 @@
                         android:text="@string/actions"
                         android:textColor="#5D414F"
                         android:textSize="18sp" />
+                </TableRow>
+
+                <TableRow android:layout_marginTop="2dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_height="76dp"
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginRight="2dp"
+                        android:background="#4DFFFFFF">
+
+                        <ImageView
+                            android:id="@+id/ivNeedIcon"
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginLeft="12dp"
+                            android:src="@drawable/icon_hungry"
+                            android:contentDescription="@{@string/creature_status_preview_name(viewModel.creature.name)"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:src="@drawable/icon_humor" />
+
+                        <TextView
+                            android:id="@+id/tvNeedTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/saira_400"
+                            android:text="@string/hungry"
+                            android:textColor="#5D414F"
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toEndOf="@+id/ivNeedIcon"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ProgressBar
+                            android:id="@+id/pbNeed"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="24dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginRight="15dp"
+                            android:progress="@{viewModel.creature.foodPercentage}"
+                            android:progressDrawable="@drawable/progress_bar_level"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/ivNeedIcon"
+                            app:layout_constraintTop_toBottomOf="@+id/tvNeedTitle"
+                            tools:progress="70" />
+
+                        <TextView
+                            android:id="@+id/tvNeedPercentage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="13dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginRight="20dp"
+                            android:fontFamily="@font/saira_400"
+                            android:text="@{@string/percentage(viewModel.creature.foodPercentage)}"
+                            android:textColor="#5D414F"
+                            android:textSize="11sp"
+                            tools:text="70%"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#4DFFFFFF"
+                        android:gravity="center">
+
+                        <include
+                            layout="@layout/creatures_action_icon_component"
+                            app:icon='@{@drawable/icon_feed}'
+                            app:name="@{viewModel.creature.name}" />
+                    </LinearLayout>
+
                 </TableRow>
 
             </TableLayout>

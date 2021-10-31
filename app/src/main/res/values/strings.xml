@@ -18,4 +18,8 @@
 
     <string name="needs">Needs</string>
     <string name="actions">Actions</string>
+
+    <string name="hungry">Hungry</string>
+    <string name="strength">Strength</string>
+    <string name="humor">Humor</string>
 </resources>
