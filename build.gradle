@@ -8,6 +8,7 @@ buildscript {
         roomVersion = "2.3.0"
         retrofitVersion = "2.9.0"
         dataStoreVersion = "1.0.0"
+        glideVersion = "4.12.0"
     }
 
     repositories {

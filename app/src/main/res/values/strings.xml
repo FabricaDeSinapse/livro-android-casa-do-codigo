@@ -13,4 +13,6 @@
 
     <string name="creature_experience">%1$d/%2$dxp</string>
     <string name="percentage">%1$d%%</string>
+
+    <string name="creatures_image">%1$s\'s Image</string>
 </resources>
