@@ -1,5 +1,6 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -29,5 +30,17 @@ class CreatureViewModel @Inject constructor(
             .subscribe {
                 _creature.postValue(it)
             }
+    }
+
+    val feed: Function0<Unit> = {
+        Log.d("CREATURE", "Feed creature")
+    }
+
+    val play: Function0<Unit> = {
+        Log.d("CREATURE", "Play with creature")
+    }
+
+    val train: Function0<Unit> = {
+        Log.d("CREATURE", "Train creature")
     }
 }

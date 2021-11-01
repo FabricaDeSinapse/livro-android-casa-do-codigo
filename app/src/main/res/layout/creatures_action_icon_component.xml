@@ -4,6 +4,10 @@
 
     <data>
 
+        <import type="kotlin.jvm.functions.Function0" />
+
+        <import type="kotlin.Unit" />
+
         <variable
             name="name"
             type="java.lang.String" />
@@ -11,6 +15,10 @@
         <variable
             name="icon"
             type="android.graphics.drawable.Drawable" />
+
+        <variable
+            name="onClick"
+            type="Function0&lt;Unit>" />
     </data>
 
     <LinearLayout
@@ -20,11 +28,15 @@
         android:background="@drawable/round_icon_background"
         android:gravity="center">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/ivIcon"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:background="#00FFFFFF"
             android:contentDescription="@{@string/creature_status_preview_name(name)"
+            android:onClick="@{() -> onClick != null ? onClick.invoke() : null}"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
             android:src="@{icon}"
             tools:src="@drawable/icon_humor" />
     </LinearLayout>
