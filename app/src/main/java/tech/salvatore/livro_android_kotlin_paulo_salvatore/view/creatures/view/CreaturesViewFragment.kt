@@ -10,6 +10,7 @@ import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding.CreaturesViewFragmentBinding
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreatureViewModel
+import kotlin.concurrent.fixedRateTimer
 
 @AndroidEntryPoint
 class CreaturesViewFragment : Fragment() {
@@ -18,15 +19,15 @@ class CreaturesViewFragment : Fragment() {
     private val viewModel: CreatureViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?,
     ): View {
         binding =
-            CreaturesViewFragmentBinding.inflate(
-                layoutInflater,
-                container,
-                false
-            )
+                CreaturesViewFragmentBinding.inflate(
+                        layoutInflater,
+                        container,
+                        false
+                )
 
         return binding.root
     }
@@ -42,5 +43,9 @@ class CreaturesViewFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.lifecycleOwner = viewLifecycleOwner
+
+        fixedRateTimer(period = 1000L) {
+            binding.invalidateAll()
+        }
     }
 }
