@@ -54,7 +54,7 @@ class CreaturesListFragment : Fragment() {
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-        creaturesViewModel.creatures.observe(this, {
+        creaturesViewModel.creaturesOwnByUser.observe(this, {
             if (recyclerView.adapter == null) {
                 recyclerView.adapter = CreaturesListAdapter(it) { creature ->
                     val action =
