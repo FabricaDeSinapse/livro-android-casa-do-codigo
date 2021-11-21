@@ -9,10 +9,10 @@ import javax.inject.Singleton
 @Singleton
 class UserCreatureRepository @Inject constructor(
     private val localDataSource: UserCreatureLocalDataSource,
-    private val creaturesRepository: CreatureRepository
+    private val creatureRepository: CreatureRepository
 ) {
     fun addRandomCreature(userId: Long): Observable<Creature> =
-        creaturesRepository.creaturesLevel1
+        creatureRepository.creaturesLevel1
             .skipWhile {
                 it.count() == 0
             }
