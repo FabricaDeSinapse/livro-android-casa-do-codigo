@@ -8,14 +8,14 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.extensions.rx.CompositeDisposableExtensions.plusAssign
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.CreatureRepository
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.CreaturesRepository
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.UserRepository
 import javax.inject.Inject
 
 @HiltViewModel
 class NavigationViewModel @Inject constructor(
-    userRepository: UserRepository,
-    creatureRepository: CreatureRepository
+        userRepository: UserRepository,
+        creaturesRepository: CreaturesRepository
 ) : ViewModel() {
     private val _isReady = MutableLiveData<Boolean>()
     val isReady: LiveData<Boolean>
@@ -31,7 +31,7 @@ class NavigationViewModel @Inject constructor(
         composite +=
             Observable.combineLatest(
                 userRepository.user,
-                creatureRepository.creatures
+                creaturesRepository.creatures
             ) { _, creatures ->
                 creatures.count() > 0
             }.subscribe {

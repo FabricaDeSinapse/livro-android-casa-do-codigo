@@ -8,13 +8,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.extensions.rx.CompositeDisposableExtensions.plusAssign
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.CreatureRepository
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.CreaturesRepository
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.UserCreatureRepository
 import javax.inject.Inject
 
 @HiltViewModel
 class CreatureViewModel @Inject constructor(
-        private val creatureRepository: CreatureRepository,
+        private val creaturesRepository: CreaturesRepository,
         private val userCreatureRepository: UserCreatureRepository
 ) : ViewModel() {
     val number = MutableLiveData<Long>()
@@ -27,7 +27,7 @@ class CreatureViewModel @Inject constructor(
     private val composite = CompositeDisposable()
 
     fun loadCreature(creatureId: Long) {
-        composite += creatureRepository
+        composite += creaturesRepository
                 .findByNumber(creatureId)
                 .subscribe {
                     _creature.postValue(it)

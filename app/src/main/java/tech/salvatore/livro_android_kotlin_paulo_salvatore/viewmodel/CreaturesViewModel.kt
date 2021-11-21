@@ -8,13 +8,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.extensions.rx.CompositeDisposableExtensions.plusAssign
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.CreatureRepository
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.CreaturesRepository
 import javax.inject.Inject
 
 @HiltViewModel
 class CreaturesViewModel @Inject constructor(
     application: Application,
-    repository: CreatureRepository
+    repository: CreaturesRepository
 ) : AndroidViewModel(application) {
     private val _creatures = MutableLiveData<List<Creature>>()
 
