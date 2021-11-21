@@ -32,6 +32,10 @@
         <variable
             name="onAction"
             type="Function0&lt;Unit>" />
+
+        <variable
+            name="actionAvailable"
+            type="java.lang.Boolean" />
     </data>
 
     <TableRow>
@@ -114,7 +118,8 @@
                 layout="@layout/creatures_action_icon_component"
                 app:icon="@{actionIcon}"
                 app:name="@{name}"
-                app:onClick="@{onAction}" />
+                app:onClick="@{onAction}"
+                app:onClickAvailable="@{actionAvailable != null ? actionAvailable : false}" />
         </LinearLayout>
 
     </TableRow>

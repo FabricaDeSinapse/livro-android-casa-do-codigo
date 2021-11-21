@@ -290,6 +290,7 @@
                     app:needIcon="@{@drawable/icon_hungry}"
                     app:needTitle="@{@string/hungry}"
                     app:onAction="@{viewModel.feed}"
+                    app:actionAvailable="@{viewModel.creature.canFeed}"
                     app:percentage="@{viewModel.creature.foodPercentage}" />
 
                 <include
@@ -299,6 +300,7 @@
                     app:needIcon="@{@drawable/icon_strength}"
                     app:needTitle="@{@string/strength}"
                     app:onAction="@{viewModel.train}"
+                    app:actionAvailable="@{viewModel.creature.canTrain}"
                     app:percentage="@{viewModel.creature.strengthPercentage}" />
 
                 <include
@@ -308,6 +310,7 @@
                     app:needIcon="@{@drawable/icon_humor}"
                     app:needTitle="@{@string/humor}"
                     app:onAction="@{viewModel.play}"
+                    app:actionAvailable="@{viewModel.creature.canPlay}"
                     app:percentage="@{viewModel.creature.humorPercentage}" />
 
             </TableLayout>
