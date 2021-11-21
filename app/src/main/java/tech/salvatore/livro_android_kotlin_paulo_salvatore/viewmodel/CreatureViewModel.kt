@@ -10,12 +10,14 @@ import tech.salvatore.livro_android_kotlin_paulo_salvatore.extensions.rx.Composi
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.CreaturesRepository
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.UserCreatureRepository
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.UserRepository
 import javax.inject.Inject
 
 @HiltViewModel
 class CreatureViewModel @Inject constructor(
         private val creaturesRepository: CreaturesRepository,
-        private val userCreatureRepository: UserCreatureRepository
+        private val userCreatureRepository: UserCreatureRepository,
+        private val userRepository: UserRepository,
 ) : ViewModel() {
     val number = MutableLiveData<Long>()
 
@@ -35,7 +37,16 @@ class CreatureViewModel @Inject constructor(
     }
 
     val feed: Function0<Unit> = {
-        Log.d("CREATURE", "Feed creature")
+        composite += userRepository.user
+                .flatMapSingle {
+                    userCreatureRepository.feed(it.id, creature.value!!)
+                }.doOnNext {
+                    Log.d("CREATURE_VIEW_MODEL", "Criatura atualizada")
+                }.subscribe {
+                    _creature.postValue(it)
+                }
+        // TODO: Talvez aplicar dispose direto?
+//                .dispose()
     }
 
     /*
