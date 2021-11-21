@@ -36,9 +36,9 @@ class CreaturesViewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val safeArgs: CreaturesViewFragmentArgs by navArgs()
-        val creatureId = safeArgs.creatureNumber
+        val creatureNumber = safeArgs.creatureNumber
 
-        viewModel.loadCreature(creatureId)
+        viewModel.loadCreature(creatureNumber)
 
         binding.viewModel = viewModel
 

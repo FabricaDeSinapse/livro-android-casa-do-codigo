@@ -34,6 +34,13 @@ class UserCreatureLocalDataSource @Inject constructor(
                         toCreatureDomain(it)
                     }
 
+    fun findByUserIdAndCreatureNumber(userId: Long, creatureNumber: Long): Single<Creature> =
+            userCreatureDao
+                    .findByUserIdAndCreatureNumber(userId, creatureNumber)
+                    .flatMap {
+                        toCreatureDomain(it)
+                    }
+
     fun update(userId: Long, creature: Creature): Single<Creature> =
             userCreatureDao
                     .findByUserIdAndCreatureNumber(userId, creature.number)

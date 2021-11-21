@@ -16,6 +16,10 @@ class UserCreatureRepository @Inject constructor(
             localDataSource.create(userId, creatureNumber)
                     .subscribeOn(Schedulers.io())
 
+    fun findByUserIdAndCreatureNumber(userId: Long, creatureNumber: Long): Single<Creature> =
+            localDataSource.findByUserIdAndCreatureNumber(userId, creatureNumber)
+                    .subscribeOn(Schedulers.io())
+
     fun feed(userId: Long, creature: Creature): Single<Creature> =
             Single
                     .just(creature)

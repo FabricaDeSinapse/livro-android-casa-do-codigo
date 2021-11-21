@@ -28,9 +28,11 @@ class CreatureViewModel @Inject constructor(
 
     private val composite = CompositeDisposable()
 
-    fun loadCreature(creatureId: Long) {
-        composite += creaturesRepository
-                .findByNumber(creatureId)
+    fun loadCreature(creatureNumber: Long) {
+        composite += userRepository.user
+                .flatMapSingle {
+                    userCreatureRepository.findByUserIdAndCreatureNumber(it.id, creatureNumber)
+                }
                 .subscribe {
                     _creature.postValue(it)
                 }
