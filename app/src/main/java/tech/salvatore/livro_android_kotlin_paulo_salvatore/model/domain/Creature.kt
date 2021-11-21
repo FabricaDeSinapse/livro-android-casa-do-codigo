@@ -46,7 +46,7 @@ data class Creature(
     // Status' percentages
 
     private val secondsSinceLastFeed: Long
-        get() = DateUtils.currentTimestamp() - lastFeed
+        get() = DateUtils.currentTimestamp - lastFeed
 
     val foodPercentage: Int
         get() = min(secondsSinceLastFeed * 100 / (Config.maxHungry * 60), 100L).toInt()
