@@ -11,7 +11,7 @@ object Config {
     const val maxHumor = 5
 
     // Experience
-    const val experienceOnFeed = 10
-    const val experienceOnTrain = 30
-    const val experienceOnPlay = 30
+    const val experienceOnFeed = 10L
+    const val experienceOnTrain = 30L
+    const val experienceOnPlay = 30L
 }

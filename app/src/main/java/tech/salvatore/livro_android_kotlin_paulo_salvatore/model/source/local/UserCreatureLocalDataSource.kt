@@ -46,6 +46,8 @@ class UserCreatureLocalDataSource @Inject constructor(
                     .findByUserIdAndCreatureNumber(userId, creature.number)
                     .map {
                         it.copy(
+                                level = creature.level,
+                                experience = creature.experience,
                                 strength = creature.strength,
                                 humor = creature.humor,
                                 lastFeed = creature.lastFeed,
@@ -89,8 +91,8 @@ class UserCreatureLocalDataSource @Inject constructor(
                         number = this.creatureNumber,
                         name = creature.name,
                         imageUrl = creature.imageUrl,
-                        level = creature.level,
-                        experience = creature.experience,
+                        level = this.level,
+                        experience = this.experience,
                         strength = this.strength,
                         humor = this.humor,
                         lastFeed = this.lastFeed,

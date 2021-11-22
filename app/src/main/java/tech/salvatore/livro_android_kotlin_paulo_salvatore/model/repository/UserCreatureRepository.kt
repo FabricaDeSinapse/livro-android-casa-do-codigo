@@ -8,6 +8,7 @@ import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.Us
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.utils.DateUtils
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.math.min
 
 @Singleton
 class UserCreatureRepository @Inject constructor(
@@ -26,12 +27,67 @@ class UserCreatureRepository @Inject constructor(
                     .just(creature)
                     .map {
                         it.copy(
-                                experience = it.experience + Config.experienceOnFeed,
                                 lastFeed = DateUtils.currentTimestamp,
                         )
+                    }
+                    .map {
+                        it.addExperience(Config.experienceOnFeed)
                     }
                     .flatMap {
                         localDataSource.update(userId, it)
                     }
                     .subscribeOn(Schedulers.io())
+
+    fun train(userId: Long, creature: Creature): Single<Creature> =
+            Single
+                    .just(creature)
+                    .map {
+                        it.copy(
+                                strength = min(it.strength + 1, Config.maxStrength),
+                                lastTrain = DateUtils.currentTimestamp,
+                        )
+                    }
+                    .map {
+                        it.addExperience(Config.experienceOnTrain)
+                    }
+                    .flatMap {
+                        localDataSource.update(userId, it)
+                    }
+                    .subscribeOn(Schedulers.io())
+
+    fun play(userId: Long, creature: Creature): Single<Creature> =
+            Single
+                    .just(creature)
+                    .map {
+                        it.copy(
+                                humor = min(it.humor + 1, Config.maxHumor),
+                                lastPlay = DateUtils.currentTimestamp,
+                        )
+                    }
+                    .map {
+                        it.addExperience(Config.experienceOnPlay)
+                    }
+                    .flatMap {
+                        localDataSource.update(userId, it)
+                    }
+                    .subscribeOn(Schedulers.io())
+
+    private fun Creature.addExperience(amount: Long): Creature {
+        val creature = if (experience + amount >= experienceToNextLevel) {
+            copy(
+                    experience = (experience + amount) - experienceToNextLevel,
+                    level = level + 1
+            )
+        } else {
+            copy(
+                    experience = experience + amount
+            )
+        }
+
+        if (creature.experience >= creature.experienceToNextLevel) {
+            return creature.addExperience(creature.experience - creature.experienceToNextLevel)
+        }
+
+        return creature
+    }
 }

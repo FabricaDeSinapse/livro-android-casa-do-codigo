@@ -14,6 +14,9 @@ data class UserCreatureEntity(
     val strength: Int,
     val humor: Int,
 
+    val level: Long = 1,
+    val experience: Long = 0,
+
     var lastFeed: Long = 0,
     var lastTrain: Long = 0,
     var lastPlay: Long = 0,

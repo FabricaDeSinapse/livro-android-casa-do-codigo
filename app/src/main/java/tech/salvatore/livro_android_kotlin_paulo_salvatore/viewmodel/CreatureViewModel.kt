@@ -1,6 +1,5 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -42,18 +41,26 @@ class CreatureViewModel @Inject constructor(
         composite += userRepository.user
                 .flatMapSingle {
                     userCreatureRepository.feed(it.id, creature.value!!)
-                }.doOnNext {
-                    Log.d("CREATURE_VIEW_MODEL", "Criatura atualizada")
+                }.subscribe {
+                    _creature.postValue(it)
+                }
+    }
+
+    val train: Function0<Unit> = {
+        composite += userRepository.user
+                .flatMapSingle {
+                    userCreatureRepository.train(it.id, creature.value!!)
                 }.subscribe {
                     _creature.postValue(it)
                 }
     }
 
     val play: Function0<Unit> = {
-        Log.d("CREATURE", "Play with creature")
-    }
-
-    val train: Function0<Unit> = {
-        Log.d("CREATURE", "Train creature")
+        composite += userRepository.user
+                .flatMapSingle {
+                    userCreatureRepository.play(it.id, creature.value!!)
+                }.subscribe {
+                    _creature.postValue(it)
+                }
     }
 }
