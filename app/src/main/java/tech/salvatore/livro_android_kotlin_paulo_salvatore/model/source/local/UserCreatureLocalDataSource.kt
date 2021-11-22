@@ -44,18 +44,18 @@ class UserCreatureLocalDataSource @Inject constructor(
     fun update(userId: Long, creature: Creature): Single<Creature> =
             userCreatureDao
                     .findByUserIdAndCreatureNumber(userId, creature.number)
+                    .map {
+                        it.copy(
+                                strength = creature.strength,
+                                humor = creature.humor,
+                                lastFeed = creature.lastFeed,
+                                lastTrain = creature.lastTrain,
+                                lastPlay = creature.lastPlay,
+                        )
+                    }
                     .flatMap { userCreatureEntity ->
                         Single
                                 .just(userCreatureEntity)
-                                .map {
-                                    it.copy(
-                                            strength = creature.strength,
-                                            humor = creature.humor,
-                                            lastFeed = creature.lastFeed,
-                                            lastTrain = creature.lastTrain,
-                                            lastPlay = creature.lastPlay,
-                                    )
-                                }
                                 .flatMap {
                                     userCreatureDao.update(it)
                                 }
