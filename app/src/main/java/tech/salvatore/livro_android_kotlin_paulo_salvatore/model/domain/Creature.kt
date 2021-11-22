@@ -17,10 +17,8 @@ data class Creature(
         val type1: CreatureType? = null,
         val type2: CreatureType? = null,
 
-        // TODO: Sobe 1 sempre que treina, só pode treinar 1x a cada 2 minutos
         val strength: Int = 0,
 
-        // TODO: Sobe 1 sempre que brinca, só pode brincar 1x a cada 3 minutos
         val humor: Int = 0,
 
         val lastFeed: Long = 0,
@@ -42,10 +40,18 @@ data class Creature(
     private val hungry: Int
         get() = foodPercentage * Config.maxHungry / 100
 
-    // Status' percentages
+    // Status Last Times
 
     private val secondsSinceLastFeed: Long
         get() = DateUtils.currentTimestamp - lastFeed
+
+    private val secondsSinceLastTrain: Long
+        get() = DateUtils.currentTimestamp - lastTrain
+
+    private val secondsSinceLastPlay: Long
+        get() = DateUtils.currentTimestamp - lastPlay
+
+    // Status percentages
 
     val foodPercentage: Int
         get() = min(secondsSinceLastFeed * 100 / (Config.maxHungry * 60), 100L).toInt()
@@ -59,6 +65,6 @@ data class Creature(
     // Actions available
 
     val canFeed: Boolean get() = hungry == 4 || hungry == 5
-    val canTrain: Boolean get() = strength < 5
-    val canPlay: Boolean get() = humor < 5
+    val canTrain: Boolean get() = strength < 5 && secondsSinceLastTrain > Config.delayBeforeCanTrain
+    val canPlay: Boolean get() = humor < 5 && secondsSinceLastPlay > Config.delayBeforeCanPlay
 }

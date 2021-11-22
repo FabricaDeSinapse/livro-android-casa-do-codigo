@@ -1,16 +1,16 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.config
 
 object Config {
-    // Hungry consts
+    // Max Values
     const val maxHungry = 5
-
-    // Strength
     const val maxStrength = 5
-
-    // Humor
     const val maxHumor = 5
 
-    // Experience
+    // Wait for next action
+    const val delayBeforeCanTrain = 2 * 60 // 2 minutes
+    const val delayBeforeCanPlay = 3 * 60 // 3 minutes
+
+    // Experience on action
     const val experienceOnFeed = 10L
     const val experienceOnTrain = 30L
     const val experienceOnPlay = 30L
