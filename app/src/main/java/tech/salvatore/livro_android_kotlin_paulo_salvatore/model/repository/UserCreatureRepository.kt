@@ -2,6 +2,7 @@ package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository
 
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.config.Config
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.local.UserCreatureLocalDataSource
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.utils.DateUtils
@@ -24,7 +25,10 @@ class UserCreatureRepository @Inject constructor(
             Single
                     .just(creature)
                     .map {
-                        it.copy(lastFeed = DateUtils.currentTimestamp)
+                        it.copy(
+                                experience = it.experience + Config.experienceOnFeed,
+                                lastFeed = DateUtils.currentTimestamp,
+                        )
                     }
                     .flatMap {
                         localDataSource.update(userId, it)

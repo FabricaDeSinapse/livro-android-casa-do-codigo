@@ -47,15 +47,7 @@ class CreatureViewModel @Inject constructor(
                 }.subscribe {
                     _creature.postValue(it)
                 }
-        // TODO: Talvez aplicar dispose direto?
-//                .dispose()
     }
-
-    /*
-    feed creature
-    add exp to creature (update on db)
-    set lastFeed as current time
-    */
 
     val play: Function0<Unit> = {
         Log.d("CREATURE", "Play with creature")
