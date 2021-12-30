@@ -20,4 +20,6 @@ data class UserCreatureEntity(
     var lastFeed: Long = 0,
     var lastTrain: Long = 0,
     var lastPlay: Long = 0,
+
+    val canInteract: Boolean = true,
 )

@@ -90,4 +90,34 @@ class UserCreatureRepository @Inject constructor(
 
         return creature
     }
+
+    fun evolve(userId: Long, creature: Creature): Single<Creature> {
+        if (creature.evolveTo == null) {
+            return Single.never()
+        }
+
+        return Single
+            .just(creature)
+            .map {
+                it.copy(
+                    canInteract = false,
+                )
+            }
+            .flatMap {
+                localDataSource.update(userId, it)
+            }
+            .flatMap {
+                localDataSource.create(userId, creature.evolveTo.number)
+            }
+            .map {
+                creature.evolveTo.copy(
+                    experience = it.experience,
+                    level = it.level,
+                )
+            }
+            .flatMap {
+                localDataSource.update(userId, it)
+            }
+            .subscribeOn(Schedulers.io())
+    }
 }

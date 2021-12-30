@@ -7,14 +7,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.extensions.rx.CompositeDisposableExtensions.plusAssign
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.CreaturesRepository
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.UserCreatureRepository
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.UserRepository
 import javax.inject.Inject
 
 @HiltViewModel
 class CreatureViewModel @Inject constructor(
-    private val creaturesRepository: CreaturesRepository,
     private val userCreatureRepository: UserCreatureRepository,
     private val userRepository: UserRepository,
 ) : ViewModel() {
@@ -65,5 +63,11 @@ class CreatureViewModel @Inject constructor(
     }
 
     fun evolve() {
+        composite += userRepository.user
+            .flatMapSingle {
+                userCreatureRepository.evolve(it.id, creature.value!!)
+            }.subscribe {
+                _creature.postValue(it)
+            }
     }
 }

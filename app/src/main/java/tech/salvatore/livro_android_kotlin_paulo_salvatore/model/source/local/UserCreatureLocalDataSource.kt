@@ -53,6 +53,7 @@ class UserCreatureLocalDataSource @Inject constructor(
                     lastFeed = creature.lastFeed,
                     lastTrain = creature.lastTrain,
                     lastPlay = creature.lastPlay,
+                    canInteract = creature.canInteract,
                 )
             }
             .flatMap { userCreatureEntity ->
@@ -73,7 +74,7 @@ class UserCreatureLocalDataSource @Inject constructor(
             userId = userId,
             creatureNumber = creatureNumber,
             strength = 0,
-            humor = 0
+            humor = 0,
         )
 
     fun toCreatureDomain(userCreatureEntity: UserCreatureEntity): Single<Creature> =
@@ -100,7 +101,9 @@ class UserCreatureLocalDataSource @Inject constructor(
                 humor = this.humor,
                 lastFeed = this.lastFeed,
                 lastTrain = this.lastTrain,
-                lastPlay = this.lastPlay
+                lastPlay = this.lastPlay,
+                evolveTo = creature.evolveTo,
+                canInteract = this.canInteract,
             )
         }
 }

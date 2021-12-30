@@ -53,7 +53,6 @@ class CreatureLocalDataSource @Inject constructor(
             name = name,
             imageUrl = imageUrl,
             evolveToNumber = evolveTo?.number,
-            canInteract = canInteract,
         )
 
     private fun CreatureEntity.toDomain(): Single<Creature> {
@@ -71,7 +70,6 @@ class CreatureLocalDataSource @Inject constructor(
                 name = name,
                 imageUrl = imageUrl,
                 evolveTo = evolveTo.value,
-                canInteract = canInteract,
             )
         }
     }
