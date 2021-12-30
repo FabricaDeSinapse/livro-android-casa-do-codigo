@@ -121,6 +121,7 @@
                 android:id="@+id/linearLayoutHints"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:visibility="@{viewModel.creature.canEvolve ? View.GONE : View.VISIBLE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/barrier2">
@@ -248,6 +249,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:stretchColumns="0"
+                android:visibility="@{viewModel.creature.canEvolve ? View.GONE : View.VISIBLE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/barrier5">
@@ -285,35 +287,54 @@
 
                 <include
                     layout="@layout/creatures_needs_actions_component"
+                    android:visibility="@{viewModel.creature.canEvolve ? View.GONE : View.VISIBLE}"
+                    app:actionAvailable="@{viewModel.creature.canFeed}"
                     app:actionIcon="@{@drawable/icon_feed}"
                     app:name="@{viewModel.creature.name}"
                     app:needIcon="@{@drawable/icon_hungry}"
                     app:needTitle="@{@string/hungry}"
                     app:onAction="@{viewModel.feed}"
-                    app:actionAvailable="@{viewModel.creature.canFeed}"
                     app:percentage="@{viewModel.creature.foodPercentage}" />
 
                 <include
                     layout="@layout/creatures_needs_actions_component"
+                    android:visibility="@{viewModel.creature.canEvolve ? View.GONE : View.VISIBLE}"
+                    app:actionAvailable="@{viewModel.creature.canTrain}"
                     app:actionIcon="@{@drawable/icon_train}"
                     app:name="@{viewModel.creature.name}"
                     app:needIcon="@{@drawable/icon_strength}"
                     app:needTitle="@{@string/strength}"
                     app:onAction="@{viewModel.train}"
-                    app:actionAvailable="@{viewModel.creature.canTrain}"
                     app:percentage="@{viewModel.creature.strengthPercentage}" />
 
                 <include
                     layout="@layout/creatures_needs_actions_component"
+                    android:visibility="@{viewModel.creature.canEvolve ? View.GONE : View.VISIBLE}"
+                    app:actionAvailable="@{viewModel.creature.canPlay}"
                     app:actionIcon="@{@drawable/icon_play}"
                     app:name="@{viewModel.creature.name}"
                     app:needIcon="@{@drawable/icon_humor}"
                     app:needTitle="@{@string/humor}"
                     app:onAction="@{viewModel.play}"
-                    app:actionAvailable="@{viewModel.creature.canPlay}"
                     app:percentage="@{viewModel.creature.humorPercentage}" />
 
             </TableLayout>
+
+            <Button
+                android:onClick="@{() -> viewModel.evolve()}"
+                android:id="@+id/btEvolve"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/evolve"
+                android:visibility="@{viewModel.creature.canEvolve ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrier5"
+                tools:visibility="gone" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

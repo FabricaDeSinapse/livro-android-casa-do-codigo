@@ -64,6 +64,8 @@ data class Creature(
 
     // Actions available
 
+    val canEvolve: Boolean get() = strength == 5 && humor == 5
+
     val canFeed: Boolean get() = hungry == 4 || hungry == 5
     val canTrain: Boolean get() = strength < 5 && secondsSinceLastTrain > Config.delayBeforeCanTrain
     val canPlay: Boolean get() = humor < 5 && secondsSinceLastPlay > Config.delayBeforeCanPlay

@@ -63,4 +63,7 @@ class CreatureViewModel @Inject constructor(
                 _creature.postValue(it)
             }
     }
+
+    fun evolve() {
+    }
 }
