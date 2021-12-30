@@ -19,15 +19,15 @@ class CreaturesViewFragment : Fragment() {
     private val viewModel: CreatureViewModel by viewModels()
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?,
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?,
     ): View {
         binding =
-                CreaturesViewFragmentBinding.inflate(
-                        layoutInflater,
-                        container,
-                        false
-                )
+            CreaturesViewFragmentBinding.inflate(
+                layoutInflater,
+                container,
+                false
+            )
 
         return binding.root
     }

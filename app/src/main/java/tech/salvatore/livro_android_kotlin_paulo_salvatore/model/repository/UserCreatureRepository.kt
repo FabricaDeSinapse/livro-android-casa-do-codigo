@@ -12,75 +12,75 @@ import kotlin.math.min
 
 @Singleton
 class UserCreatureRepository @Inject constructor(
-        private val localDataSource: UserCreatureLocalDataSource,
+    private val localDataSource: UserCreatureLocalDataSource,
 ) {
     fun create(userId: Long, creatureNumber: Long): Single<Creature> =
-            localDataSource.create(userId, creatureNumber)
-                    .subscribeOn(Schedulers.io())
+        localDataSource.create(userId, creatureNumber)
+            .subscribeOn(Schedulers.io())
 
     fun findByUserIdAndCreatureNumber(userId: Long, creatureNumber: Long): Single<Creature> =
-            localDataSource.findByUserIdAndCreatureNumber(userId, creatureNumber)
-                    .subscribeOn(Schedulers.io())
+        localDataSource.findByUserIdAndCreatureNumber(userId, creatureNumber)
+            .subscribeOn(Schedulers.io())
 
     fun feed(userId: Long, creature: Creature): Single<Creature> =
-            Single
-                    .just(creature)
-                    .map {
-                        it.copy(
-                                lastFeed = DateUtils.currentTimestamp,
-                        )
-                    }
-                    .map {
-                        it.addExperience(Config.experienceOnFeed)
-                    }
-                    .flatMap {
-                        localDataSource.update(userId, it)
-                    }
-                    .subscribeOn(Schedulers.io())
+        Single
+            .just(creature)
+            .map {
+                it.copy(
+                    lastFeed = DateUtils.currentTimestamp,
+                )
+            }
+            .map {
+                it.addExperience(Config.experienceOnFeed)
+            }
+            .flatMap {
+                localDataSource.update(userId, it)
+            }
+            .subscribeOn(Schedulers.io())
 
     fun train(userId: Long, creature: Creature): Single<Creature> =
-            Single
-                    .just(creature)
-                    .map {
-                        it.copy(
-                                strength = min(it.strength + 1, Config.maxStrength),
-                                lastTrain = DateUtils.currentTimestamp,
-                        )
-                    }
-                    .map {
-                        it.addExperience(Config.experienceOnTrain)
-                    }
-                    .flatMap {
-                        localDataSource.update(userId, it)
-                    }
-                    .subscribeOn(Schedulers.io())
+        Single
+            .just(creature)
+            .map {
+                it.copy(
+                    strength = min(it.strength + 1, Config.maxStrength),
+                    lastTrain = DateUtils.currentTimestamp,
+                )
+            }
+            .map {
+                it.addExperience(Config.experienceOnTrain)
+            }
+            .flatMap {
+                localDataSource.update(userId, it)
+            }
+            .subscribeOn(Schedulers.io())
 
     fun play(userId: Long, creature: Creature): Single<Creature> =
-            Single
-                    .just(creature)
-                    .map {
-                        it.copy(
-                                humor = min(it.humor + 1, Config.maxHumor),
-                                lastPlay = DateUtils.currentTimestamp,
-                        )
-                    }
-                    .map {
-                        it.addExperience(Config.experienceOnPlay)
-                    }
-                    .flatMap {
-                        localDataSource.update(userId, it)
-                    }
-                    .subscribeOn(Schedulers.io())
+        Single
+            .just(creature)
+            .map {
+                it.copy(
+                    humor = min(it.humor + 1, Config.maxHumor),
+                    lastPlay = DateUtils.currentTimestamp,
+                )
+            }
+            .map {
+                it.addExperience(Config.experienceOnPlay)
+            }
+            .flatMap {
+                localDataSource.update(userId, it)
+            }
+            .subscribeOn(Schedulers.io())
 
     private fun Creature.addExperience(amount: Long): Creature {
         val creature = if (experience + amount >= experienceToNextLevel) {
             copy(
-                    experience = (experience + amount) - experienceToNextLevel,
-                    level = level + 1
+                experience = (experience + amount) - experienceToNextLevel,
+                level = level + 1
             )
         } else {
             copy(
-                    experience = experience + amount
+                experience = experience + amount
             )
         }
 
