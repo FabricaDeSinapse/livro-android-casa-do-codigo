@@ -5,27 +5,27 @@ import tech.salvatore.livro_android_kotlin_paulo_salvatore.utils.DateUtils
 import kotlin.math.min
 
 data class Creature(
-        val number: Long,
-        val name: String,
+    val number: Long,
+    val name: String,
 
-        val imageUrl: String,
+    val imageUrl: String,
 
-        val level: Long = 1,
+    val level: Long = 1,
 
-        val experience: Long = 0,
+    val experience: Long = 0,
 
-        val type1: CreatureType? = null,
-        val type2: CreatureType? = null,
+    val type1: CreatureType? = null,
+    val type2: CreatureType? = null,
 
-        val strength: Int = 0,
+    val strength: Int = 0,
 
-        val humor: Int = 0,
+    val humor: Int = 0,
 
-        val lastFeed: Long = 0,
-        val lastTrain: Long = 0,
-        val lastPlay: Long = 0,
+    val lastFeed: Long = 0,
+    val lastTrain: Long = 0,
+    val lastPlay: Long = 0,
 
-        val evolveTo: Creature? = null,
+    val evolveTo: Creature? = null,
 ) {
     // Experience
 

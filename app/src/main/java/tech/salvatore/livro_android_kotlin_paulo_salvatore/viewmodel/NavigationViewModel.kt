@@ -14,8 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NavigationViewModel @Inject constructor(
-        userRepository: UserRepository,
-        creaturesRepository: CreaturesRepository
+    userRepository: UserRepository,
+    creaturesRepository: CreaturesRepository
 ) : ViewModel() {
     private val _isReady = MutableLiveData<Boolean>()
     val isReady: LiveData<Boolean>

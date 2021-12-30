@@ -14,9 +14,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CreatureViewModel @Inject constructor(
-        private val creaturesRepository: CreaturesRepository,
-        private val userCreatureRepository: UserCreatureRepository,
-        private val userRepository: UserRepository,
+    private val creaturesRepository: CreaturesRepository,
+    private val userCreatureRepository: UserCreatureRepository,
+    private val userRepository: UserRepository,
 ) : ViewModel() {
     val number = MutableLiveData<Long>()
 
@@ -29,38 +29,38 @@ class CreatureViewModel @Inject constructor(
 
     fun loadCreature(creatureNumber: Long) {
         composite += userRepository.user
-                .flatMapSingle {
-                    userCreatureRepository.findByUserIdAndCreatureNumber(it.id, creatureNumber)
-                }
-                .subscribe {
-                    _creature.postValue(it)
-                }
+            .flatMapSingle {
+                userCreatureRepository.findByUserIdAndCreatureNumber(it.id, creatureNumber)
+            }
+            .subscribe {
+                _creature.postValue(it)
+            }
     }
 
     val feed: Function0<Unit> = {
         composite += userRepository.user
-                .flatMapSingle {
-                    userCreatureRepository.feed(it.id, creature.value!!)
-                }.subscribe {
-                    _creature.postValue(it)
-                }
+            .flatMapSingle {
+                userCreatureRepository.feed(it.id, creature.value!!)
+            }.subscribe {
+                _creature.postValue(it)
+            }
     }
 
     val train: Function0<Unit> = {
         composite += userRepository.user
-                .flatMapSingle {
-                    userCreatureRepository.train(it.id, creature.value!!)
-                }.subscribe {
-                    _creature.postValue(it)
-                }
+            .flatMapSingle {
+                userCreatureRepository.train(it.id, creature.value!!)
+            }.subscribe {
+                _creature.postValue(it)
+            }
     }
 
     val play: Function0<Unit> = {
         composite += userRepository.user
-                .flatMapSingle {
-                    userCreatureRepository.play(it.id, creature.value!!)
-                }.subscribe {
-                    _creature.postValue(it)
-                }
+            .flatMapSingle {
+                userCreatureRepository.play(it.id, creature.value!!)
+            }.subscribe {
+                _creature.postValue(it)
+            }
     }
 }

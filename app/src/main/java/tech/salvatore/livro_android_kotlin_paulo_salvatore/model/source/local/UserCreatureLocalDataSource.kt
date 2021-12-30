@@ -10,94 +10,97 @@ import javax.inject.Singleton
 
 @Singleton
 class UserCreatureLocalDataSource @Inject constructor(
-        db: AppDatabase,
-        private val creatureLocalDataSource: CreatureLocalDataSource
+    db: AppDatabase,
+    private val creatureLocalDataSource: CreatureLocalDataSource
 ) {
     private val userCreatureDao: UserCreatureDao = db.userCreatureDao()
 
     fun create(userId: Long, creatureNumber: Long): Single<Creature> =
-            Single
-                    .just(
-                            getUserCreatureEntity(userId, creatureNumber)
-                    )
-                    .flatMap {
-                        userCreatureDao.insert(it)
-                    }
-                    .flatMap {
-                        findById(it)
-                    }
+        Single
+            .just(
+                getUserCreatureEntity(userId, creatureNumber)
+            )
+            .flatMap {
+                userCreatureDao.insert(it)
+            }
+            .flatMap {
+                findById(it)
+            }
 
     private fun findById(userCreatureId: Long): Single<Creature> =
-            userCreatureDao
-                    .findById(userCreatureId)
-                    .flatMap {
-                        toCreatureDomain(it)
-                    }
+        userCreatureDao
+            .findById(userCreatureId)
+            .flatMap {
+                toCreatureDomain(it)
+            }
 
     fun findByUserIdAndCreatureNumber(userId: Long, creatureNumber: Long): Single<Creature> =
-            userCreatureDao
-                    .findByUserIdAndCreatureNumber(userId, creatureNumber)
-                    .flatMap {
-                        toCreatureDomain(it)
-                    }
+        userCreatureDao
+            .findByUserIdAndCreatureNumber(userId, creatureNumber)
+            .flatMap {
+                toCreatureDomain(it)
+            }
 
     fun update(userId: Long, creature: Creature): Single<Creature> =
-            userCreatureDao
-                    .findByUserIdAndCreatureNumber(userId, creature.number)
+        userCreatureDao
+            .findByUserIdAndCreatureNumber(userId, creature.number)
+            .map {
+                it.copy(
+                    level = creature.level,
+                    experience = creature.experience,
+                    strength = creature.strength,
+                    humor = creature.humor,
+                    lastFeed = creature.lastFeed,
+                    lastTrain = creature.lastTrain,
+                    lastPlay = creature.lastPlay,
+                )
+            }
+            .flatMap { userCreatureEntity ->
+                Single
+                    .just(userCreatureEntity)
+                    .flatMap {
+                        userCreatureDao.update(it)
+                    }
                     .map {
-                        it.copy(
-                                level = creature.level,
-                                experience = creature.experience,
-                                strength = creature.strength,
-                                humor = creature.humor,
-                                lastFeed = creature.lastFeed,
-                                lastTrain = creature.lastTrain,
-                                lastPlay = creature.lastPlay,
-                        )
+                        toCreatureDomain(userCreatureEntity, creature)
                     }
-                    .flatMap { userCreatureEntity ->
-                        Single
-                                .just(userCreatureEntity)
-                                .flatMap {
-                                    userCreatureDao.update(it)
-                                }
-                                .map {
-                                    toCreatureDomain(userCreatureEntity, creature)
-                                }
-                    }
+            }
 
     // Mapper methods
 
     private fun getUserCreatureEntity(userId: Long, creatureNumber: Long) =
-            UserCreatureEntity(
-                    userId = userId,
-                    creatureNumber = creatureNumber,
-                    strength = 0,
-                    humor = 0
-            )
+        UserCreatureEntity(
+            userId = userId,
+            creatureNumber = creatureNumber,
+            strength = 0,
+            humor = 0
+        )
 
     fun toCreatureDomain(userCreatureEntity: UserCreatureEntity): Single<Creature> =
-            with(userCreatureEntity) {
-                return creatureLocalDataSource
-                        .findByNumber(this.creatureNumber)
-                        .map {
-                            toCreatureDomain(this, it)
-                        }
-            }
+        with(userCreatureEntity) {
+            return creatureLocalDataSource
+                .findByNumber(this.creatureNumber)
+                .map {
+                    toCreatureDomain(this, it)
+                }
+        }
 
-    private fun toCreatureDomain(userCreatureEntity: UserCreatureEntity, creature: Creature): Creature =
-            with(userCreatureEntity) {
-                return Creature(
-                        number = this.creatureNumber,
-                        name = creature.name,
-                        imageUrl = creature.imageUrl,
-                        level = this.level,
-                        experience = this.experience,
-                        strength = this.strength,
-                        humor = this.humor,
-                        lastFeed = this.lastFeed,
-                        lastTrain = this.lastTrain,
-                        lastPlay = this.lastPlay
-                )
-            }
+    private fun toCreatureDomain(
+        userCreatureEntity: UserCreatureEntity,
+        creature: Creature
+    ): Creature =
+        with(userCreatureEntity) {
+            return Creature(
+                number = this.creatureNumber,
+                name = creature.name,
+                imageUrl = creature.imageUrl,
+                level = this.level,
+                experience = this.experience,
+                strength = this.strength,
+                humor = this.humor,
+                lastFeed = this.lastFeed,
+                lastTrain = this.lastTrain,
+                lastPlay = this.lastPlay
+            )
+        }
 }

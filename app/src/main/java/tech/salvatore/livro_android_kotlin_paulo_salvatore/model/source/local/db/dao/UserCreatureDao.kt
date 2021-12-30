@@ -13,7 +13,10 @@ interface UserCreatureDao {
 
     @Transaction
     @Query("SELECT * FROM user_creature WHERE userId = :userId AND creatureNumber = :creatureNumber")
-    fun findByUserIdAndCreatureNumber(userId: Long, creatureNumber: Long): Single<UserCreatureEntity>
+    fun findByUserIdAndCreatureNumber(
+        userId: Long,
+        creatureNumber: Long
+    ): Single<UserCreatureEntity>
 
     @Insert(onConflict = REPLACE)
     fun insert(userCreature: UserCreatureEntity): Single<Long>

@@ -15,9 +15,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CreaturesViewModel @Inject constructor(
-        application: Application,
-        repository: CreaturesRepository,
-        userRepository: UserRepository,
+    application: Application,
+    repository: CreaturesRepository,
+    userRepository: UserRepository,
 ) : AndroidViewModel(application) {
     private val _creatures = MutableLiveData<List<Creature>>()
 
@@ -39,8 +39,8 @@ class CreaturesViewModel @Inject constructor(
 
         // Update creatures own by user
         composite += Observable.combineLatest(
-                userRepository.user,
-                repository.creatures
+            userRepository.user,
+            repository.creatures
         ) { user, creatures ->
             creatures.map { creature ->
                 user.creatures.find { userCreature ->

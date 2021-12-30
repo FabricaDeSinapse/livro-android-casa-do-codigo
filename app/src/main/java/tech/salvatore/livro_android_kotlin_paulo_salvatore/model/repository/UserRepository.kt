@@ -14,30 +14,31 @@ import javax.inject.Singleton
 
 @Singleton
 class UserRepository @Inject constructor(
-        private val localDataSource: UserLocalDataSource,
-        private val userCreatureRepository: UserCreatureRepository,
-        private val creaturesRepository: CreaturesRepository,
+    private val localDataSource: UserLocalDataSource,
+    private val userCreatureRepository: UserCreatureRepository,
+    private val creaturesRepository: CreaturesRepository,
 ) {
     val user: ReplaySubject<User> = ReplaySubject.create(1)
 
     val creaturesOwnByUser: Observable<List<Optional<out Creature>>> =
-            user
-                    .flatMap { user ->
-                        creaturesRepository.creatures.flatMap {
-                            Observable.fromIterable(it)
-                                    .map { creature ->
-                                        if (user.creatures
-                                                        .map { it.number }
-                                                        .contains(creature.number)) {
-                                            Optional(creature)
-                                        } else {
-                                            Optional(null)
-                                        }
-                                    }
-                                    .toList()
-                                    .toObservable()
+        user
+            .flatMap { user ->
+                creaturesRepository.creatures.flatMap {
+                    Observable.fromIterable(it)
+                        .map { creature ->
+                            if (user.creatures
+                                    .map { it.number }
+                                    .contains(creature.number)
+                            ) {
+                                Optional(creature)
+                            } else {
+                                Optional(null)
+                            }
                         }
-                    }
+                        .toList()
+                        .toObservable()
+                }
+            }
 
     val onChooseCreature: PublishSubject<Creature> = PublishSubject.create()
 
@@ -52,37 +53,37 @@ class UserRepository @Inject constructor(
     }
 
     fun chooseCreature(): Observable<Creature> =
-            user
-                    .filter {
-                        it.newCreaturesAvailable > 0
-                    }
-                    .map {
-                        it.copy(newCreaturesAvailable = it.newCreaturesAvailable - 1)
-                    }
-                    .flatMapSingle {
-                        localDataSource.update(it)
-                    }
-                    .flatMap {
-                        addRandomCreature()
-                    }
-                    .doOnNext {
-                        onChooseCreature.onNext(it)
-                    }
-                    .subscribeOn(Schedulers.io())
+        user
+            .filter {
+                it.newCreaturesAvailable > 0
+            }
+            .map {
+                it.copy(newCreaturesAvailable = it.newCreaturesAvailable - 1)
+            }
+            .flatMapSingle {
+                localDataSource.update(it)
+            }
+            .flatMap {
+                addRandomCreature()
+            }
+            .doOnNext {
+                onChooseCreature.onNext(it)
+            }
+            .subscribeOn(Schedulers.io())
 
     private fun addRandomCreature(): Observable<Creature> =
-            user
-                    .flatMap { user ->
-                        creaturesRepository.creaturesLevel1
-                                .skipWhile {
-                                    it.count() == 0
-                                }
-                                .map {
-                                    it.random()
-                                }
-                                .flatMapSingle {
-                                    userCreatureRepository.create(user.id, it.number)
-                                }
+        user
+            .flatMap { user ->
+                creaturesRepository.creaturesLevel1
+                    .skipWhile {
+                        it.count() == 0
                     }
-                    .subscribeOn(Schedulers.io())
+                    .map {
+                        it.random()
+                    }
+                    .flatMapSingle {
+                        userCreatureRepository.create(user.id, it.number)
+                    }
+            }
+            .subscribeOn(Schedulers.io())
 }

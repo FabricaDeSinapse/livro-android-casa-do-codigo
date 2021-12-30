@@ -9,8 +9,8 @@ import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 
 
 class CreaturesListAdapter(
-        private var items: List<Creature?>,
-        private val listener: (Creature) -> Unit,
+    private var items: List<Creature?>,
+    private val listener: (Creature) -> Unit,
 ) : RecyclerView.Adapter<CreaturesListAdapter.ViewHolder>() {
 
     // TODO: replace with notifyItemInserted
@@ -21,11 +21,12 @@ class CreaturesListAdapter(
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(private val binding: CreaturesListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: CreaturesListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bindView(
-                item: Creature?,
-                position: Int,
-                listener: (Creature) -> Unit,
+            item: Creature?,
+            position: Int,
+            listener: (Creature) -> Unit,
         ) = with(itemView) {
             binding.model = item
 
