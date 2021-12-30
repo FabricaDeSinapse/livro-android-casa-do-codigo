@@ -47,14 +47,14 @@ class CreatureLocalDataSource @Inject constructor(
 
     // Mappers methods
 
-    private fun Creature.fromDomain(): CreatureEntity {
-        return CreatureEntity(
+    private fun Creature.fromDomain() =
+        CreatureEntity(
             number = number,
             name = name,
             imageUrl = imageUrl,
-            evolveToNumber = evolveTo?.number
+            evolveToNumber = evolveTo?.number,
+            canInteract = canInteract,
         )
-    }
 
     private fun CreatureEntity.toDomain(): Single<Creature> {
         val evolveToNumber: Single<Optional<Creature>> =
@@ -70,7 +70,8 @@ class CreatureLocalDataSource @Inject constructor(
                 number = number,
                 name = name,
                 imageUrl = imageUrl,
-                evolveTo = evolveTo.value
+                evolveTo = evolveTo.value,
+                canInteract = canInteract,
             )
         }
     }

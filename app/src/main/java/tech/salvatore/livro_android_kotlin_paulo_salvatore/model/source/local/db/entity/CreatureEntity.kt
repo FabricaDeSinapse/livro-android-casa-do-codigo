@@ -20,4 +20,6 @@ data class CreatureEntity(
     val imageUrl: String,
 
     val evolveToNumber: Long?,
+
+    val canInteract: Boolean,
 )

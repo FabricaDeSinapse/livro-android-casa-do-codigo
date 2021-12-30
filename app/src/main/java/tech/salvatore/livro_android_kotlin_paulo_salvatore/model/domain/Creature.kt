@@ -26,6 +26,8 @@ data class Creature(
     val lastPlay: Long = 0,
 
     val evolveTo: Creature? = null,
+
+    val canInteract: Boolean = true,
 ) {
     // Experience
 
@@ -64,9 +66,9 @@ data class Creature(
 
     // Actions available
 
-    val canEvolve: Boolean get() = strength == 5 && humor == 5
+    val canEvolve: Boolean get() = evolveTo != null && strength == 5 && humor == 5
 
-    val canFeed: Boolean get() = hungry == 4 || hungry == 5
-    val canTrain: Boolean get() = strength < 5 && secondsSinceLastTrain > Config.delayBeforeCanTrain
-    val canPlay: Boolean get() = humor < 5 && secondsSinceLastPlay > Config.delayBeforeCanPlay
+    val canFeed: Boolean get() = canInteract && hungry == 4 || hungry == 5
+    val canTrain: Boolean get() = canInteract && strength < 5 && secondsSinceLastTrain > Config.delayBeforeCanTrain
+    val canPlay: Boolean get() = canInteract && humor < 5 && secondsSinceLastPlay > Config.delayBeforeCanPlay
 }

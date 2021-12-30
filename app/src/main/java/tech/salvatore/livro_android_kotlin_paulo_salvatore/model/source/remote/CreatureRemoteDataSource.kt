@@ -38,6 +38,7 @@ class CreatureRemoteDataSource @Inject constructor() {
             name = name,
             imageUrl = image,
             evolveTo = evolveTo?.toDomain(),
+            canInteract = true,
         )
     }
 }
