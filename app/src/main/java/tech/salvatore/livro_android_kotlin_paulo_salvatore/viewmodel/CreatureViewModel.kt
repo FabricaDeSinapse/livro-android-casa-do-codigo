@@ -27,6 +27,7 @@ class CreatureViewModel @Inject constructor(
 
     fun loadCreature(creatureNumber: Long) {
         composite += userRepository.user
+            .take(1)
             .flatMapSingle {
                 userCreatureRepository.findByUserIdAndCreatureNumber(it.id, creatureNumber)
             }
@@ -37,6 +38,7 @@ class CreatureViewModel @Inject constructor(
 
     val feed: Function0<Unit> = {
         composite += userRepository.user
+            .take(1)
             .flatMapSingle {
                 userCreatureRepository.feed(it.id, creature.value!!)
             }.subscribe {
@@ -46,6 +48,7 @@ class CreatureViewModel @Inject constructor(
 
     val train: Function0<Unit> = {
         composite += userRepository.user
+            .take(1)
             .flatMapSingle {
                 userCreatureRepository.train(it.id, creature.value!!)
             }.subscribe {
@@ -55,6 +58,7 @@ class CreatureViewModel @Inject constructor(
 
     val play: Function0<Unit> = {
         composite += userRepository.user
+            .take(1)
             .flatMapSingle {
                 userCreatureRepository.play(it.id, creature.value!!)
             }.subscribe {
@@ -64,6 +68,7 @@ class CreatureViewModel @Inject constructor(
 
     fun evolve() {
         composite += userRepository.user
+            .take(1)
             .flatMapSingle {
                 userCreatureRepository.evolve(it.id, creature.value!!)
             }.subscribe {

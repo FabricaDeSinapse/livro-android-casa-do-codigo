@@ -54,6 +54,7 @@ class UserRepository @Inject constructor(
 
     fun chooseCreature(): Observable<Creature> =
         user
+            .take(1)
             .filter {
                 it.newCreaturesAvailable > 0
             }
@@ -73,6 +74,7 @@ class UserRepository @Inject constructor(
 
     private fun addRandomCreature(): Observable<Creature> =
         user
+            .take(1)
             .flatMap { user ->
                 creaturesRepository.creaturesLevel1
                     .skipWhile {

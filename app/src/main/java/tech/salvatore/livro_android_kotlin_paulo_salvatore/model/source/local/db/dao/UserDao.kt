@@ -16,6 +16,10 @@ interface UserDao {
     @Query("SELECT * FROM user WHERE id = :id")
     fun findById(id: Long): Single<UserEntityWithUserCreatureEntity>
 
+    @Transaction
+    @Query("SELECT * FROM user WHERE id = :id")
+    fun findByIdFlowable(id: Long): Flowable<UserEntityWithUserCreatureEntity>
+
     @Insert(onConflict = REPLACE)
     fun insert(user: UserEntity): Single<Long>
 

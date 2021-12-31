@@ -25,23 +25,32 @@ class UserLocalDataSource @Inject constructor(
             .distinctUntilChanged { old, new ->
                 old.activeUser != null && old.activeUser == new.activeUser
             }
-            .flatMapSingle {
+            .flatMap {
                 when (it.activeUser) {
                     null -> {
-                        create()
+                        create().toFlowable()
                     }
 
                     else -> {
-                        findById(it.activeUser)
+                        findByIdFlowable(it.activeUser)
                     }
                 }
             }
 
-    private fun findById(id: Long) =
-        userDao
-            .findById(id)
+    private fun findById(id: Long): Single<User> =
+        Single.just(id)
+            .flatMap {
+                userDao.findById(id)
+            }
             .flatMap {
                 it.toDomain()
+            }
+
+    private fun findByIdFlowable(id: Long) =
+        userDao
+            .findByIdFlowable(id)
+            .flatMap {
+                it.toDomain().toFlowable()
             }
 
     private fun create(name: String = "Username") =
