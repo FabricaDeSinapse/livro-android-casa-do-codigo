@@ -14,12 +14,15 @@ import dagger.hilt.android.AndroidEntryPoint
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding.CreaturesListFragmentBinding
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreaturesViewModel
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.UserViewModel
 
 @AndroidEntryPoint
 class CreaturesListFragment : Fragment() {
     private lateinit var binding: CreaturesListFragmentBinding
 
     private val creaturesViewModel: CreaturesViewModel by viewModels()
+
+    private val userViewModel: UserViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +42,7 @@ class CreaturesListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.viewModel = creaturesViewModel
+        binding.userViewModel = userViewModel
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
 
