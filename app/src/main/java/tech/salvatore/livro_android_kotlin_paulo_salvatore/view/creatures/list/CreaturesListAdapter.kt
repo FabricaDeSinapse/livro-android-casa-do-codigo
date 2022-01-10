@@ -25,7 +25,6 @@ class CreaturesListAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bindView(
             item: Creature?,
-            position: Int,
             listener: (Creature) -> Unit,
         ) = with(itemView) {
             binding.creature = item
@@ -48,6 +47,6 @@ class CreaturesListAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
-        holder.bindView(item, position, listener)
+        holder.bindView(item, listener)
     }
 }

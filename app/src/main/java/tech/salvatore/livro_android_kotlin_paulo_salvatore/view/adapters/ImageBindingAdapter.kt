@@ -23,12 +23,15 @@ object ImageBindingAdapter {
     @JvmStatic
     @BindingAdapter("enableSilhouette")
     fun enableSilhouette(view: ImageView, value: Boolean) = with(view) {
+        ImageViewCompat.setImageTintMode(
+            this,
+            if (value) PorterDuff.Mode.MULTIPLY else PorterDuff.Mode.DST
+        )
+
         if (value) {
             val black = ContextCompat.getColor(context, R.color.black)
 
             ImageViewCompat.setImageTintList(this, ColorStateList.valueOf(black))
-        } else {
-            ImageViewCompat.setImageTintMode(this, PorterDuff.Mode.DST)
         }
     }
 }

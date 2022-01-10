@@ -61,6 +61,10 @@ class CreaturesListFragment : Fragment() {
         creaturesViewModel.creaturesOwnByUser.observe(this, {
             if (recyclerView.adapter == null) {
                 recyclerView.adapter = CreaturesListAdapter(it) { creature ->
+                    if (!creature.isKnown) {
+                        return@CreaturesListAdapter
+                    }
+
                     val action =
                         CreaturesListFragmentDirections
                             .creaturesViewAction(creature.number)
