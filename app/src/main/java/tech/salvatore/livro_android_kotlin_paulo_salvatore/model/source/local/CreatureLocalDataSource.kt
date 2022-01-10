@@ -17,8 +17,6 @@ class CreatureLocalDataSource @Inject constructor(
 ) {
     private val creatureDao: CreatureDao = db.creatureDao()
 
-    val countCreatures: Flowable<Long> = creatureDao.count()
-
     private val creaturesEntities = creatureDao.findAll()
 
     val creatures: Flowable<List<Creature>> =
@@ -26,8 +24,8 @@ class CreatureLocalDataSource @Inject constructor(
             .flatMap {
                 Flowable
                     .fromIterable(it)
-                    .flatMapSingle {
-                        it.toDomain()
+                    .flatMapSingle { creatureEntity ->
+                        creatureEntity.toDomain()
                     }
                     .toList()
                     .toFlowable()
@@ -52,6 +50,7 @@ class CreatureLocalDataSource @Inject constructor(
             number = number,
             name = name,
             imageUrl = imageUrl,
+            legendary = legendary,
             evolveToNumber = evolveTo?.number,
         )
 
@@ -69,6 +68,7 @@ class CreatureLocalDataSource @Inject constructor(
                 number = number,
                 name = name,
                 imageUrl = imageUrl,
+                legendary = legendary,
                 evolveTo = evolveTo.value,
             )
         }

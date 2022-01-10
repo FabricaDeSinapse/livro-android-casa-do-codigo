@@ -19,5 +19,7 @@ data class CreatureEntity(
 
     val imageUrl: String,
 
+    val legendary: Boolean,
+
     val evolveToNumber: Long?,
 )

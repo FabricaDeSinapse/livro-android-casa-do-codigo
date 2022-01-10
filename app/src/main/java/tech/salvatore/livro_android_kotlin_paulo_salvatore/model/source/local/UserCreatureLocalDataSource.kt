@@ -95,6 +95,7 @@ class UserCreatureLocalDataSource @Inject constructor(
                 number = this.creatureNumber,
                 name = creature.name,
                 imageUrl = creature.imageUrl,
+                legendary = creature.legendary,
                 level = this.level,
                 experience = this.experience,
                 strength = this.strength,

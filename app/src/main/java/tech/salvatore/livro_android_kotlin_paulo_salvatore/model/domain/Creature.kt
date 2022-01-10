@@ -10,6 +10,8 @@ data class Creature(
 
     val imageUrl: String,
 
+    val legendary: Boolean,
+
     val level: Long = 1,
 
     val experience: Long = 0,
