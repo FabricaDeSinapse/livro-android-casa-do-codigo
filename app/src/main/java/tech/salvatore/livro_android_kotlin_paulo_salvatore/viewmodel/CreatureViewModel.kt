@@ -16,8 +16,6 @@ class CreatureViewModel @Inject constructor(
     private val userCreatureRepository: UserCreatureRepository,
     private val userRepository: UserRepository,
 ) : ViewModel() {
-    val number = MutableLiveData<Long>()
-
     private val _creature = MutableLiveData<Creature>()
 
     val creature: LiveData<Creature>
