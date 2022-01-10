@@ -62,7 +62,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageButton
