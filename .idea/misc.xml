@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/app/src/main/res/layout/creatures_choose_fragment.xml" value="0.33" />
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/app/src/main/res/layout/creatures_list_fragment.xml" value="0.17831813576494426" />
-        <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/app/src/main/res/layout/creatures_view_fragment.xml" value="0.17831813576494426" />
+        <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/app/src/main/res/layout/creatures_view_fragment.xml" value="0.33" />
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/app/src/main/res/layout/fragment_splash_screen.xml" value="0.2871376811594203" />
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/app/src/main/res/layout/navigation_activity.xml" value="0.29483695652173914" />
       </map>

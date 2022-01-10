@@ -23,4 +23,7 @@
     <string name="strength">Strength</string>
     <string name="humor">Humor</string>
     <string name="evolve">Evolve!!</string>
+    <string name="monsters_egg">Monster\'s egg</string>
+    <string name="youve_got_an_egg">You\'ve got an egg</string>
+    <string name="click_to_hatch_it">Click to hatch it!</string>
 </resources>
