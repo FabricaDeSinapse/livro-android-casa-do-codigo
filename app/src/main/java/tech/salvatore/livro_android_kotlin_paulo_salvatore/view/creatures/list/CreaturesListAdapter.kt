@@ -28,9 +28,7 @@ class CreaturesListAdapter(
             position: Int,
             listener: (Creature) -> Unit,
         ) = with(itemView) {
-            binding.model = item
-
-            binding.number = position + 1
+            binding.creature = item
 
             item?.let {
                 setOnClickListener { listener(item) }

@@ -10,7 +10,7 @@ data class Creature(
 
     val imageUrl: String,
 
-    val legendary: Boolean,
+    val legendary: Boolean = false,
 
     val level: Long = 1,
 
@@ -30,6 +30,8 @@ data class Creature(
     val evolveTo: Creature? = null,
 
     val canInteract: Boolean = true,
+
+    val isKnown: Boolean = true,
 ) {
     // Experience
 

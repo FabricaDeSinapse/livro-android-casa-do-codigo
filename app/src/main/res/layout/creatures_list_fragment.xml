@@ -18,10 +18,21 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/screen_background"
         tools:context=".view.creatures.list.CreaturesListFragment">
 
+        <ImageView
+            android:id="@+id/ivBackgroundTop"
+            android:layout_width="0dp"
+            android:layout_height="221dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/screen_top_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
         <Button
-            android:onClick="@{() -> userViewModel.chooseCreature()}"
             android:id="@+id/btAddCreature"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -29,6 +40,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
+            android:onClick="@{() -> userViewModel.chooseCreature()}"
             android:text="Add Creature"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +54,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btAddCreature"
-            tools:listitem="" />
+            tools:listitem="@layout/creatures_list_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

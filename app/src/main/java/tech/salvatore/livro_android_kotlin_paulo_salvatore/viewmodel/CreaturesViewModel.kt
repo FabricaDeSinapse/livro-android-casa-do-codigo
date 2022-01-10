@@ -42,10 +42,18 @@ class CreaturesViewModel @Inject constructor(
             userRepository.user,
             repository.creatures
         ) { user, creatures ->
-            creatures.map { creature ->
-                user.creatures.find { userCreature ->
-                    creature.number == userCreature.number
+            creatures.map {
+                val creatureOwnByUser = user.creatures.find { userCreature ->
+                    it.number == userCreature.number
                 }
+
+                creatureOwnByUser
+                    ?: Creature(
+                        number = it.number,
+                        name = "????",
+                        imageUrl = it.imageUrl,
+                        isKnown = false,
+                    )
             }
         }.subscribe {
             _creaturesOwnByUser.postValue(it)
