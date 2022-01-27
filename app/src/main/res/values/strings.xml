@@ -30,4 +30,5 @@
     <string name="click_to_hatch_it">Click to hatch it!</string>
 
     <string name="creature_hatched">%1$s was hatched!!</string>
+    <string name="creature_evolved">%1$s evolved to %2$s!!</string>
 </resources>
