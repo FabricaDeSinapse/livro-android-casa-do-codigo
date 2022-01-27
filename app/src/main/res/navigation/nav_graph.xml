@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/creatures_list_dest">
 
     <fragment
         android:id="@+id/creatures_list_dest"
         android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.list.CreaturesListFragment"
-        android:label="CreaturesListFragment">
+        android:label="CreaturesListFragment"
+        tools:layout="@layout/creatures_list_fragment">
 
         <action
             android:id="@+id/creatures_view_action"
@@ -22,7 +24,8 @@
     <fragment
         android:id="@+id/creatures_choose_dest"
         android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.choose.CreaturesChooseFragment"
-        android:label="CreaturesChooseFragment">
+        android:label="CreaturesChooseFragment"
+        tools:layout="@layout/creatures_choose_fragment">
 
         <action
             android:id="@+id/creatures_choose_to_creatures_added_action"
@@ -33,7 +36,8 @@
     <fragment
         android:id="@+id/creatures_view_dest"
         android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.view.CreaturesViewFragment"
-        android:label="CreaturesViewFragment">
+        android:label="CreaturesViewFragment"
+        tools:layout="@layout/creatures_view_fragment">
 
         <argument
             android:name="creatureNumber"
@@ -47,7 +51,8 @@
     <fragment
         android:id="@+id/creatures_added_dest"
         android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.added.CreaturesAddedFragment"
-        android:label="CreaturesAddedFragment">
+        android:label="CreaturesAddedFragment"
+        tools:layout="@layout/creatures_added_fragment">
 
         <argument
             android:name="creatureNumber"
@@ -57,7 +62,8 @@
     <fragment
         android:id="@+id/creatures_evolving_dest"
         android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.evolving.CreaturesEvolvingFragment"
-        android:label="CreaturesEvolvingFragment">
+        android:label="CreaturesEvolvingFragment"
+        tools:layout="@layout/creatures_evolving_fragment">
 
         <argument
             android:name="creatureNumber"

@@ -13,8 +13,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="250" />
-                            <option name="y" value="-81" />
+                            <option name="x" value="251" />
+                            <option name="y" value="-83" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -31,7 +31,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_creaturesChooseFragment_to_creaturesAddedFragment">
+                            <entry key="creatures_choose_to_creatures_added_action">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -46,8 +46,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="240" />
-                            <option name="y" value="281" />
+                            <option name="x" value="250" />
+                            <option name="y" value="275" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -90,28 +90,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_creaturesViewFragment_to_creaturesEvolvingFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="splashScreenFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-978" />
-                            <option name="y" value="-174" />
-                          </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_splashScreenFragment_to_creatures_list_dest">
+                            <entry key="creatures_view_to_creatures_evolving_action">
                               <value>
                                 <LayoutPositions />
                               </value>
