@@ -7,7 +7,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.extensions.rx.CompositeDisposableExtensions.plusAssign
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.CreaturesRepository
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.UserRepository
 import javax.inject.Inject
@@ -21,10 +20,6 @@ class NavigationViewModel @Inject constructor(
     val isReady: LiveData<Boolean>
         get() = _isReady
 
-    private val _onChooseCreature = MutableLiveData<Creature>()
-    val onChooseCreature: LiveData<Creature>
-        get() = _onChooseCreature
-
     private val composite = CompositeDisposable()
 
     init {
@@ -37,12 +32,6 @@ class NavigationViewModel @Inject constructor(
             }.subscribe {
                 _isReady.postValue(it)
             }
-
-        composite +=
-            userRepository.onChooseCreature
-                .subscribe {
-                    _onChooseCreature.postValue(it)
-                }
     }
 
     override fun onCleared() {

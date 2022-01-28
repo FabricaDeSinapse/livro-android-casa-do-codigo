@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.extensions.rx.CompositeDisposableExtensions.plusAssign
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.User
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.UserRepository
 import javax.inject.Inject
@@ -21,12 +22,22 @@ class UserViewModel @Inject constructor(
     val user: LiveData<User>
         get() = _user
 
+    private val _onChooseCreature = MutableLiveData<Creature>()
+    val onChooseCreature: LiveData<Creature>
+        get() = _onChooseCreature
+
     private val composite = CompositeDisposable()
 
     init {
         composite += repository.user.subscribe {
             _user.postValue(it)
         }
+
+        composite +=
+            repository.onChooseCreature
+                .subscribe {
+                    _onChooseCreature.postValue(it)
+                }
     }
 
     override fun onCleared() {

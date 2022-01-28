@@ -50,7 +50,7 @@ class NavigationActivity : AppCompatActivity() {
             }
         )
 
-        navigationViewModel.onChooseCreature.observe(this) {
+        userViewModel.onChooseCreature.observe(this) {
             if (navController.currentDestination?.id == R.id.creatures_choose_dest) {
                 val action =
                     CreaturesChooseFragmentDirections.creaturesChooseToCreaturesAddedAction(it.number)
