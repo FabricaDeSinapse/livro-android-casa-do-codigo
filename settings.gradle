@@ -1,2 +1,4 @@
 rootProject.name = "Livro_Android_Kotlin_PauloSalvatore"
 include ':project-complete'
+include ':step01-initial'
+include ':my-project'

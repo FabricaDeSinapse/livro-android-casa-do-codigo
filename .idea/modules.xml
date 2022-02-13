@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Livro_Android_Kotlin_PauloSalvatore.iml" filepath="$PROJECT_DIR$/.idea/modules/Livro_Android_Kotlin_PauloSalvatore.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Livro_Android_Kotlin_PauloSalvatore.project-complete.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Livro_Android_Kotlin_PauloSalvatore.project-complete.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/my-project/Livro_Android_Kotlin_PauloSalvatore.my-project.iml" filepath="$PROJECT_DIR$/.idea/modules/my-project/Livro_Android_Kotlin_PauloSalvatore.my-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/project-complete/Livro_Android_Kotlin_PauloSalvatore.project-complete.iml" filepath="$PROJECT_DIR$/.idea/modules/project-complete/Livro_Android_Kotlin_PauloSalvatore.project-complete.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/step01-initial/Livro_Android_Kotlin_PauloSalvatore.step01-initial.iml" filepath="$PROJECT_DIR$/.idea/modules/step01-initial/Livro_Android_Kotlin_PauloSalvatore.step01-initial.iml" />
     </modules>
   </component>
 </project>
