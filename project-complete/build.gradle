@@ -56,8 +56,6 @@ dependencies {
     // Layout
     implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.1")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     // Test
@@ -67,6 +65,15 @@ dependencies {
 
     // Multi Dex
     implementation("androidx.multidex:multidex:2.0.1")
+
+    // Hilt
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
+
+    // ViewModel & LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+    implementation("androidx.hilt:hilt-lifecycle-viewmodel:$hiltVMVersion")
 
     // Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:$navigationVersion")
@@ -85,11 +92,6 @@ dependencies {
     // DataStore
     implementation("androidx.datastore:datastore-preferences:$dataStoreVersion")
     implementation("androidx.datastore:datastore-preferences-rxjava3:$dataStoreVersion")
-
-    // Hilt
-    implementation("com.google.dagger:hilt-android:$hiltVersion")
-    implementation("androidx.hilt:hilt-lifecycle-viewmodel:$hiltVMVersion")
-    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
     // Glide
     implementation("com.github.bumptech.glide:glide:$glideVersion")
