@@ -1,4 +1,4 @@
-package com.oceanbrasil.step02_navigation
+package tech.salvatore.livro_android_kotlin_paulo_salvatore
 
 import org.junit.Test
 
