@@ -12,47 +12,47 @@
         tools:layout="@layout/creatures_list_fragment">
 
         <action
-            android:id="@+id/creatures_view_action"
-            app:destination="@id/creatures_view_dest"
-            app:popUpTo="@id/creatures_view_dest" />
+            android:id="@+id/creature_view_action"
+            app:destination="@id/creature_view_dest"
+            app:popUpTo="@id/creature_view_dest" />
 
         <action
-            android:id="@+id/creatures_choose_action"
-            app:destination="@id/creatures_choose_dest" />
+            android:id="@+id/creature_choose_action"
+            app:destination="@id/creature_choose_dest" />
     </fragment>
 
     <fragment
-        android:id="@+id/creatures_choose_dest"
-        android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.choose.CreaturesChooseFragment"
-        android:label="CreaturesChooseFragment"
-        tools:layout="@layout/creatures_choose_fragment">
+        android:id="@+id/creature_choose_dest"
+        android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.choose.CreatureChooseFragment"
+        android:label="CreatureChooseFragment"
+        tools:layout="@layout/creature_choose_fragment">
 
         <action
-            android:id="@+id/creatures_choose_to_creatures_added_action"
-            app:destination="@id/creatures_added_dest"
+            android:id="@+id/creature_choose_to_creature_added_action"
+            app:destination="@id/creature_added_dest"
             app:popUpTo="@id/creatures_list_dest" />
     </fragment>
 
     <fragment
-        android:id="@+id/creatures_view_dest"
-        android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.view.CreaturesViewFragment"
-        android:label="CreaturesViewFragment"
-        tools:layout="@layout/creatures_view_fragment">
+        android:id="@+id/creature_view_dest"
+        android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.view.CreatureViewFragment"
+        android:label="CreatureViewFragment"
+        tools:layout="@layout/creature_view_fragment">
 
         <argument
             android:name="creatureNumber"
             app:argType="long" />
 
         <action
-            android:id="@+id/creatures_view_to_creatures_evolving_action"
-            app:destination="@id/creatures_evolving_dest" />
+            android:id="@+id/creature_view_to_creature_evolving_action"
+            app:destination="@id/creature_evolving_dest" />
     </fragment>
 
     <fragment
-        android:id="@+id/creatures_added_dest"
-        android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.added.CreaturesAddedFragment"
+        android:id="@+id/creature_added_dest"
+        android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.added.CreatureAddedFragment"
         android:label="CreaturesAddedFragment"
-        tools:layout="@layout/creatures_added_fragment">
+        tools:layout="@layout/creature_added_fragment">
 
         <argument
             android:name="creatureNumber"
@@ -60,10 +60,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/creatures_evolving_dest"
-        android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.evolving.CreaturesEvolvingFragment"
+        android:id="@+id/creature_evolving_dest"
+        android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.evolving.CreatureEvolvingFragment"
         android:label="CreaturesEvolvingFragment"
-        tools:layout="@layout/creatures_evolving_fragment">
+        tools:layout="@layout/creature_evolving_fragment">
 
         <argument
             android:name="creatureNumber"

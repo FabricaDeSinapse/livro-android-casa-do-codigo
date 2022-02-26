@@ -11,13 +11,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding.CreaturesAddedFragmentBinding
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.view.CreaturesViewFragmentArgs
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding. CreatureAddedFragmentBinding
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.view.CreatureViewFragmentArgs
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreatureViewModel
 
 @AndroidEntryPoint
-class CreaturesAddedFragment : Fragment() {
-    private lateinit var binding: CreaturesAddedFragmentBinding
+class CreatureAddedFragment : Fragment() {
+    private lateinit var binding: CreatureAddedFragmentBinding
 
     private val viewModel: CreatureViewModel by viewModels()
 
@@ -26,7 +26,7 @@ class CreaturesAddedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding =
-            CreaturesAddedFragmentBinding.inflate(
+            CreatureAddedFragmentBinding.inflate(
                 layoutInflater,
                 container,
                 false
@@ -43,7 +43,7 @@ class CreaturesAddedFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        val safeArgs: CreaturesViewFragmentArgs by navArgs()
+        val safeArgs: CreatureViewFragmentArgs by navArgs()
         val creatureId = safeArgs.creatureNumber
 
         viewModel.loadCreature(creatureId)

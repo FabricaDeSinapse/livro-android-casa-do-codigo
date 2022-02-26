@@ -9,7 +9,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
 import dagger.hilt.android.AndroidEntryPoint
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.choose.CreaturesChooseFragmentDirections
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.choose.CreatureChooseFragmentDirections
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.list.CreaturesListFragmentDirections
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.NavigationViewModel
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.UserViewModel
@@ -51,9 +51,9 @@ class NavigationActivity : AppCompatActivity() {
         )
 
         userViewModel.onChooseCreature.observe(this) {
-            if (navController.currentDestination?.id == R.id.creatures_choose_dest) {
+            if (navController.currentDestination?.id == R.id.creature_choose_dest) {
                 val action =
-                    CreaturesChooseFragmentDirections.creaturesChooseToCreaturesAddedAction(it.number)
+                    CreatureChooseFragmentDirections.creatureChooseToCreatureAddedAction(it.number)
                 navController.navigate(action)
             }
         }
@@ -70,7 +70,7 @@ class NavigationActivity : AppCompatActivity() {
 
         // Check if any creatures are available and navigate to choose creatures screen
         if (user.newCreaturesAvailable > 0
-            && navController.currentDestination?.id != R.id.creatures_choose_dest
+            && navController.currentDestination?.id != R.id.creature_choose_dest
         ) {
             val options = navOptions {
                 anim {
@@ -81,7 +81,7 @@ class NavigationActivity : AppCompatActivity() {
                 }
             }
 
-            val action = CreaturesListFragmentDirections.creaturesChooseAction()
+            val action = CreaturesListFragmentDirections.creatureChooseAction()
             navController.navigate(action, options)
         }
 

@@ -51,7 +51,7 @@
             <include
                 android:id="@+id/statusPreviewHungry"
                 style="@style/creatures_status_preview_component"
-                layout="@layout/creatures_status_preview_component"
+                layout="@layout/creature_status_preview_component"
                 app:icon="@{@drawable/icon_hungry}"
                 app:layout_constraintEnd_toStartOf="@id/statusPreviewStrength"
                 app:layout_constraintTop_toTopOf="parent"
@@ -61,7 +61,7 @@
             <include
                 android:id="@+id/statusPreviewStrength"
                 style="@style/creatures_status_preview_component"
-                layout="@layout/creatures_status_preview_component"
+                layout="@layout/creature_status_preview_component"
                 app:icon="@{@drawable/icon_strength}"
                 app:layout_constraintEnd_toStartOf="@id/statusPreviewHumor"
                 app:layout_constraintTop_toTopOf="parent"
@@ -71,7 +71,7 @@
             <include
                 android:id="@+id/statusPreviewHumor"
                 style="@style/creatures_status_preview_component"
-                layout="@layout/creatures_status_preview_component"
+                layout="@layout/creature_status_preview_component"
                 app:icon="@{@drawable/icon_humor}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -129,7 +129,7 @@
                 <include
                     android:id="@+id/creatureFeedHint"
                     style="@style/creatures_hint_component"
-                    layout="@layout/creatures_hint_component"
+                    layout="@layout/creature_hint_component"
                     android:visibility="@{viewModel.creature.canFeed ? View.VISIBLE : View.GONE}"
                     app:icon="@{@drawable/icon_feed}"
                     app:name='@{"Feed"}'
@@ -138,7 +138,7 @@
                 <include
                     android:id="@+id/creatureTrainHint"
                     style="@style/creatures_hint_component"
-                    layout="@layout/creatures_hint_component"
+                    layout="@layout/creature_hint_component"
                     android:visibility="@{viewModel.creature.canTrain ? View.VISIBLE : View.GONE}"
                     app:icon="@{@drawable/icon_train}"
                     app:name='@{"Train"}'
@@ -147,7 +147,7 @@
                 <include
                     android:id="@+id/creatureTrainPlay"
                     style="@style/creatures_hint_component"
-                    layout="@layout/creatures_hint_component"
+                    layout="@layout/creature_hint_component"
                     android:visibility="@{viewModel.creature.canPlay &amp;&amp; (!viewModel.creature.canFeed || !viewModel.creature.canTrain) ? View.VISIBLE : View.GONE}"
                     app:icon="@{@drawable/icon_play}"
                     app:name='@{"Play"}'
@@ -286,7 +286,7 @@
                 </TableRow>
 
                 <include
-                    layout="@layout/creatures_needs_actions_component"
+                    layout="@layout/creature_needs_actions_component"
                     android:visibility="@{viewModel.creature.canEvolve ? View.GONE : View.VISIBLE}"
                     app:actionAvailable="@{viewModel.creature.canFeed}"
                     app:actionIcon="@{@drawable/icon_feed}"
@@ -297,7 +297,7 @@
                     app:percentage="@{viewModel.creature.foodPercentage}" />
 
                 <include
-                    layout="@layout/creatures_needs_actions_component"
+                    layout="@layout/creature_needs_actions_component"
                     android:visibility="@{viewModel.creature.canEvolve ? View.GONE : View.VISIBLE}"
                     app:actionAvailable="@{viewModel.creature.canTrain}"
                     app:actionIcon="@{@drawable/icon_train}"
@@ -308,7 +308,7 @@
                     app:percentage="@{viewModel.creature.strengthPercentage}" />
 
                 <include
-                    layout="@layout/creatures_needs_actions_component"
+                    layout="@layout/creature_needs_actions_component"
                     android:visibility="@{viewModel.creature.canEvolve ? View.GONE : View.VISIBLE}"
                     app:actionAvailable="@{viewModel.creature.canPlay}"
                     app:actionIcon="@{@drawable/icon_play}"

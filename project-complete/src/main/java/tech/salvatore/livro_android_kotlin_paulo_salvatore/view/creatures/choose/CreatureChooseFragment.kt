@@ -1,4 +1,4 @@
-package tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.evolving
+package tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.choose
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,21 +7,22 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding.CreaturesEvolvingFragmentBinding
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreatureViewModel
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding.CreatureChooseFragmentBinding
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.UserViewModel
 
 @AndroidEntryPoint
-class CreaturesEvolvingFragment : Fragment() {
-    private lateinit var binding: CreaturesEvolvingFragmentBinding
+class CreatureChooseFragment : Fragment() {
+    private lateinit var binding: CreatureChooseFragmentBinding
 
-    private val viewModel: CreatureViewModel by viewModels()
+    private val viewModel: UserViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding =
-            CreaturesEvolvingFragmentBinding.inflate(
+            CreatureChooseFragmentBinding.inflate(
                 layoutInflater,
                 container,
                 false

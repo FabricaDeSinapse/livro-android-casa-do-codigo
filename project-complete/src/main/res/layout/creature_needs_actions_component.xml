@@ -115,7 +115,7 @@
             android:gravity="center">
 
             <include
-                layout="@layout/creatures_action_icon_component"
+                layout="@layout/creature_action_icon_component"
                 app:icon="@{actionIcon}"
                 app:name="@{name}"
                 app:onClick="@{onAction}"

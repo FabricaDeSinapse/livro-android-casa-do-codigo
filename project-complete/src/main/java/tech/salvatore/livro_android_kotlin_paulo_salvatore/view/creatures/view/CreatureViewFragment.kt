@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding.CreaturesViewFragmentBinding
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding.CreatureViewFragmentBinding
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreatureViewModel
 import kotlin.concurrent.fixedRateTimer
 
 @AndroidEntryPoint
-class CreaturesViewFragment : Fragment() {
-    private lateinit var binding: CreaturesViewFragmentBinding
+class CreatureViewFragment : Fragment() {
+    private lateinit var binding: CreatureViewFragmentBinding
 
     private val viewModel: CreatureViewModel by viewModels()
 
@@ -23,7 +23,7 @@ class CreaturesViewFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
         binding =
-            CreaturesViewFragmentBinding.inflate(
+            CreatureViewFragmentBinding.inflate(
                 layoutInflater,
                 container,
                 false
@@ -35,7 +35,7 @@ class CreaturesViewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val safeArgs: CreaturesViewFragmentArgs by navArgs()
+        val safeArgs: CreatureViewFragmentArgs by navArgs()
         val creatureNumber = safeArgs.creatureNumber
 
         viewModel.loadCreature(creatureNumber)

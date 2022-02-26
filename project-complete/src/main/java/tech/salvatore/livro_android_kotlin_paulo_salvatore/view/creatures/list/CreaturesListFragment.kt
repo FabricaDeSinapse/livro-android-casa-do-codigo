@@ -66,7 +66,7 @@ class CreaturesListFragment : Fragment() {
 
                     val action =
                         CreaturesListFragmentDirections
-                            .creaturesViewAction(creature.number)
+                            .creatureViewAction(creature.number)
 
                     findNavController().navigate(action, options)
                 }
