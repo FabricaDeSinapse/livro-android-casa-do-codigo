@@ -20,11 +20,11 @@ class NavigationActivity : AppCompatActivity() {
 
     private val userViewModel: UserViewModel by viewModels()
 
-    private val navHostFragment by lazy {
-        supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-    }
-
     private val navController by lazy {
+        val navHostFragment =
+            supportFragmentManager
+                .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+
         navHostFragment.navController
     }
 
@@ -61,7 +61,7 @@ class NavigationActivity : AppCompatActivity() {
 
     private fun initNavigation(): Boolean {
         // Add NavGraph
-        val graphInflater = navHostFragment.navController.navInflater
+        val graphInflater = navController.navInflater
         val navGraph = graphInflater.inflate(R.navigation.nav_graph)
         navController.graph = navGraph
 
