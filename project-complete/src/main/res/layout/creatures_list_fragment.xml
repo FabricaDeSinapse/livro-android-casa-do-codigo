@@ -6,10 +6,6 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreaturesViewModel" />
-
-        <variable
             name="userViewModel"
             type="tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.UserViewModel" />
     </data>

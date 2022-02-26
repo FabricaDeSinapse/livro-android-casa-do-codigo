@@ -41,7 +41,6 @@ class CreaturesListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.viewModel = creaturesViewModel
         binding.userViewModel = userViewModel
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
