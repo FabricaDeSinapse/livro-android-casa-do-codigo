@@ -59,5 +59,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.hilt:hilt-lifecycle-viewmodel:$hiltVMVersion")
-    implementation("androidx.fragment:fragment-ktx:$lifecycleVersion")
+
+    // Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:$navigationVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navigationVersion")
 }
