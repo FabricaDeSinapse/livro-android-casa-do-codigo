@@ -58,7 +58,7 @@ class CreaturesListFragment : Fragment() {
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-        creaturesViewModel.creaturesOwnByUser.observe(this, {
+        creaturesViewModel.creaturesOwnByUser.observe(viewLifecycleOwner) {
             if (recyclerView.adapter == null) {
                 recyclerView.adapter = CreaturesListAdapter(it) { creature ->
                     if (!creature.isKnown) {
@@ -79,6 +79,6 @@ class CreaturesListFragment : Fragment() {
 
             // TODO: replace with notifyItemInserted
             adapter.setItems(it)
-        })
+        }
     }
 }
