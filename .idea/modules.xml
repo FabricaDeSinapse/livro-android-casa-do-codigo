@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/step01-initial/Livro_Android_Kotlin_PauloSalvatore.step01-initial.iml" filepath="$PROJECT_DIR$/.idea/modules/step01-initial/Livro_Android_Kotlin_PauloSalvatore.step01-initial.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/step02-navigation/Livro_Android_Kotlin_PauloSalvatore.step02-navigation.iml" filepath="$PROJECT_DIR$/.idea/modules/step02-navigation/Livro_Android_Kotlin_PauloSalvatore.step02-navigation.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/step03-creatures-list/Livro_Android_Kotlin_PauloSalvatore.step03-creatures-list.iml" filepath="$PROJECT_DIR$/.idea/modules/step03-creatures-list/Livro_Android_Kotlin_PauloSalvatore.step03-creatures-list.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/step04-data-binding/Livro_Android_Kotlin_PauloSalvatore.step04-data-binding.iml" filepath="$PROJECT_DIR$/.idea/modules/step04-data-binding/Livro_Android_Kotlin_PauloSalvatore.step04-data-binding.iml" />
     </modules>
   </component>
 </project>
