@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/creatures_list_dest"
-        android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.CreaturesListFragment"
+        android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.CreaturesListFragment"
         android:label="creatures_list_fragment"
         tools:layout="@layout/creatures_list_fragment" />
 </navigation>

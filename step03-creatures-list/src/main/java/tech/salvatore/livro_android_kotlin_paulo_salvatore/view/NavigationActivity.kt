@@ -1,10 +1,12 @@
-package tech.salvatore.livro_android_kotlin_paulo_salvatore
+package tech.salvatore.livro_android_kotlin_paulo_salvatore.view
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.NavigationViewModel
 
 @AndroidEntryPoint
 class NavigationActivity : AppCompatActivity() {
