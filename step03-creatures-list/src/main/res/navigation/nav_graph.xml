@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/creatures_list_dest">
+
+    <fragment
+        android:id="@+id/creatures_list_dest"
+        android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.CreaturesListFragment"
+        android:label="creatures_list_fragment"
+        tools:layout="@layout/creatures_list_fragment" />
+</navigation>
