@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="creature"
+            type="tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -25,7 +28,7 @@
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/saira_400"
-                android:text="# 001"
+                android:text="@{String.valueOf(creature.number)}"
                 android:textColor="#5D414F"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -52,7 +55,7 @@
                     android:layout_marginStart="27dp"
                     android:layout_marginLeft="27dp"
                     android:fontFamily="@font/saira_400"
-                    android:text="Java"
+                    android:text="@{creature.name}"
                     android:textColor="#5D414F"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
