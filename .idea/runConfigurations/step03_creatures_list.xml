@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="step03-creatures-list" type="AndroidRunConfigurationType" factoryName="Android App">
+  <configuration default="false" name="step03-creatures-list" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
     <module name="Livro_Android_Kotlin_PauloSalvatore.step03-creatures-list" />
     <option name="DEPLOY" value="true" />
     <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />

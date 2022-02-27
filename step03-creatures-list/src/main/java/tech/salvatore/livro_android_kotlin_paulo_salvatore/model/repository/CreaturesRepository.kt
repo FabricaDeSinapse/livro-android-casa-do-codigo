@@ -1,8 +1,11 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository
 
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class CreaturesRepository {
+@Singleton
+class CreaturesRepository @Inject constructor() {
     val creatures: List<Creature>
 
     init {
