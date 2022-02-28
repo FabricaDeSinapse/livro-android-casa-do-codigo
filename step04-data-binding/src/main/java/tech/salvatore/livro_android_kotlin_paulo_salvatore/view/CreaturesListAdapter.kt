@@ -2,8 +2,10 @@ package tech.salvatore.livro_android_kotlin_paulo_salvatore.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding.CreaturesListItemBinding
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
@@ -20,6 +22,9 @@ class CreaturesListAdapter(
 
             val tvCreatureNumber = itemView.findViewById<TextView>(R.id.tvCreatureNumber)
             tvCreatureNumber.text = item.number.toString()
+
+            val ivCreature = itemView.findViewById<ImageView>(R.id.ivCreature)
+            Glide.with(ivCreature).load(item.imageUrl).into(ivCreature)
         }
     }
 
