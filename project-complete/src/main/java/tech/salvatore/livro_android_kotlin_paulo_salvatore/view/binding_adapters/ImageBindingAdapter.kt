@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package tech.salvatore.livro_android_kotlin_paulo_salvatore.view.adapters
+package tech.salvatore.livro_android_kotlin_paulo_salvatore.view.binding_adapters
 
 import android.content.res.ColorStateList
 import android.graphics.PorterDuff

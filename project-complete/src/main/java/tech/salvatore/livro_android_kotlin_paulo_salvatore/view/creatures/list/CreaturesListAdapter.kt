@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.databinding.CreaturesListItemBinding
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 
-
 class CreaturesListAdapter(
     private var items: List<Creature?>,
     private val listener: (Creature) -> Unit,
