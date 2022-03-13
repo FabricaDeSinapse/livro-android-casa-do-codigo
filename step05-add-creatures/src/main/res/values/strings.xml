@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DevMon: 04-data-binding</string>
+
+    <string name="creature_number"># %1$03d</string>
+</resources>
