@@ -1,4 +1,4 @@
-package tech.salvatore.livro_android_kotlin_paulo_salvatore.view
+package tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures
 
 import android.os.Bundle
 import android.view.LayoutInflater

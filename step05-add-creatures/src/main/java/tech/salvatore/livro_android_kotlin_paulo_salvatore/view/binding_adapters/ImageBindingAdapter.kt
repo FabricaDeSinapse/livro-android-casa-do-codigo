@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package tech.salvatore.livro_android_kotlin_paulo_salvatore.view
+package tech.salvatore.livro_android_kotlin_paulo_salvatore.view.binding_adapters
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter

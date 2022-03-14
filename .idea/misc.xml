@@ -17,6 +17,8 @@
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/my-project/src/main/res/layout/creatures_list_fragment.xml" value="0.17831813576494426" />
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/my-project/src/main/res/layout/navigation_activity.xml" value="0.1" />
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/my-project/src/main/res/layout/teste.xml" value="0.1" />
+        <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/project-complete/src/main/res/drawable/screen_top_background.xml" value="0.2265" />
+        <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/project-complete/src/main/res/layout/creature_choose_fragment.xml" value="0.34782608695652173" />
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/project-complete/src/main/res/layout/creatures_action_icon_component.xml" value="0.13796296296296295" />
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/project-complete/src/main/res/layout/creatures_choose_fragment.xml" value="0.13796296296296295" />
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/project-complete/src/main/res/layout/creatures_hint_component.xml" value="0.13796296296296295" />
@@ -34,6 +36,10 @@
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/step03-creatures-list/src/main/res/layout/creatures_list_fragment.xml" value="0.30842391304347827" />
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/step03-creatures-list/src/main/res/layout/creatures_list_item.xml" value="0.30842391304347827" />
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/step04-data-binding/src/main/res/layout/creatures_list_item.xml" value="0.1" />
+        <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/step05-add-creatures/src/main/res/drawable/screen_top_background.xml" value="0.2265" />
+        <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/step05-add-creatures/src/main/res/layout/creature_added_fragment.xml" value="0.351010101010101" />
+        <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/step05-add-creatures/src/main/res/layout/creature_choose_fragment.xml" value="0.34782608695652173" />
+        <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/step05-add-creatures/src/main/res/layout/navigation_activity.xml" value="0.19067028985507245" />
       </map>
     </option>
   </component>

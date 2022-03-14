@@ -1,6 +1,10 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
+    // Kotlin/Android
+    id "com.android.application"
+    id "kotlin-android"
+
+    // Navigation
+    id "androidx.navigation.safeargs.kotlin"
 
     // Kapt & Hilt
     id "kotlin-kapt"

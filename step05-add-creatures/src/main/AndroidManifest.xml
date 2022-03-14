@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Livro_Android_Kotlin_PauloSalvatore">
         <activity
-            android:name=".view.NavigationActivity"
+            android:name=".view.navigation.NavigationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

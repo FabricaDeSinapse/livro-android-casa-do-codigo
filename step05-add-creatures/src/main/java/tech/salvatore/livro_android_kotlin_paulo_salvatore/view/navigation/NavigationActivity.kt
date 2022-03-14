@@ -1,4 +1,4 @@
-package tech.salvatore.livro_android_kotlin_paulo_salvatore.view
+package tech.salvatore.livro_android_kotlin_paulo_salvatore.view.navigation
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -6,11 +6,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.CreatureChooseFragmentDirections
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.CreaturesListFragmentDirections
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.NavigationViewModel
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.UserViewModel
 
 @AndroidEntryPoint
 class NavigationActivity : AppCompatActivity() {
     private val navigationViewModel: NavigationViewModel by viewModels()
+
+    private val userViewModel: UserViewModel by viewModels()
 
     private val navController by lazy {
         val navHostFragment =
@@ -25,6 +30,14 @@ class NavigationActivity : AppCompatActivity() {
         setContentView(R.layout.navigation_activity)
 
         initNavigation()
+
+        userViewModel.onChooseCreature.observe(this) {
+            if (navController.currentDestination?.id == R.id.creature_choose_dest) {
+                val action =
+                    CreatureChooseFragmentDirections.creatureChooseToCreatureAddedAction(it.number)
+                navController.navigate(action)
+            }
+        }
     }
 
     private fun initNavigation() {
@@ -32,5 +45,12 @@ class NavigationActivity : AppCompatActivity() {
         val graphInflater = navController.navInflater
         val navGraph = graphInflater.inflate(R.navigation.nav_graph)
         navController.graph = navGraph
+
+        if (userViewModel.user.hasCreatureAvailable
+            && navController.currentDestination?.id != R.id.creature_choose_dest
+        ) {
+            val action = CreaturesListFragmentDirections.creatureChooseAction()
+            navController.navigate(action)
+        }
     }
 }
