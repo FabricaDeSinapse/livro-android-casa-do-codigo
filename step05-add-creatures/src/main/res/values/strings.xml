@@ -9,4 +9,5 @@
 
     <string name="creature_hatched">%1$s was hatched!!</string>
     <string name="creatures_image">%1$s\'s Image</string>
+    <string name="see_creature_in_list">See creature in list</string>
 </resources>
