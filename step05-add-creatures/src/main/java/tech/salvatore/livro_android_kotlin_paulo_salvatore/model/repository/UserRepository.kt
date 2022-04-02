@@ -1,5 +1,7 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.User
 import javax.inject.Inject
@@ -11,9 +13,13 @@ class UserRepository @Inject constructor(
 ) {
     val user = User("Paulo Salvatore", true)
 
-    fun chooseCreature(): Creature? {
+    private val _onChooseCreature = MutableLiveData<Creature>()
+    val onChooseCreature: LiveData<Creature>
+        get() = _onChooseCreature
+
+    fun chooseCreature() {
         if (!user.hasCreatureAvailable) {
-            return null
+            return
         }
 
         user.hasCreatureAvailable = false
@@ -21,6 +27,6 @@ class UserRepository @Inject constructor(
         val randomCreature = creaturesRepository.creatures.random()
         user.creatures.add(randomCreature)
 
-        return randomCreature
+        _onChooseCreature.value = randomCreature
     }
 }
