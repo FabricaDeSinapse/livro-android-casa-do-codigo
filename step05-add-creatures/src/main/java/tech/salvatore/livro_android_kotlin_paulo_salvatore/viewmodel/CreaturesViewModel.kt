@@ -9,11 +9,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CreaturesViewModel @Inject constructor(
-    creaturesRepository: CreaturesRepository
+    private val creaturesRepository: CreaturesRepository
 ) : ViewModel() {
     val creatures = MutableLiveData<List<Creature>>()
 
     init {
         creatures.value = creaturesRepository.creatures
     }
+
+    fun findCreature(number: Int) = creaturesRepository.findCreature(number)
 }

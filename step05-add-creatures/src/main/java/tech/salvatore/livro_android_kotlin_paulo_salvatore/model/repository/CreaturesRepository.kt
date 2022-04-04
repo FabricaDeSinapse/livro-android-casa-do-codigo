@@ -39,4 +39,7 @@ class CreaturesRepository @Inject constructor() {
             creature13,
         )
     }
+
+    fun findCreature(number: Int) =
+        creatures.find { it.number == number }
 }
