@@ -3,12 +3,12 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
 
-    // Navigation
-    id "androidx.navigation.safeargs.kotlin"
-
     // Kapt & Hilt
     id "kotlin-kapt"
     id "dagger.hilt.android.plugin"
+
+    // Navigation
+    id "androidx.navigation.safeargs.kotlin"
 }
 
 android {
