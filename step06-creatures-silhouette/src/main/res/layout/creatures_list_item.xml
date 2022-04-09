@@ -81,6 +81,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:contentDescription="TODO: Content Description"
+                app:enableSilhouette="@{!creature.isKnown}"
                 app:imageUrl="@{creature.imageUrl}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
