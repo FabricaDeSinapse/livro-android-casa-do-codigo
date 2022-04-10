@@ -13,6 +13,18 @@ class UserRepository @Inject constructor(
 ) {
     val user = User("Paulo Salvatore", true)
 
+    val allCreatures
+        get() = creaturesRepository.creatures.map {
+            val isKnown = user.creatures.any { creatureOwnByUser ->
+                creatureOwnByUser.number == it.number
+            }
+
+            it.copy(
+                name = if (isKnown) it.name else "?????",
+                isKnown = isKnown
+            )
+        }
+
     private val _onChooseCreature = MutableLiveData<Creature>()
     val onChooseCreature: LiveData<Creature>
         get() = _onChooseCreature
