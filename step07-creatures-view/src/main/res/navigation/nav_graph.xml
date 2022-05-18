@@ -37,4 +37,15 @@
             android:name="creatureNumber"
             app:argType="integer" />
     </fragment>
+
+    <fragment
+        android:id="@+id/creature_view_dest"
+        android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.CreatureViewFragment"
+        android:label="CreatureViewFragment"
+        tools:layout="@layout/creature_view_fragment">
+
+        <argument
+            android:name="creatureNumber"
+            app:argType="integer" />
+    </fragment>
 </navigation>

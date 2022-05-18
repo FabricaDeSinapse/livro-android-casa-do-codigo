@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.R
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreaturesViewModel
+import androidx.navigation.fragment.findNavController
 
 @AndroidEntryPoint
 class CreaturesListFragment : Fragment() {
@@ -30,7 +31,17 @@ class CreaturesListFragment : Fragment() {
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         creaturesViewModel.creatures.observe(viewLifecycleOwner) {
-            recyclerView.adapter = CreaturesListAdapter(it)
+            recyclerView.adapter = CreaturesListAdapter(it) { creature ->
+                if (!creature.isKnown) {
+                    return@CreaturesListAdapter
+                }
+
+                val action =
+                    CreaturesListFragmentDirections
+                        .creatureViewAction(creature.number)
+
+                findNavController().navigate(action)
+            }
         }
     }
 }

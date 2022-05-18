@@ -6,20 +6,31 @@
     <data>
 
         <variable
-            name="creature"
-            type="tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature" />
+            name="viewModel"
+            type="tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreatureViewModel" />
     </data>
 
-    <androidx.cardview.widget.CardView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:padding="8dp">
+        android:layout_height="match_parent"
+        android:background="@drawable/screen_background">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/screen_background">
+            tools:context=".view.creatures.list.CreaturesViewFragment">
+
+            <ImageView
+                android:id="@+id/ivBackgroundTop"
+                android:layout_width="0dp"
+                android:layout_height="221dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/screen_top_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/tvCreatureNumber"
@@ -29,7 +40,7 @@
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/saira_400"
-                android:text="@{@string/creature_number(creature.number)}"
+                android:text="@{@string/creature_number(viewModel.creature.number)}"
                 android:textColor="#5D414F"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -57,13 +68,13 @@
                     android:layout_marginStart="27dp"
                     android:layout_marginLeft="27dp"
                     android:fontFamily="@font/saira_400"
-                    android:text="@{creature.name}"
+                    android:text="@{viewModel.creature.name}"
                     android:textColor="#5D414F"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Java" />
+                    tools:text="Lagartorbas" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -76,19 +87,15 @@
 
             <ImageView
                 android:id="@+id/ivCreature"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="340dp"
+                android:layout_height="340dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:contentDescription="TODO: Content Description"
-                app:enableSilhouette="@{!creature.isKnown}"
-                app:imageUrl="@{creature.imageUrl}"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:contentDescription="@string/creatures_image"
+                app:imageUrl="@{viewModel.creature.imageUrl}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/barrier2"
                 tools:src="@drawable/creature_java" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </ScrollView>
 </layout>

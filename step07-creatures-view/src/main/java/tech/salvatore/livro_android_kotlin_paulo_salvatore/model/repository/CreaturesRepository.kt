@@ -11,7 +11,7 @@ class CreaturesRepository @Inject constructor() {
     init {
         val creature1 = Creature(1, "Java", "https://i.imgur.com/PHfd1h2.png")
         val creature2 = Creature(2, "Kotlin", "https://i.imgur.com/EZ3zCBp.png")
-        val creature3 = Creature(3, "Unknown", "https://i.imgur.com/rNKVxSt.png")
+        val creature3 = Creature(3, "Android", "https://i.imgur.com/r4UjONq.png")
         val creature4 = Creature(4, "C", "https://i.imgur.com/iWeXxA9.png")
         val creature5 = Creature(5, "C++", "https://i.imgur.com/YYkSF5A.png")
         val creature6 = Creature(6, "C#", "https://i.imgur.com/Jldgrr6.png")
