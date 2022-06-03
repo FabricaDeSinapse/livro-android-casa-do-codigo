@@ -17,7 +17,7 @@ class CreaturesRepository @Inject constructor() {
         val creature6 = Creature(6, "C#", "https://i.imgur.com/Jldgrr6.png")
         val creature7 = Creature(7, "JavaScript", "https://i.imgur.com/WEKXaw3.png")
         val creature8 = Creature(8, "TypeScript", "https://i.imgur.com/SUBhlhe.png")
-        val creature9 = Creature(9, "Unknown", "https://i.imgur.com/rNKVxSt.png")
+        val creature9 = Creature(9, "Unknown", "https://i.imgur.com/1GdgQnk.png")
 
         creatures = listOf(
             creature1,

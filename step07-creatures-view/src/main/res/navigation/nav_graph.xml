@@ -13,6 +13,10 @@
         <action
             android:id="@+id/creature_choose_action"
             app:destination="@id/creature_choose_dest" />
+
+        <action
+            android:id="@+id/creature_view_action"
+            app:destination="@id/creature_view_dest" />
     </fragment>
 
     <fragment
