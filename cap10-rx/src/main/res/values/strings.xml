@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DevMon: 07-creatures-view</string>
+    <string name="app_name">DevMon: 10-rx</string>
 
     <string name="creature_number"># %1$03d</string>
 
