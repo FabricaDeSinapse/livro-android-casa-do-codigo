@@ -13,6 +13,7 @@
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/app/src/main/res/layout/creatures_view_fragment.xml" value="0.33" />
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/app/src/main/res/layout/fragment_splash_screen.xml" value="0.2871376811594203" />
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/app/src/main/res/layout/navigation_activity.xml" value="0.29483695652173914" />
+        <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/cap10-rx/src/main/res/layout/creature_view_fragment.xml" value="0.36666666666666664" />
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/my-project/src/main/res/font/saira.xml" value="0.396875" />
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/my-project/src/main/res/layout/creatures_list_fragment.xml" value="0.17831813576494426" />
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/my-project/src/main/res/layout/navigation_activity.xml" value="0.1" />
@@ -43,6 +44,8 @@
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/step05-add-creatures/src/main/res/layout/navigation_activity.xml" value="0.19067028985507245" />
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/step06-creatures-silhouette/src/main/res/layout/creatures_list_item.xml" value="0.36666666666666664" />
         <entry key="..\:/GitHub/CasaDoCodigo/Livro_Android_Kotlin_PauloSalvatore/step07-creatures-view/src/main/res/layout/creature_view_fragment.xml" value="0.36666666666666664" />
+        <entry key="cap10-rx/src/main/res/layout/creature_added_fragment.xml" value="0.2848731884057971" />
+        <entry key="project-complete/src/main/res/layout/creature_added_fragment.xml" value="0.2848731884057971" />
       </map>
     </option>
   </component>
