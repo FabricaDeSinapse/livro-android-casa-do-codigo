@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.disposables.CompositeDisposable
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.extensions.rx.CompositeDisposableExtensions.plusAssign
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.CreaturesRepository
 import javax.inject.Inject
@@ -19,15 +17,9 @@ class CreatureViewModel @Inject constructor(
     val creature: LiveData<Creature>
         get() = _creature
 
-    private val composite = CompositeDisposable()
-
     fun loadCreature(number: Int) {
         creaturesRepository.findCreature(number).subscribe {
             _creature.value = it
         }.dispose()
-    }
-
-    override fun onCleared() {
-        composite.dispose()
     }
 }

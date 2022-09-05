@@ -19,7 +19,6 @@ class CreaturesViewModel @Inject constructor(
     private val composite = CompositeDisposable()
 
     init {
-        // Load creatures
         composite += userRepository.allCreatures.subscribe {
             creatures.setValue(it)
         }

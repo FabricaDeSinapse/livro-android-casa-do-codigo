@@ -41,7 +41,6 @@ class CreatureAddedFragment : Fragment() {
         val safeArgs: CreatureAddedFragmentArgs by navArgs()
         val creatureId = safeArgs.creatureNumber
 
-        // Find Creature
         viewModel.loadCreature(creatureId)
 
         binding.viewModel = viewModel
