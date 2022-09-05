@@ -40,12 +40,10 @@ class UserRepository @Inject constructor(
         user.hasCreatureAvailable = false
 
         creaturesRepository.creatures.subscribe {
-            println(it.size)
-
             val randomCreature = it.random()
             user.creatures.add(randomCreature)
 
             _onChooseCreature.value = randomCreature
-        }
+        }.dispose()
     }
 }
