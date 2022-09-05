@@ -20,7 +20,7 @@ class CreaturesRepository @Inject constructor() {
         val creature7 = Creature(7, "JavaScript", "https://i.imgur.com/WEKXaw3.png")
         val creature8 = Creature(8, "TypeScript", "https://i.imgur.com/SUBhlhe.png")
         val creature9 = Creature(9, "Express", "https://i.imgur.com/pRGNm6T.png")
-        val creature10 = Creature(10, "Unknown", "https://i.imgur.com/1GdgQnk.png")
+        val creature10 = Creature(10, "Unknown", "https://i.imgur.com/rNKVxSt.png")
 
         creatures = ReplaySubject.just(
             listOf(
