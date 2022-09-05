@@ -38,12 +38,13 @@ class CreatureAddedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Set ViewModel
+        binding.viewModel = viewModel
+
+        // Load creature by number
         val safeArgs: CreatureAddedFragmentArgs by navArgs()
         val creatureId = safeArgs.creatureNumber
-
         viewModel.loadCreature(creatureId)
-
-        binding.viewModel = viewModel
 
         // See creature in list
         val btAddCreature = view.findViewById<Button>(R.id.btAddCreature)
