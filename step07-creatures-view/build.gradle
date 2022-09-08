@@ -12,12 +12,12 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk 33
 
     defaultConfig {
         applicationId "tech.salvatore.livro_android_kotlin_paulo_salvatore"
         minSdk 16
-        targetSdk 31
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -75,4 +75,7 @@ dependencies {
     // Glide
     implementation("com.github.bumptech.glide:glide:$glideVersion")
     kapt("com.github.bumptech.glide:compiler:$glideVersion")
+
+    // RX
+    implementation("io.reactivex.rxjava2:rxjava:$rxVersion")
 }

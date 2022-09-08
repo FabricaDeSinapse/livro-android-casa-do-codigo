@@ -1,13 +1,17 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
+        // Project: Gradle & Kotlin
+        gradleVersion = "7.2.2"
+        kotlinVersion = "1.5.31"
+
         // Core
-        coreKtxVersion = "1.7.0"
-        appCompatVersion = "1.4.1"
+        coreKtxVersion = "1.8.0"
+        appCompatVersion = "1.5.0"
 
         // Layout
-        materialVersion = "1.5.0"
-        constraintLayoutVersion = "2.1.3"
+        materialVersion = "1.6.1"
+        constraintLayoutVersion = "2.1.4"
         legacySupportVersion = "1.0.0"
 
         // Test
@@ -18,15 +22,14 @@ buildscript {
         // Multi Dex
         multiDexVersion = "2.0.1"
 
-        // Lifecycle
-        lifecycleVersion = "2.4.1"
-
         // Hilt
         hiltVersion = "2.40.1"
         hiltVMVersion = "1.0.0-alpha03"
 
-        // Navigation
-        navigationVersion = "2.4.1"
+
+        // Lifecycle & Navigation
+        lifecycleVersion = "2.5.1"
+        navigationVersion = "2.5.1"
 
         // Room
         roomVersion = "2.4.2"
@@ -40,9 +43,8 @@ buildscript {
         // Glide
         glideVersion = "4.13.0"
 
-        // Project: Gradle & Kotlin
-        gradleVersion = "7.2.2"
-        kotlinVersion = "1.5.31"
+        // RX
+        rxVersion = "2.2.2"
     }
 
     repositories {
