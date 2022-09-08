@@ -1,5 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="step04-data-binding" type="AndroidRunConfigurationType" factoryName="Android App">
+    <module name="Livro_Android_Kotlin_PauloSalvatore.step04-data-binding.main" />
     <option name="DEPLOY" value="true" />
     <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
     <option name="DEPLOY_AS_INSTANT" value="false" />
