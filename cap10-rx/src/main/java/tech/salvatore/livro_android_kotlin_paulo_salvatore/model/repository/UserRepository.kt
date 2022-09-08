@@ -32,18 +32,25 @@ class UserRepository @Inject constructor(
     val onChooseCreature: LiveData<Creature>
         get() = _onChooseCreature
 
-    fun chooseCreature() {
-        if (!user.hasCreatureAvailable) {
-            return
-        }
-
-        user.hasCreatureAvailable = false
-
-        creaturesRepository.creatures.subscribe {
-            val randomCreature = it.random()
-            user.creatures.add(randomCreature)
-
-            _onChooseCreature.value = randomCreature
-        }.dispose()
-    }
+    fun chooseCreature(): Observable<Creature> =
+        Observable.just(user)
+            .filter {
+                it.hasCreatureAvailable
+            }
+            .doOnNext {
+                it.hasCreatureAvailable = false
+            }
+            .flatMap {
+                creaturesRepository.creatures
+            }
+            .map {
+                val randomCreature = it.random()
+                randomCreature
+            }
+            .doOnNext {
+                user.creatures.add(it)
+            }
+            .doOnNext {
+                _onChooseCreature.value = it
+            }
 }

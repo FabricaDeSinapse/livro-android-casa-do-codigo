@@ -1,7 +1,6 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository
 
 import io.reactivex.Observable
-import io.reactivex.subjects.ReplaySubject
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -22,7 +21,7 @@ class CreaturesRepository @Inject constructor() {
         val creature9 = Creature(9, "Express", "https://i.imgur.com/pRGNm6T.png")
         val creature10 = Creature(10, "Unknown", "https://i.imgur.com/rNKVxSt.png")
 
-        creatures = ReplaySubject.just(
+        creatures = Observable.just(
             listOf(
                 creature1,
                 creature2,
@@ -40,6 +39,6 @@ class CreaturesRepository @Inject constructor() {
 
     fun findCreature(number: Int): Observable<Creature> =
         creatures.map { list ->
-            list.first { it.number == number }
+            list.find { it.number == number }
         }
 }

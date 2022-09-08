@@ -20,7 +20,7 @@ class CreaturesViewModel @Inject constructor(
 
     init {
         composite += userRepository.allCreatures.subscribe {
-            creatures.setValue(it)
+            creatures.value = it
         }
     }
 
