@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">DevMon: 11-api-backend</string>
+
+    <string name="creature_number"># %1$03d</string>
+
+    <string name="monsters_egg">Monster\'s egg</string>
+    <string name="youve_got_an_egg">You\'ve got an egg</string>
+    <string name="click_to_hatch_it">Click to hatch it!</string>
+
+    <string name="creature_hatched">%1$s was hatched!!</string>
+    <string name="creatures_image">%1$s\'s Image</string>
+    <string name="see_creature_in_list">See creature in list</string>
+</resources>
