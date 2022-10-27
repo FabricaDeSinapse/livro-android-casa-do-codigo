@@ -3,10 +3,9 @@ package tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.extensions.rx.CompositeDisposableExtensions.plusAssign
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.CreaturesRepository
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository.UserRepository
 import javax.inject.Inject
 
@@ -20,7 +19,7 @@ class CreaturesViewModel @Inject constructor(
 
     init {
         composite += userRepository.allCreatures.subscribe {
-            creatures.value = it
+            creatures.postValue(it)
         }
     }
 

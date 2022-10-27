@@ -2,7 +2,7 @@ package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.User
 import javax.inject.Inject
@@ -51,6 +51,6 @@ class UserRepository @Inject constructor(
                 user.creatures.add(it)
             }
             .doOnNext {
-                _onChooseCreature.value = it
+                _onChooseCreature.postValue(it)
             }
 }
