@@ -2,7 +2,7 @@ rootProject.name = "Livro_Android_Kotlin_PauloSalvatore"
 include ':my-project'
 include ':project-complete'
 include ':step01-initial'
-include ':step02-navigation'
+include ':cap04-navigation'
 include ':cap05-creatures-list'
 include ':cap06-data-binding'
 include ':cap07-add-creatures'
