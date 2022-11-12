@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Livro_Android_Kotlin_PauloSalvatore">
+        android:theme="@style/Theme.livro-android-cada-do-codigo">
 
         <!-- Activities -->
 

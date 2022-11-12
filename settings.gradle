@@ -1,4 +1,4 @@
-rootProject.name = "Livro_Android_Kotlin_PauloSalvatore"
+rootProject.name = "livro-android-cada-do-codigo"
 include ':my-project'
 include ':project-complete'
 include ':cap03-initial'
