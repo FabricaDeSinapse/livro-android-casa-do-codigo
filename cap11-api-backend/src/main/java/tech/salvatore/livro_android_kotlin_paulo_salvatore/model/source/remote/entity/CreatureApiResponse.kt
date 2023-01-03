@@ -5,5 +5,5 @@ data class CreatureApiResponse(
     val name: String,
     val image: String,
     val legendary: Boolean,
-    val evolveTo: CreatureApiResponse? = null,
+    val evolveTo: CreatureApiResponse?,
 )

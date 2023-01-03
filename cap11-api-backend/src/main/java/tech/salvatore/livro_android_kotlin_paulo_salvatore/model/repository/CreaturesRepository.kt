@@ -33,6 +33,6 @@ class CreaturesRepository @Inject constructor(
 
     fun findCreature(number: Int): Observable<Creature> =
         creatures.map { list ->
-            list.find { it.number == number } ?: throw Exception("Creature $number not found.")
+            list.find { it.number == number }
         }
 }

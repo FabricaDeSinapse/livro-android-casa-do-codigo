@@ -16,7 +16,7 @@ class CreatureRemoteDataSource @Inject constructor() {
 
     init {
         val retrofit = Retrofit.Builder()
-            .baseUrl(ApiConfig.BASE_URL)
+            .baseUrl("https://devmon-api.onrender.com/")
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -25,7 +25,9 @@ class CreatureRemoteDataSource @Inject constructor() {
     }
 
     val creatures: Observable<List<Creature>> =
-        service.findAll().map { list -> list.map { it.toDomain() } }
+        service.findAll().map { list ->
+            list.map { it.toDomain() }
+        }
 
     private fun CreatureApiResponse.toDomain(): Creature {
         return Creature(
