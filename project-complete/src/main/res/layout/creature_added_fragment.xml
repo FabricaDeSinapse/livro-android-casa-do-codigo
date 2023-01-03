@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/screen_background"
-        tools:context=".view.creatures.list.CreaturesAddedFragment">
+        tools:context=".view.creatures.CreatureAddedFragment">
 
         <ImageView
             android:id="@+id/ivBackgroundTop"
@@ -37,21 +37,22 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:maxLines="1"
-                android:ellipsize="end"
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:ellipsize="end"
                 android:fontFamily="@font/saira_400"
+                android:gravity="center"
+                android:maxLines="1"
                 android:text="@{@string/creature_hatched(viewModel.creature.name)}"
                 android:textColor="#5D414F"
-                android:gravity="center"
                 android:textSize="32sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:text="@string/creature_hatched"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/creature_hatched" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -76,10 +77,10 @@
             android:layout_marginLeft="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
-            android:text="See creature in list"
+            android:text="@string/see_creature_in_list"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

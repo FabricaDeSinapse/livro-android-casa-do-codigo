@@ -171,7 +171,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linearLayoutHints"
-                tools:src="@drawable/icon_humor" />
+                tools:src="@drawable/creature_java" />
 
             <androidx.constraintlayout.widget.Barrier
                 android:id="@+id/barrier4"

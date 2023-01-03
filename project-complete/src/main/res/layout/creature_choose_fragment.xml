@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.CreatureViewModel" />
+            type="tech.salvatore.livro_android_kotlin_paulo_salvatore.viewmodel.UserViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/screen_background"
-        tools:context=".view.creatures.list.CreaturesAddedFragment">
+        tools:context=".view.creatures.list.CreaturesChooseFragment">
 
         <ImageView
             android:id="@+id/ivBackgroundTop"
@@ -31,55 +31,56 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutTitleSection"
             style="@style/creatures_background_title_section"
-            android:layout_height="84dp"
+            android:layout_height="124dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:maxLines="1"
-                android:ellipsize="end"
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/saira_400"
-                android:text="@{@string/creature_hatched(viewModel.creature.name)}"
+                android:text="@string/youve_got_an_egg"
                 android:textColor="#5D414F"
-                android:gravity="center"
                 android:textSize="32sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:text="@string/creature_hatched"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/saira_400"
+                android:text="@string/click_to_hatch_it"
+                android:textColor="#5D414F"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageView
-            android:id="@+id/ivCreature"
-            android:layout_width="340dp"
-            android:layout_height="340dp"
-            android:layout_marginTop="20dp"
-            android:contentDescription="@string/creatures_image"
-            app:imageUrl="@{viewModel.creature.imageUrl}"
+        <ImageButton
+            android:id="@+id/btChooseCreature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:adjustViewBounds="true"
+            android:background="@null"
+            android:contentDescription="@string/monsters_egg"
+            android:onClick="@{() -> viewModel.chooseCreature()}"
+            android:padding="32dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_egg_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/creature_java" />
-
-        <Button
-            android:id="@+id/btAddCreature"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:text="See creature in list"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/constraintLayoutTitleSection" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

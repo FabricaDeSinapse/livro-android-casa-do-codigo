@@ -59,7 +59,7 @@
             app:layout_constraintEnd_toEndOf="@id/linearLayoutTextBox"
             app:layout_constraintStart_toEndOf="@+id/linearLayoutIcon"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Play with Creature!" />
+            tools:text="Hint Text!" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

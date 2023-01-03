@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/screen_background"
-        tools:context=".view.creatures.list.CreaturesAddedFragment">
+        tools:context=".view.creatures.list.CreaturesViewFragment">
 
         <ImageView
             android:id="@+id/ivBackgroundTop"
@@ -28,30 +28,42 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
+        <TextView
+            android:id="@+id/tvCreatureNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/saira_400"
+            android:text="@{@string/creature_number(viewModel.creature.number)}"
+            android:textColor="#5D414F"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="# 001" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutTitleSection"
             style="@style/creatures_background_title_section"
-            android:layout_height="84dp"
+            android:layout_height="37dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/tvCreatureNumber">
 
             <TextView
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:id="@+id/tvTitle"
+                android:id="@+id/tvCreatureName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="27dp"
+                android:layout_marginLeft="27dp"
                 android:fontFamily="@font/saira_400"
-                android:text="@{@string/creature_hatched(viewModel.creature.name)}"
+                android:text="@{viewModel.creature.name}"
                 android:textColor="#5D414F"
-                android:gravity="center"
-                android:textSize="32sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:text="@string/creature_hatched"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Lagartorbas" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -62,24 +74,9 @@
             android:layout_marginTop="20dp"
             android:contentDescription="@string/creatures_image"
             app:imageUrl="@{viewModel.creature.imageUrl}"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayoutTitleSection"
             tools:src="@drawable/creature_java" />
-
-        <Button
-            android:id="@+id/btAddCreature"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:text="See creature in list"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

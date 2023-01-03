@@ -66,7 +66,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/icon_humor" />
+            tools:src="@drawable/creature_java" />
 
         <Button
             android:id="@+id/btAddCreature"

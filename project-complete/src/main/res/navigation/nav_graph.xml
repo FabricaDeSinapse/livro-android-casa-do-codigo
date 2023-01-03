@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/creatures_list_dest">
+
+    <fragment
+        android:id="@+id/creatures_list_dest"
+        android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.CreaturesListFragment"
+        android:label="creatures_list_fragment"
+        tools:layout="@layout/creatures_list_fragment">
+        <action
+            android:id="@+id/creature_choose_action"
+            app:destination="@id/creature_choose_dest" />
+
+        <action
+            android:id="@+id/creature_view_action"
+            app:destination="@id/creature_view_dest" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/creature_choose_dest"
+        android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.CreatureChooseFragment"
+        android:label="creature_choose_fragment"
+        tools:layout="@layout/creature_choose_fragment">
+
+        <action
+            android:id="@+id/creature_choose_to_creature_added_action"
+            app:destination="@id/creature_added_dest"
+            app:popUpTo="@id/creatures_list_dest" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/creature_added_dest"
+        android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.CreatureAddedFragment"
+        android:label="CreaturesAddedFragment"
+        tools:layout="@layout/creature_added_fragment">
+
+        <argument
+            android:name="creatureNumber"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/creature_view_dest"
+        android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.CreatureViewFragment"
+        android:label="CreatureViewFragment"
+        tools:layout="@layout/creature_view_fragment">
+
+        <argument
+            android:name="creatureNumber"
+            app:argType="integer" />
+    </fragment>
+</navigation>

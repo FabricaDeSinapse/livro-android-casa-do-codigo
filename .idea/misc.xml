@@ -46,6 +46,12 @@
         <entry key="..\:/GitHub/CasaDoCodigo/livro-android-casa-do-codigo/step07-creatures-view/src/main/res/layout/creature_view_fragment.xml" value="0.36666666666666664" />
         <entry key="cap10-rx/src/main/res/layout/creature_added_fragment.xml" value="0.2848731884057971" />
         <entry key="cap11-api-backend-impl/src/main/res/layout/creature_view_fragment.xml" value="0.19270833333333334" />
+        <entry key="project-complete-with-extras/src/main/res/layout/creature_added_fragment.xml" value="0.32760416666666664" />
+        <entry key="project-complete-with-extras/src/main/res/layout/creature_evolving_fragment.xml" value="0.32760416666666664" />
+        <entry key="project-complete-with-extras/src/main/res/layout/creature_hint_component.xml" value="0.32760416666666664" />
+        <entry key="project-complete-with-extras/src/main/res/layout/creature_status_preview_component.xml" value="0.32760416666666664" />
+        <entry key="project-complete-with-extras/src/main/res/layout/creature_view_fragment.xml" value="0.32760416666666664" />
+        <entry key="project-complete-with-extras/src/main/res/layout/navigation_activity.xml" value="0.25" />
         <entry key="project-complete/src/main/res/layout/creature_added_fragment.xml" value="0.2848731884057971" />
       </map>
     </option>

@@ -41,6 +41,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="creature_evolving_dest">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="492" />
+                            <option name="y" value="329" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="creature_view_dest">
                     <value>
                       <LayoutPositions>
@@ -49,6 +61,15 @@
                             <option name="x" value="255" />
                             <option name="y" value="330" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="creature_view_to_creature_evolving_action">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -64,12 +85,12 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_creatures_list_dest_to_creature_view_dest2">
+                            <entry key="creature_choose_action">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="creature_choose_action">
+                            <entry key="creature_view_action">
                               <value>
                                 <LayoutPositions />
                               </value>
