@@ -23,7 +23,7 @@ class CreatureViewModel @Inject constructor(
 
     fun loadCreature(number: Int) {
         composite += creaturesRepository.findCreature(number).subscribe {
-            _creature.postValue(it)
+            _creature.value = it
         }
     }
 

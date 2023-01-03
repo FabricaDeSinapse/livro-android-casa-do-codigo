@@ -51,6 +51,6 @@ class UserRepository @Inject constructor(
                 user.creatures.add(it)
             }
             .doOnNext {
-                _onChooseCreature.postValue(it)
+                _onChooseCreature.value = it
             }
 }

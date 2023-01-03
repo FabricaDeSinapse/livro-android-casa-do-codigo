@@ -19,7 +19,7 @@ class CreaturesViewModel @Inject constructor(
 
     init {
         composite += userRepository.allCreatures.subscribe {
-            creatures.postValue(it)
+            creatures.value = it
         }
     }
 

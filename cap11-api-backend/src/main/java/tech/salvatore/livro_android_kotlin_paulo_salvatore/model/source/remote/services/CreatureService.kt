@@ -2,7 +2,7 @@ package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.remote.
 
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
-import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.remote.api.entity.CreatureApiResponse
+import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.source.remote.entity.CreatureApiResponse
 
 interface CreatureService {
     @GET("creature")

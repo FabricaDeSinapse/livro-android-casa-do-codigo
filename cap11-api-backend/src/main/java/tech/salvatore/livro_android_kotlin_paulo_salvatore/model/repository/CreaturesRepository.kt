@@ -12,19 +12,15 @@ import javax.inject.Singleton
 class CreaturesRepository @Inject constructor(
     remoteDataSource: CreatureRemoteDataSource
 ) {
-    companion object {
-        private const val LOG_TAG = "CREATURES_REPOSITORY"
-    }
-
     val creatures: ReplaySubject<List<Creature>> = ReplaySubject.create(1)
 
     init {
         remoteDataSource.creatures
             .doOnNext {
-                Log.d(LOG_TAG, "${it.size} creatures were loaded from API.")
+                Log.d("CREATURES_REPOSITORY", "${it.size} creatures were loaded from API.")
             }
             .doOnError {
-                Log.e(LOG_TAG, "Error loading creatures from API.", it)
+                Log.e("CREATURES_REPOSITORY", "Error loading creatures from API.", it)
             }
             .subscribe {
                 creatures.onNext(it)

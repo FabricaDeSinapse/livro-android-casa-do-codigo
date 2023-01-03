@@ -39,7 +39,6 @@ class CreatureAddedFragment : Fragment() {
 
         // Set ViewModel
         binding.viewModel = viewModel
-        binding.lifecycleOwner = viewLifecycleOwner
 
         // Load creature by number
         val safeArgs: CreatureAddedFragmentArgs by navArgs()
