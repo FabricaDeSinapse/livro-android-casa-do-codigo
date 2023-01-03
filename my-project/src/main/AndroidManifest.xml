@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.livro-android-cada-do-codigo">
+        android:theme="@style/Theme.livro_android_cada_do_codigo">
         <activity
             android:name=".NavigationActivity"
             android:exported="true">
