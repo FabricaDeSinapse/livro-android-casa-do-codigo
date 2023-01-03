@@ -1,6 +1,6 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore.model.repository
 
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 import tech.salvatore.livro_android_kotlin_paulo_salvatore.model.domain.Creature
 import javax.inject.Inject
 import javax.inject.Singleton
