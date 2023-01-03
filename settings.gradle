@@ -1,6 +1,6 @@
 rootProject.name = "livro-android-cada-do-codigo"
 include ':my-project'
-include ':project-complete'
+include ':project-complete-with-extras'
 include ':cap03-initial'
 include ':cap04-navigation'
 include ':cap05-creatures-list'
