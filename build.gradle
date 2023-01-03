@@ -16,8 +16,8 @@ buildscript {
 
         // Test
         junitVersion = "4.13.2"
-        androidJunitVersion = "1.1.3"
-        espressoVersion = "3.4.0"
+        androidJunitVersion = "1.1.4"
+        espressoVersion = "3.5.0"
 
         // Multi Dex
         multiDexVersion = "2.0.1"
@@ -44,7 +44,7 @@ buildscript {
         glideVersion = "4.13.0"
 
         // RX
-        rxVersion = "2.2.2"
+        rxVersion = "3.1.5"
     }
 
     repositories {
