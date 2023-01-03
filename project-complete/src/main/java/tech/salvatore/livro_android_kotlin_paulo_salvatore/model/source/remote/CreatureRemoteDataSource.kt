@@ -12,16 +12,11 @@ import javax.inject.Singleton
 
 @Singleton
 class CreatureRemoteDataSource @Inject constructor() {
-    companion object {
-        // TODO: Extract to external object
-        private const val BASE_URL = "https://backend-livro-android-casa-cod.herokuapp.com/"
-    }
-
     private val service: CreatureService
 
     init {
         val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl("https://devmon-api.onrender.com/")
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
