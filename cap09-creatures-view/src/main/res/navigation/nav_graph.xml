@@ -9,7 +9,7 @@
         android:id="@+id/creatures_list_dest"
         android:name="tech.salvatore.livro_android_kotlin_paulo_salvatore.view.creatures.CreaturesListFragment"
         android:label="creatures_list_fragment"
-        tools:layout="@layout/creatures_list_fragment" >
+        tools:layout="@layout/creatures_list_fragment">
         <action
             android:id="@+id/creature_choose_action"
             app:destination="@id/creature_choose_dest" />

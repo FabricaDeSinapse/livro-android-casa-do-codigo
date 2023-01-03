@@ -6,18 +6,21 @@
     android:viewportWidth="360"
     android:viewportHeight="1254"
     tools:ignore="VectorRaster">
-  <path
-      android:pathData="M360,1254l-360,-0l-0,-1254l360,-0z">
-    <aapt:attr name="android:fillColor">
-      <gradient 
-          android:startY="1254"
-          android:startX="180"
-          android:endY="0"
-          android:endX="180"
-          android:type="linear">
-        <item android:offset="0" android:color="#FF51BE9B"/>
-        <item android:offset="1" android:color="#FF099A5C"/>
-      </gradient>
-    </aapt:attr>
-  </path>
+    <path android:pathData="M360,1254l-360,-0l-0,-1254l360,-0z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startY="1254"
+                android:startX="180"
+                android:endY="0"
+                android:endX="180"
+                android:type="linear">
+                <item
+                    android:offset="0"
+                    android:color="#FF51BE9B" />
+                <item
+                    android:offset="1"
+                    android:color="#FF099A5C" />
+            </gradient>
+        </aapt:attr>
+    </path>
 </vector>

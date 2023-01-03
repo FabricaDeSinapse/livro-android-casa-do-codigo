@@ -1,8 +1,7 @@
 package tech.salvatore.livro_android_kotlin_paulo_salvatore
 
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
 
 /**
  * Example local unit test, which will execute on the development machine (host).
