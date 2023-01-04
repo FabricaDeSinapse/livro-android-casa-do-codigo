@@ -1,4 +1,4 @@
-rootProject.name = "livro-android-cada-do-codigo"
+rootProject.name = "livro-android-casa-do-codigo"
 include ':my-project'
 include ':project-complete'
 include ':project-complete-with-extras'
