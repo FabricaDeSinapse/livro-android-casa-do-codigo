@@ -1,13 +1,2 @@
 rootProject.name = "livro-android-casa-do-codigo"
 include ':my-project'
-include ':project-complete'
-include ':project-complete-with-extras'
-include ':cap03-initial'
-include ':cap04-navigation'
-include ':cap05-creatures-list'
-include ':cap06-data-binding'
-include ':cap07-add-creatures'
-include ':cap08-creatures-silhouette'
-include ':cap09-creatures-view'
-include ':cap10-rx'
-include ':cap11-api-backend'
