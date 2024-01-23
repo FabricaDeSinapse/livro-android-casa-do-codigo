@@ -1,5 +1,7 @@
 # Android Nativo com Kotlin e MVVM: Simplificando técnicas avançadas
 
+[Página do Livro, na Casa do Código](https://www.casadocodigo.com.br/products/livro-android-nativo)
+
 ![Capa do Livro](assets/capa.webp)
 
 Boas vindas ao repositório oficial do livro "Android Nativo com Kotlin e MVVM: Simplificando técnicas avançadas", escrito por Paulo Salvatore e publicado pela editora Casa do Código. Este livro e repositório visam proporcionar um aprendizado prático e avançado em desenvolvimento Android, usando Kotlin e o padrão de arquitetura MVVM.
