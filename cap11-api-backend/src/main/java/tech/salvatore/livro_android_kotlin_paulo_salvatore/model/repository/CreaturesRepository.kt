@@ -29,6 +29,6 @@ class CreaturesRepository @Inject constructor(
 
     fun findCreature(number: Int): Observable<Creature> =
         creatures.map { list ->
-            list.find { it.number == number }
+            list.find { it.number == number }!!
         }
 }
